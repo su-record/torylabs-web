@@ -67,7 +67,7 @@ export default function Voin() {
           <h2 className="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">Requirements & install</h2>
           <ul className="max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
             <li>Apple Silicon Mac, macOS 14.4 or later.</li>
-            <li>Two downloads: the standard DMG downloads the speech model (751MB) on first launch; the &quot;with-model&quot; DMG includes it for offline install.</li>
+            <li>Download <code>voin-0.1.0.dmg</code> (about 98MB). The speech model (about 751MB) downloads automatically on first launch.</li>
             <li>The app is not signed with an Apple Developer ID. On first launch, Control-click voin and choose Open, or click &quot;Open Anyway&quot; in System Settings → Privacy &amp; Security.</li>
             <li>Allow microphone access, and screen &amp; system audio recording to capture video-call audio.</li>
           </ul>
