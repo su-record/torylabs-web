@@ -22,6 +22,7 @@ npm run build   # static output in ./out
 - Framework preset: Next.js (Static HTML Export)
 - Build command: `npm run build`
 - Build output directory: `out`
+- Company info / placeholders: edit `content/company.ts`
 - Environment variable (recommended): `NODE_VERSION=20`
 
 Then add the custom domain `torylabs.dev` in the Pages project.
