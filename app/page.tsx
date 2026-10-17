@@ -9,7 +9,7 @@ const values = [
 
 const products = [
   {
-    name: "voin", href: "https://github.com/su-record/voin", tag: "macOS · Open source · Free",
+    name: "voin", href: "/voin", tag: "macOS · Open source · Free",
     d: "Free, open-source on-device dictation and meeting notes app for Mac.",
     features: ["Local transcription", "Zoom/Teams system audio capture", "Speaker diarization", "Markdown meeting notes with summaries", "Voice commands to coding agents", "Windows support planned"],
   },
@@ -65,7 +65,7 @@ export default function Home() {
           <H2>Products</H2>
           <div className="grid gap-4 md:grid-cols-3">
             {products.map((p) => (
-              <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="flex flex-col rounded-xl border border-[var(--line)] bg-[var(--card)] p-6 transition hover:-translate-y-0.5 hover:shadow-md">
+              <a key={p.name} href={p.href} {...(p.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="flex flex-col rounded-xl border border-[var(--line)] bg-[var(--card)] p-6 transition hover:-translate-y-0.5 hover:shadow-md">
                 <div className="flex items-center justify-between"><span className="text-xl font-bold">{p.name}</span><span className="text-[var(--muted)]">↗</span></div>
                 <p className="mt-1 text-xs text-[var(--accent)]">{p.tag}</p>
                 <p className="mt-4 text-sm leading-relaxed">{p.d}</p>
