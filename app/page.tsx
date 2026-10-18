@@ -65,7 +65,7 @@ export default function Home() {
           <H2>Products</H2>
           <div className="grid gap-4 md:grid-cols-3">
             {products.map((p) => (
-              {p.href ? (
+              p.href ? (
 <a key={p.name} href={p.href} {...(p.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="flex flex-col rounded-xl border border-[var(--line)] bg-[var(--card)] p-6 transition hover:-translate-y-0.5 hover:shadow-md">
                 <div className="flex items-center justify-between"><span className="text-xl font-bold">{p.name}</span>{p.href && <span className="text-[var(--muted)]">↗</span>}</div>
                 <p className="mt-1 text-xs text-[var(--accent)]">{p.tag}</p>
@@ -87,7 +87,7 @@ export default function Home() {
                   </ul>
                 )}
               </div>
-)}
+)
             ))}
           </div>
         </section>
