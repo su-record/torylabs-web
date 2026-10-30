@@ -32,6 +32,9 @@ const text = {
       { t: "Terminal", d: "Tabs and splits, sessions that keep running after the window closes, and projects on SSH servers." },
       { t: "Your own agents", d: "vica uses the agents with your own accounts and plans. It does not sell model access." },
     ],
+    selfTitle: "Use your phone, on your own server",
+    selfLead: "Your phone reaches vica through a small relay on your own Cloudflare account. The free plan is enough, and your agent sets it up.",
+    selfSteps: ["In vica, open Settings → General and press Create server files.", "Tell your agent: deploy the ~/vica-relay folder to my Cloudflare account.", "Enter the address it gives you in Settings, then scan the QR code with your phone."],
     pricingTitle: "Pricing",
     appName: "vica app", appPrice: "Free",
     relayName: "Relay subscription", relayPrice: "US$2 / month",
@@ -70,6 +73,9 @@ const text = {
       { t: "ターミナル", d: "タブと分割、ウィンドウを閉じても続くセッション、SSHサーバー上のプロジェクト。" },
       { t: "あなたのエージェント", d: "vicaはあなた自身のアカウントとプランでエージェントを使います。モデルの利用権は販売しません。" },
     ],
+    selfTitle: "スマートフォンは自分のサーバーで",
+    selfLead: "スマートフォンは、自分のCloudflareアカウントに置いた小さな中継サーバーを通してvicaにつながります。無料プランで十分で、設定はエージェントに任せられます。",
+    selfSteps: ["vicaの設定 → 全般で「サーバーファイルを作成」を押します。", "エージェントに「~/vica-relay フォルダーを自分のCloudflareにデプロイして」と頼みます。", "表示されたアドレスを設定に入れ、スマートフォンでQRコードを読み取ります。"],
     pricingTitle: "料金",
     appName: "vicaアプリ", appPrice: "無料",
     relayName: "中継サブスクリプション", relayPrice: "月額 US$2",
@@ -108,6 +114,9 @@ const text = {
       { t: "터미널", d: "탭과 분할, 창을 닫아도 계속 도는 세션, SSH 서버의 프로젝트." },
       { t: "내 에이전트", d: "vica는 사용자 본인의 계정과 요금제로 에이전트를 씁니다. 모델 사용권을 팔지 않습니다." },
     ],
+    selfTitle: "휴대폰은 내 서버로 연결",
+    selfLead: "휴대폰은 내 Cloudflare 계정에 둔 작은 중계 서버를 거쳐 vica에 연결됩니다. 무료 요금제로 충분하고, 만드는 일은 에이전트에게 맡기면 됩니다.",
+    selfSteps: ["vica 설정 → 전체에서 서버 파일 만들기를 누릅니다.", "에이전트에게 말합니다: ~/vica-relay 폴더를 내 Cloudflare에 배포해 줘.", "받은 주소를 설정에 넣고, 휴대폰으로 QR 코드를 찍습니다."],
     pricingTitle: "가격",
     appName: "vica 앱", appPrice: "무료",
     relayName: "중계 구독", relayPrice: "월 US$2",
@@ -198,6 +207,14 @@ export default function Vica({ lang }: { lang: Lang }) {
               </div>
             ))}
           </div>
+        </section>
+
+        <section id="own-server" className="scroll-mt-20 border-t border-[var(--line)] py-24">
+          <H2>{t.selfTitle}</H2>
+          <p className="max-w-2xl text-[var(--muted)]">{t.selfLead}</p>
+          <ol className="mt-8 max-w-2xl list-decimal space-y-3 pl-5">
+            {t.selfSteps.map((step) => <li key={step}>{step}</li>)}
+          </ol>
         </section>
 
         <section id="pricing" className="hidden scroll-mt-20 border-t border-[var(--line)] py-20">
