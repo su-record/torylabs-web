@@ -19,7 +19,7 @@ const body: Record<Lang, React.ReactNode> = {
       <h2>Our products</h2>
       <p>Our products are designed to run on your own device whenever possible.</p>
       <ul>
-        <li><strong>vica</strong> runs on your computer. Your code and prompts go from your computer to the agent providers you use (such as Anthropic, OpenAI, Google, xAI or Meta), under their terms; they do not pass through our servers. To check for updates, vica sends its platform, CPU architecture and version to vica.torylabs.dev.</li>
+        <li><strong>vica</strong> runs on your computer. Your code and prompts go from your computer to the agent providers you use (such as Anthropic, OpenAI, Google, xAI or Meta), under their terms; they do not pass through our servers. To check for updates, vica sends its platform, CPU architecture and version to vica.torylabs.dev. To show how much of each plan you have used, vica reads the sign-in token each agent CLI keeps on your computer and sends it only to that agent's provider; it does not store the token or send it anywhere else.</li>
         <li><strong>voin</strong> processes audio, transcription, and meeting notes locally on your computer. It does not send your audio or transcripts to our servers. If you choose to enable an optional third-party service or model, that provider&apos;s terms and privacy policy apply to data you send to it.</li>
         <li><strong>vibe</strong> runs locally alongside the AI coding tools you already use. We do not collect your code or project data through it.</li>
         <li><strong>Tory</strong> may have its own privacy notice within the service, which applies in addition to this policy.</li>
@@ -65,7 +65,7 @@ const body: Record<Lang, React.ReactNode> = {
       <h2>当社の製品</h2>
       <p>当社の製品は、できる限りユーザーのデバイス上で動くよう作られています。</p>
       <ul>
-        <li><strong>vica</strong>はお使いのパソコンで動きます。コードとプロンプトは、パソコンから利用中のエージェント提供元（Anthropic、OpenAI、Google、xAI、Metaなど）へ、その提供元の規約のもとで送られ、当社のサーバーは通りません。更新の確認のため、vicaはプラットフォーム、CPUアーキテクチャ、バージョンをvica.torylabs.devに送ります。</li>
+        <li><strong>vica</strong>はお使いのパソコンで動きます。コードとプロンプトは、パソコンから利用中のエージェント提供元（Anthropic、OpenAI、Google、xAI、Metaなど）へ、その提供元の規約のもとで送られ、当社のサーバーは通りません。更新の確認のため、vicaはプラットフォーム、CPUアーキテクチャ、バージョンをvica.torylabs.devに送ります。プランの使用量を表示するため、vicaは各エージェントCLIがパソコンに保管しているサインイントークンを読み取り、そのエージェントの提供元にのみ送信します。トークンを保存したり、他の場所に送信したりしません。</li>
         <li><strong>voin</strong>は音声、文字起こし、会議メモをパソコン上で処理します。音声や文字起こしを当社のサーバーに送りません。任意の第三者サービスやモデルを有効にした場合、送るデータにはその提供元の規約とプライバシーポリシーが適用されます。</li>
         <li><strong>vibe</strong>は、すでにお使いのAIコーディングツールと一緒にローカルで動きます。vibeを通じてコードやプロジェクトのデータを収集しません。</li>
         <li><strong>Tory</strong>には、サービス内に独自のプライバシー通知がある場合があり、本ポリシーに加えて適用されます。</li>
@@ -111,7 +111,7 @@ const body: Record<Lang, React.ReactNode> = {
       <h2>저희 제품</h2>
       <p>저희 제품은 가능한 한 사용자의 기기에서 돌아가도록 만듭니다.</p>
       <ul>
-        <li><strong>vica</strong>는 사용자의 컴퓨터에서 돌아갑니다. 코드와 프롬프트는 컴퓨터에서 사용 중인 에이전트 제공사(Anthropic, OpenAI, Google, xAI, Meta 등)로, 그 회사의 약관에 따라 바로 가며 저희 서버를 거치지 않습니다. 업데이트를 확인하려고 vica는 플랫폼, CPU 종류, 버전을 vica.torylabs.dev에 보냅니다.</li>
+        <li><strong>vica</strong>는 사용자의 컴퓨터에서 돌아갑니다. 코드와 프롬프트는 컴퓨터에서 사용 중인 에이전트 제공사(Anthropic, OpenAI, Google, xAI, Meta 등)로, 그 회사의 약관에 따라 바로 가며 저희 서버를 거치지 않습니다. 업데이트를 확인하려고 vica는 플랫폼, CPU 종류, 버전을 vica.torylabs.dev에 보냅니다. 요금제 사용량을 보여 주려고 vica는 각 에이전트 CLI가 컴퓨터에 보관한 로그인 토큰을 읽어 그 에이전트 제공사로만 보냅니다. 토큰을 저장하거나 다른 곳으로 보내지 않습니다.</li>
         <li><strong>voin</strong>은 소리, 받아쓰기, 회의록을 컴퓨터 안에서 처리합니다. 소리나 받아쓴 글을 저희 서버로 보내지 않습니다. 선택 사항인 제3자 서비스나 모델을 켜면, 그곳에 보내는 데이터에는 그 제공사의 약관과 개인정보처리방침이 적용됩니다.</li>
         <li><strong>vibe</strong>는 이미 쓰고 있는 AI 코딩 도구와 함께 로컬에서 돌아갑니다. vibe로 코드나 프로젝트 데이터를 수집하지 않습니다.</li>
         <li><strong>Tory</strong>는 서비스 안에 별도의 개인정보 안내가 있을 수 있으며, 이 방침과 함께 적용됩니다.</li>
