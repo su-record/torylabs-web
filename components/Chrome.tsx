@@ -64,7 +64,8 @@ export function Footer({ lang }: { lang: Lang }) {
         </dl>
         <p className="mt-6 flex flex-wrap gap-x-2">
           <span>© 2026 {company.name}</span>·
-          <Link href={localized(lang, "/pricing")} className="hover:underline">{t.pricing}</Link>·
+          {/* Pricing is the relay subscription, out of sight for now (owner request 2026-10-30). */}
+          <span className="hidden"><Link href={localized(lang, "/pricing")} className="hover:underline">{t.pricing}</Link>·</span>
           <Link href={localized(lang, "/privacy")} className="hover:underline">{t.privacy}</Link>·
           <Link href={localized(lang, "/terms")} className="hover:underline">{t.terms}</Link>·
           {/* The refund policy is about the subscription, out of sight for now (owner request 2026-10-30). */}
