@@ -12,7 +12,7 @@ const text = {
   en: {
     title: "vica | Hand your coding requests to the agents on your Mac | Tory Labs",
     description: "vica is a desktop app that splits a coding request into steps and hands each step to Claude Code, Codex, Antigravity, Grok or Muse Code on your computer.",
-    eyebrow: "macOS · Free app · Optional US$2/month relay",
+    eyebrow: "macOS · Free app", eyebrowRelay: " · Optional US$2/month relay",
     lead: "Write what you want built. vica hands the work to the coding agents on your computer and sees it through.",
     sub: "vica runs the agent CLIs you have installed and signed in to: Claude Code, Codex, Antigravity, Grok and Muse Code. It splits each request into steps and gives each step to the agent suited to its role.",
     mac: "Download for Mac (Apple Silicon)", windows: "Windows · Coming soon", subscribe: "Subscribe to the relay",
@@ -44,7 +44,7 @@ const text = {
   ja: {
     title: "vica | コーディングの依頼をMacのエージェントに任せる | Tory Labs",
     description: "vicaは、コーディングの依頼を段階に分け、パソコンにあるClaude Code、Codex、Antigravity、Grok、Muse Codeに任せるデスクトップアプリです。",
-    eyebrow: "macOS · アプリ無料 · 中継は月額US$2（任意）",
+    eyebrow: "macOS · アプリ無料", eyebrowRelay: " · 中継は月額US$2（任意）",
     lead: "作りたいものを書くだけ。vicaがパソコンのコーディングエージェントに任せ、最後までやり遂げます。",
     sub: "vicaは、インストールしてログイン済みのエージェントCLI（Claude Code、Codex、Antigravity、Grok、Muse Code）を動かします。依頼を段階に分け、各段階を役割に合ったエージェントに任せます。",
     mac: "Macをダウンロード（Apple Silicon）", windows: "Windows · 近日公開", subscribe: "中継を購読する",
@@ -76,7 +76,7 @@ const text = {
   ko: {
     title: "vica | 코딩 요청을 Mac의 에이전트에게 맡기기 | Tory Labs",
     description: "vica는 코딩 요청을 단계로 나눠 내 컴퓨터의 Claude Code, Codex, Antigravity, Grok, Muse Code에게 맡기는 데스크톱 앱입니다.",
-    eyebrow: "macOS · 앱 무료 · 중계 월 US$2 (선택)",
+    eyebrow: "macOS · 앱 무료", eyebrowRelay: " · 중계 월 US$2 (선택)",
     lead: "만들 것을 적으면, vica가 내 컴퓨터의 코딩 에이전트들에게 맡겨 끝까지 해냅니다.",
     sub: "vica는 설치하고 로그인한 에이전트 CLI(Claude Code, Codex, Antigravity, Grok, Muse Code)를 실행합니다. 요청을 단계로 나누고, 단계마다 역할에 맞는 에이전트에게 맡깁니다.",
     mac: "Mac 다운로드 (Apple Silicon)", windows: "Windows · 곧 공개", subscribe: "중계 구독하기",
@@ -122,7 +122,7 @@ export default function Vica({ lang }: { lang: Lang }) {
       <Header lang={lang} path="/vica" />
       <main lang={lang} className="mx-auto max-w-5xl px-6">
         <section className="py-24 sm:py-28">
-          <p className="text-sm font-medium text-[var(--accent)]">{t.eyebrow}</p>
+          <p className="text-sm font-medium text-[var(--accent)]">{t.eyebrow}<span className="hidden">{t.eyebrowRelay}</span></p>
           <h1 className="mt-4 text-5xl font-bold tracking-tight sm:text-6xl">vica</h1>
           <p className="mt-6 max-w-2xl text-xl leading-relaxed">{t.lead}</p>
           <p className="mt-3 max-w-2xl leading-relaxed text-[var(--muted)]">{t.sub}</p>
