@@ -39,7 +39,6 @@ const text = {
     phoneTitle: "On your phone, it is just a chat",
     phoneLead: "No terminals to manage. Tell Vica what you need, by voice or text. It opens a terminal on your computer, gives the agent the work, and answers in the chat when it is done.",
     phoneSteps: ["Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "Everything between phone and computer is end-to-end encrypted."],
-    guide: "How to set up your relay server",
     faqTitle: "Questions",
     faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How does my phone connect?", "Through a small relay server on your own Cloudflare account. vica makes the files and your agent can deploy them."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
     ctaTitle: "Hand it your next request",
@@ -87,7 +86,6 @@ const text = {
     phoneTitle: "スマートフォンでは、会話だけ",
     phoneLead: "ターミナルを管理する必要はありません。声でも文字でもVicaに頼めば、コンピューターでターミナルを開いてエージェントに任せ、終わったら会話で答えます。",
     phoneSteps: ["どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "スマートフォンとコンピューターの間はエンドツーエンドで暗号化されます。"],
-    guide: "中継サーバーの作り方",
     faqTitle: "よくある質問",
     faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォンはどうつなぎますか？", "自分のCloudflareアカウントに置く小さな中継サーバーを通します。ファイルはvicaが作り、デプロイはエージェントに任せられます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
     ctaTitle: "次の依頼を任せてみましょう",
@@ -135,7 +133,6 @@ const text = {
     phoneTitle: "휴대폰에서는 대화만",
     phoneLead: "터미널을 관리할 필요가 없습니다. 말이나 글로 Vica에게 맡기면, 컴퓨터에서 터미널을 열어 에이전트에게 지시하고 끝나면 대화로 답합니다.",
     phoneSteps: ["어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "휴대폰과 컴퓨터 사이는 종단 간 암호화됩니다."],
-    guide: "연결 서버 구축 가이드",
     faqTitle: "자주 묻는 질문",
     faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰은 어떻게 연결하나요?", "내 Cloudflare 계정에 둔 작은 연결 서버를 거칩니다. 파일은 vica가 만들고, 배포는 에이전트에게 맡기면 됩니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
     ctaTitle: "다음 요청을 맡겨 보세요",
@@ -233,7 +230,6 @@ export default function Vica({ lang }: { lang: Lang }) {
           <ul className="mt-8 max-w-2xl list-disc space-y-3 pl-5">
             {t.phoneSteps.map((step) => <li key={step}>{step}</li>)}
           </ul>
-          <p className="mt-8"><a href="#relay" className={link}>{t.guide}</a></p>
         </section>
 
         <VicaRelay lang={lang} />
