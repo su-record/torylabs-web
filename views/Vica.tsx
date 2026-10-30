@@ -8,6 +8,7 @@ import VicaRelay from "@/views/VicaRelay";
 // Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-10-30.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 // The newest release (scripts/release.sh in the vica repository publishes it there).
+export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
 
 const text = {
@@ -34,6 +35,7 @@ const text = {
       { t: "Your own agents", d: "vica uses the agents with your own accounts and plans. It does not sell model access." },
     ],
     noLogin: "No sign-up. Just use it.",
+    bugs: "Found a bug? Report it on GitHub",
     agentsTitle: "The agents you already use",
     agentsLead: "vica runs the CLIs you have installed, on your own accounts and plans. It does not sell model access.",
     phoneTitle: "On your phone, it is just a chat",
@@ -81,6 +83,7 @@ const text = {
       { t: "あなたのエージェント", d: "vicaはあなた自身のアカウントとプランでエージェントを使います。モデルの利用権は販売しません。" },
     ],
     noLogin: "ログイン不要。そのまま使えます。",
+    bugs: "不具合はGitHubでお知らせください",
     agentsTitle: "いま使っているエージェントのまま",
     agentsLead: "インストール済みのCLIを、ご自身のアカウントとプランで動かします。モデルの利用権は販売しません。",
     phoneTitle: "スマートフォンでは、会話だけ",
@@ -128,6 +131,7 @@ const text = {
       { t: "내 에이전트", d: "vica는 사용자 본인의 계정과 요금제로 에이전트를 씁니다. 모델 사용권을 팔지 않습니다." },
     ],
     noLogin: "로그인 없이 그냥 사용하세요.",
+    bugs: "버그는 GitHub 이슈로 알려 주세요",
     agentsTitle: "이미 쓰는 에이전트 그대로",
     agentsLead: "설치해 둔 CLI를 내 계정과 요금제로 실행합니다. 모델 사용권을 팔지 않습니다.",
     phoneTitle: "휴대폰에서는 대화만",
@@ -278,6 +282,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <ul className="max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
             {t.req.map((r) => <li key={r}>{r}</li>)}
           </ul>
+          <p className="mt-6"><a href={ISSUES} className={link}>{t.bugs}</a></p>
         </section>
 
         <section className="border-t border-[var(--line)] py-24">
