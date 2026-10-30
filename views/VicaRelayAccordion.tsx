@@ -8,7 +8,7 @@ const PURPLE = "#7c6cf0";
 
 export type RelayLabels = {
   file: string; token: string; save: string; files: string; copy: string; copied: string;
-  prev: string; next: string; server: string; yourMac: string; yourPhone: string; scan: string;
+  domain: string; prev: string; next: string; server: string; yourMac: string; yourPhone: string; scan: string;
 };
 type Step = readonly [string, string];
 
@@ -82,6 +82,7 @@ function Picture({ step, labels, prompt, tokenShown }: { step: number; labels: R
       <p className="text-xs font-semibold">{labels.server}</p>
       <div className="mt-3 space-y-2">
         <Field>https://vica-relay.you.workers.dev</Field>
+        <p className="px-1 text-[11px] text-[var(--muted)]">{labels.domain} https://vica-relay.you.domain</p>
         <Field dim>{`${labels.token}  ${tokenShown}`}</Field>
       </div>
       <p className="mt-3 text-right"><Button>{labels.save}</Button></p>
