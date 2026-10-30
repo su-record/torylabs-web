@@ -3,6 +3,7 @@ import Link from "next/link";
 import { alternates, localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
 import VicaScene from "@/views/VicaScene";
+import VicaRelay from "@/views/VicaRelay";
 
 // Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-10-30.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
@@ -232,8 +233,10 @@ export default function Vica({ lang }: { lang: Lang }) {
           <ul className="mt-8 max-w-2xl list-disc space-y-3 pl-5">
             {t.phoneSteps.map((step) => <li key={step}>{step}</li>)}
           </ul>
-          <p className="mt-8"><Link href={localized(lang, "/vica/relay")} className={link}>{t.guide}</Link></p>
+          <p className="mt-8"><a href="#relay" className={link}>{t.guide}</a></p>
         </section>
+
+        <VicaRelay lang={lang} />
 
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.featuresTitle}</H2>

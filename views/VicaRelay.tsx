@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { alternates, localized, type Lang } from "@/content/i18n";
-import { Header, Footer } from "@/components/Chrome";
+import type { Lang } from "@/content/i18n";
+import VicaRelayAccordion from "@/views/VicaRelayAccordion";
 
-// The steps follow vica's settings (subscription-view.js, phone.rs in the vica repository); this
-// guide is where Settings → Relay server → Build links to (owner request 2026-10-30).
+// The guide to one's own relay, a section of the vica page. The steps follow vica's settings
+// (subscription-view.js, phone.rs in the vica repository); Settings → Relay server → Build links
+// here (owner request 2026-10-30).
 const text = {
   "en": {
-    "title": "Set up your relay server | vica | Tory Labs",
     "h1": "Set up your relay server",
     "lead": "The relay links your phone and vica. Make your own on a free Cloudflare account: vica writes the files and your agent can deploy them.",
     "needTitle": "You need",
@@ -58,10 +56,22 @@ const text = {
         "The free plan allows 100,000 requests a day. Past that it stops until 00:00 UTC, and you are not charged."
       ]
     ],
-    "back": "Back to vica"
+    "labels": {
+      "file": "Files",
+      "token": "Access token",
+      "save": "Save",
+      "files": "Create server files",
+      "copy": "Copy",
+      "copied": "Copied",
+      "prev": "Back",
+      "next": "Next",
+      "server": "Relay server",
+      "yourMac": "Your Mac",
+      "yourPhone": "Your phone",
+      "scan": "QR"
+    }
   },
   "ja": {
-    "title": "中継サーバーの作り方 | vica | Tory Labs",
     "h1": "中継サーバーの作り方",
     "lead": "中継サーバーはスマートフォンとvicaをつなぎます。無料のCloudflareアカウントに作成でき、ファイルはvicaが作り、デプロイはエージェントに任せられます。",
     "needTitle": "必要なもの",
@@ -112,10 +122,22 @@ const text = {
         "無料プランは1日100,000リクエストまでです。超えるとUTC 0時まで止まりますが、請求はされません。"
       ]
     ],
-    "back": "vicaに戻る"
+    "labels": {
+      "file": "ファイル",
+      "token": "接続トークン",
+      "save": "保存",
+      "files": "サーバーファイルを作成",
+      "copy": "コピー",
+      "copied": "コピーしました",
+      "prev": "戻る",
+      "next": "次へ",
+      "server": "接続サーバー",
+      "yourMac": "Mac",
+      "yourPhone": "スマートフォン",
+      "scan": "QR"
+    }
   },
   "ko": {
-    "title": "연결 서버 구축 가이드 | vica | Tory Labs",
     "h1": "연결 서버 구축 가이드",
     "lead": "연결 서버는 휴대폰과 vica를 잇습니다. 무료 Cloudflare 계정에 만들 수 있고, 파일은 vica가 만들고 배포는 에이전트에게 맡기면 됩니다.",
     "needTitle": "준비물",
@@ -166,65 +188,51 @@ const text = {
         "무료 요금제는 하루 100,000건까지입니다. 넘으면 UTC 자정(한국 오전 9시)까지 멈추지만 요금은 나오지 않습니다."
       ]
     ],
-    "back": "vica로 돌아가기"
+    "labels": {
+      "file": "파일",
+      "token": "접속 토큰",
+      "save": "저장",
+      "files": "서버 파일 만들기",
+      "copy": "복사",
+      "copied": "복사했습니다",
+      "prev": "이전",
+      "next": "다음",
+      "server": "연결 서버",
+      "yourMac": "내 Mac",
+      "yourPhone": "내 휴대폰",
+      "scan": "QR"
+    }
   }
 } satisfies Record<Lang, unknown>;
 
-export function relayMetadata(lang: Lang): Metadata {
-  const { title, lead } = text[lang];
-  return { title, description: lead, alternates: alternates(lang, "/vica/relay"), openGraph: { title, url: localized(lang, "/vica/relay"), description: lead } };
-}
-
-const H2 = ({ children }: { children: string }) => <h2 className="mb-6 mt-14 text-xl font-bold tracking-tight">{children}</h2>;
-const Code = ({ children }: { children: string }) => (
-  <pre className="mt-3 overflow-x-auto whitespace-pre-wrap rounded-xl border border-[var(--line)] bg-[var(--card)] p-4 text-sm">{children}</pre>
-);
+const H3 = ({ children }: { children: string }) => <h3 className="mb-4 mt-12 font-semibold">{children}</h3>;
 
 export default function VicaRelay({ lang }: { lang: Lang }) {
   const t = text[lang];
-  const steps = [t.s1, t.s2, t.s3, t.s4];
   return (
-    <>
-      <Header lang={lang} path="/vica/relay" />
-      <main lang={lang} className="mx-auto max-w-3xl px-6 py-20">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.h1}</h1>
-        <p className="mt-5 leading-relaxed text-[var(--muted)]">{t.lead}</p>
-
-        <H2>{t.needTitle}</H2>
-        <ul className="list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
-          {t.need.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-
-        <H2>{t.stepsTitle}</H2>
-        <ol className="space-y-8">
-          {steps.map(([title, body], i) => (
-            <li key={title}>
-              <h3 className="font-semibold">{i + 1}. {title}</h3>
-              <p className="mt-2 leading-relaxed text-[var(--muted)]">{body}</p>
-              {i === 1 && (
-                <>
-                  <Code>{t.prompt}</Code>
-                  <p className="mt-4 text-sm text-[var(--muted)]">{t.self}</p>
-                  <Code>{"cd ~/vica-relay\nnpx wrangler login\nnpx wrangler deploy"}</Code>
-                </>
-              )}
-            </li>
-          ))}
-        </ol>
-
-        <H2>{t.helpTitle}</H2>
-        <dl className="space-y-6">
-          {t.help.map(([q, answer]) => (
-            <div key={q}>
-              <dt className="font-semibold">{q}</dt>
-              <dd className="mt-2 leading-relaxed text-[var(--muted)]">{answer}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <p className="mt-14"><Link href={localized(lang, "/vica")} className="underline underline-offset-4">{t.back}</Link></p>
-      </main>
-      <Footer lang={lang} />
-    </>
+    <section id="relay" className="scroll-mt-20 border-t border-[var(--line)] py-24">
+      <h2 className="mb-5 text-2xl font-bold tracking-tight sm:text-3xl">{t.h1}</h2>
+      <p className="mb-10 max-w-2xl leading-relaxed text-[var(--muted)]">{t.lead}</p>
+      <VicaRelayAccordion steps={[t.s1, t.s2, t.s3, t.s4] as [string, string][]} prompt={t.prompt} selfLabel={t.self} labels={t.labels} />
+      <div className="grid gap-x-12 md:grid-cols-2">
+        <div>
+          <H3>{t.needTitle}</H3>
+          <ul className="list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
+            {t.need.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+        <div>
+          <H3>{t.helpTitle}</H3>
+          <div className="space-y-2">
+            {t.help.map(([q, answer]) => (
+              <details key={q} className="rounded-xl border border-[var(--line)] bg-[var(--card)] px-4 py-3">
+                <summary className="cursor-pointer text-sm font-medium">{q}</summary>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
