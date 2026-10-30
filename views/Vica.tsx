@@ -14,8 +14,8 @@ const text = {
     title: "vica | Hand your coding requests to the agents on your Mac | Tory Labs",
     description: "vica is a desktop app that splits a coding request into steps and hands each step to Claude Code, Codex, Antigravity, Grok or Muse Code on your computer.",
     eyebrow: "macOS · Free app", eyebrowRelay: " · Optional US$2/month relay",
-    lead: "Write what you want built. vica hands the work to the coding agents on your computer and sees it through.",
-    sub: "vica runs the agent CLIs you have installed and signed in to: Claude Code, Codex, Antigravity, Grok and Muse Code. It splits each request into steps and gives each step to the agent suited to its role.",
+    lead: "Say what you want built. vica sees it through.",
+    sub: "Tell vica the work in one chat, from your Mac or your phone. It hands each step to the coding agents you already use, and reports back when it is done.",
     mac: "Download for Mac (Apple Silicon)", windows: "Windows · Coming soon", subscribe: "Subscribe to the relay",
     howTitle: "How it works",
     how: [
@@ -32,9 +32,16 @@ const text = {
       { t: "Terminal", d: "Tabs and splits, sessions that keep running after the window closes, and projects on SSH servers." },
       { t: "Your own agents", d: "vica uses the agents with your own accounts and plans. It does not sell model access." },
     ],
-    selfTitle: "Use your phone, on your own server",
-    selfLead: "Your phone reaches vica through a small relay on your own Cloudflare account. The free plan is enough, and your agent sets it up.",
-    selfSteps: ["In vica, open Settings → General and press Create server files.", "Tell your agent: deploy the ~/vica-relay folder to my Cloudflare account.", "Enter the address it gives you in Settings, then scan the QR code with your phone."],
+    noLogin: "No sign-up. Just use it.",
+    agentsTitle: "The agents you already use",
+    agentsLead: "vica runs the CLIs you have installed, on your own accounts and plans. It does not sell model access.",
+    phoneTitle: "On your phone, it is just a chat",
+    phoneLead: "No terminals to manage. Tell Vica what you need, by voice or text. It opens a terminal on your computer, gives the agent the work, and answers in the chat when it is done.",
+    phoneSteps: ["Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "Everything between phone and computer is end-to-end encrypted."],
+    guide: "How to set up your relay server",
+    faqTitle: "Questions",
+    faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How does my phone connect?", "Through a small relay server on your own Cloudflare account. vica makes the files and your agent can deploy them."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
+    ctaTitle: "Hand it your next request",
     pricingTitle: "Pricing",
     appName: "vica app", appPrice: "Free",
     relayName: "Relay subscription", relayPrice: "US$2 / month",
@@ -55,8 +62,8 @@ const text = {
     title: "vica | コーディングの依頼をMacのエージェントに任せる | Tory Labs",
     description: "vicaは、コーディングの依頼を段階に分け、パソコンにあるClaude Code、Codex、Antigravity、Grok、Muse Codeに任せるデスクトップアプリです。",
     eyebrow: "macOS · アプリ無料", eyebrowRelay: " · 中継は月額US$2（任意）",
-    lead: "作りたいものを書くだけ。vicaがパソコンのコーディングエージェントに任せ、最後までやり遂げます。",
-    sub: "vicaは、インストールしてログイン済みのエージェントCLI（Claude Code、Codex、Antigravity、Grok、Muse Code）を動かします。依頼を段階に分け、各段階を役割に合ったエージェントに任せます。",
+    lead: "頼むだけで、vicaが最後までやり遂げます。",
+    sub: "Macでもスマートフォンでも、ひとつの会話でvicaに頼むだけ。使い慣れたコーディングエージェントに段階ごとに任せ、終わったら報告します。",
     mac: "Macをダウンロード（Apple Silicon）", windows: "Windows · 近日公開", subscribe: "中継を購読する",
     howTitle: "使い方",
     how: [
@@ -73,9 +80,16 @@ const text = {
       { t: "ターミナル", d: "タブと分割、ウィンドウを閉じても続くセッション、SSHサーバー上のプロジェクト。" },
       { t: "あなたのエージェント", d: "vicaはあなた自身のアカウントとプランでエージェントを使います。モデルの利用権は販売しません。" },
     ],
-    selfTitle: "スマートフォンは自分のサーバーで",
-    selfLead: "スマートフォンは、自分のCloudflareアカウントに置いた小さな中継サーバーを通してvicaにつながります。無料プランで十分で、設定はエージェントに任せられます。",
-    selfSteps: ["vicaの設定 → 全般で「サーバーファイルを作成」を押します。", "エージェントに「~/vica-relay フォルダーを自分のCloudflareにデプロイして」と頼みます。", "表示されたアドレスを設定に入れ、スマートフォンでQRコードを読み取ります。"],
+    noLogin: "ログイン不要。そのまま使えます。",
+    agentsTitle: "いま使っているエージェントのまま",
+    agentsLead: "インストール済みのCLIを、ご自身のアカウントとプランで動かします。モデルの利用権は販売しません。",
+    phoneTitle: "スマートフォンでは、会話だけ",
+    phoneLead: "ターミナルを管理する必要はありません。声でも文字でもVicaに頼めば、コンピューターでターミナルを開いてエージェントに任せ、終わったら会話で答えます。",
+    phoneSteps: ["どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "スマートフォンとコンピューターの間はエンドツーエンドで暗号化されます。"],
+    guide: "中継サーバーの作り方",
+    faqTitle: "よくある質問",
+    faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォンはどうつなぎますか？", "自分のCloudflareアカウントに置く小さな中継サーバーを通します。ファイルはvicaが作り、デプロイはエージェントに任せられます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
+    ctaTitle: "次の依頼を任せてみましょう",
     pricingTitle: "料金",
     appName: "vicaアプリ", appPrice: "無料",
     relayName: "中継サブスクリプション", relayPrice: "月額 US$2",
@@ -96,8 +110,8 @@ const text = {
     title: "vica | 코딩 요청을 Mac의 에이전트에게 맡기기 | Tory Labs",
     description: "vica는 코딩 요청을 단계로 나눠 내 컴퓨터의 Claude Code, Codex, Antigravity, Grok, Muse Code에게 맡기는 데스크톱 앱입니다.",
     eyebrow: "macOS · 앱 무료", eyebrowRelay: " · 중계 월 US$2 (선택)",
-    lead: "만들 것을 적으면, vica가 내 컴퓨터의 코딩 에이전트들에게 맡겨 끝까지 해냅니다.",
-    sub: "vica는 설치하고 로그인한 에이전트 CLI(Claude Code, Codex, Antigravity, Grok, Muse Code)를 실행합니다. 요청을 단계로 나누고, 단계마다 역할에 맞는 에이전트에게 맡깁니다.",
+    lead: "말로 맡기면, vica가 끝까지 해냅니다.",
+    sub: "Mac에서든 휴대폰에서든 대화 하나로 말하면 됩니다. 이미 쓰는 코딩 에이전트들에게 단계별로 맡기고, 끝나면 보고합니다.",
     mac: "Mac 다운로드 (Apple Silicon)", windows: "Windows · 곧 공개", subscribe: "중계 구독하기",
     howTitle: "이렇게 씁니다",
     how: [
@@ -114,9 +128,16 @@ const text = {
       { t: "터미널", d: "탭과 분할, 창을 닫아도 계속 도는 세션, SSH 서버의 프로젝트." },
       { t: "내 에이전트", d: "vica는 사용자 본인의 계정과 요금제로 에이전트를 씁니다. 모델 사용권을 팔지 않습니다." },
     ],
-    selfTitle: "휴대폰은 내 서버로 연결",
-    selfLead: "휴대폰은 내 Cloudflare 계정에 둔 작은 중계 서버를 거쳐 vica에 연결됩니다. 무료 요금제로 충분하고, 만드는 일은 에이전트에게 맡기면 됩니다.",
-    selfSteps: ["vica 설정 → 전체에서 서버 파일 만들기를 누릅니다.", "에이전트에게 말합니다: ~/vica-relay 폴더를 내 Cloudflare에 배포해 줘.", "받은 주소를 설정에 넣고, 휴대폰으로 QR 코드를 찍습니다."],
+    noLogin: "로그인 없이 그냥 사용하세요.",
+    agentsTitle: "이미 쓰는 에이전트 그대로",
+    agentsLead: "설치해 둔 CLI를 내 계정과 요금제로 실행합니다. 모델 사용권을 팔지 않습니다.",
+    phoneTitle: "휴대폰에서는 대화만",
+    phoneLead: "터미널을 관리할 필요가 없습니다. 말이나 글로 Vica에게 맡기면, 컴퓨터에서 터미널을 열어 에이전트에게 지시하고 끝나면 대화로 답합니다.",
+    phoneSteps: ["어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "휴대폰과 컴퓨터 사이는 종단 간 암호화됩니다."],
+    guide: "연결 서버 구축 가이드",
+    faqTitle: "자주 묻는 질문",
+    faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰은 어떻게 연결하나요?", "내 Cloudflare 계정에 둔 작은 연결 서버를 거칩니다. 파일은 vica가 만들고, 배포는 에이전트에게 맡기면 됩니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
+    ctaTitle: "다음 요청을 맡겨 보세요",
     pricingTitle: "가격",
     appName: "vica 앱", appPrice: "무료",
     relayName: "중계 구독", relayPrice: "월 US$2",
@@ -139,6 +160,8 @@ export function vicaMetadata(lang: Lang): Metadata {
   const { title, description } = text[lang];
   return { title, description, alternates: alternates(lang, "/vica"), openGraph: { title: "vica by Tory Labs", url: localized(lang, "/vica"), description } };
 }
+
+const AGENTS = ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code"];
 
 const H2 = ({ children }: { children: string }) => <h2 className="mb-10 text-2xl font-bold tracking-tight sm:text-3xl">{children}</h2>;
 
@@ -177,6 +200,7 @@ export default function Vica({ lang }: { lang: Lang }) {
             {/* The relay subscription stays out of sight for now (owner request 2026-10-30). */}
             <a href={SUBSCRIBE} className="hidden rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)]">{t.subscribe}</a>
           </div>
+          <p className="mt-5 text-sm text-[var(--muted)]">{t.noLogin}</p>
         </section>
 
         <section className="pb-24"><VicaScene lang={lang} /></section>
@@ -195,6 +219,23 @@ export default function Vica({ lang }: { lang: Lang }) {
         </section>
 
         <section className="border-t border-[var(--line)] py-24">
+          <H2>{t.agentsTitle}</H2>
+          <p className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.agentsLead}</p>
+          <ul className="mt-8 flex flex-wrap gap-3">
+            {AGENTS.map((agent) => <li key={agent} className="rounded-full border border-[var(--line)] bg-[var(--card)] px-4 py-2 text-sm">{agent}</li>)}
+          </ul>
+        </section>
+
+        <section id="phone" className="scroll-mt-20 border-t border-[var(--line)] py-24">
+          <H2>{t.phoneTitle}</H2>
+          <p className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.phoneLead}</p>
+          <ul className="mt-8 max-w-2xl list-disc space-y-3 pl-5">
+            {t.phoneSteps.map((step) => <li key={step}>{step}</li>)}
+          </ul>
+          <p className="mt-8"><Link href={localized(lang, "/vica/relay")} className={link}>{t.guide}</Link></p>
+        </section>
+
+        <section className="border-t border-[var(--line)] py-24">
           <H2>{t.featuresTitle}</H2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.features.map((f, i) => (
@@ -207,14 +248,6 @@ export default function Vica({ lang }: { lang: Lang }) {
               </div>
             ))}
           </div>
-        </section>
-
-        <section id="own-server" className="scroll-mt-20 border-t border-[var(--line)] py-24">
-          <H2>{t.selfTitle}</H2>
-          <p className="max-w-2xl text-[var(--muted)]">{t.selfLead}</p>
-          <ol className="mt-8 max-w-2xl list-decimal space-y-3 pl-5">
-            {t.selfSteps.map((step) => <li key={step}>{step}</li>)}
-          </ol>
         </section>
 
         <section id="pricing" className="hidden scroll-mt-20 border-t border-[var(--line)] py-20">
@@ -246,6 +279,23 @@ export default function Vica({ lang }: { lang: Lang }) {
           <ul className="max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
             {t.req.map((r) => <li key={r}>{r}</li>)}
           </ul>
+        </section>
+
+        <section className="border-t border-[var(--line)] py-24">
+          <H2>{t.faqTitle}</H2>
+          <dl className="max-w-3xl space-y-8">
+            {t.faq.map(([q, answer]) => (
+              <div key={q}>
+                <dt className="font-semibold">{q}</dt>
+                <dd className="mt-2 leading-relaxed text-[var(--muted)]">{answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section className="border-t border-[var(--line)] py-24 text-center">
+          <H2>{t.ctaTitle}</H2>
+          <a href={DOWNLOAD} className="inline-block rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)]">{t.mac}</a>
         </section>
       </main>
       <Footer lang={lang} />
