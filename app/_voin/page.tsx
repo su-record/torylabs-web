@@ -28,7 +28,7 @@ const features = [
 export default function Voin() {
   return (
     <>
-      <Header />
+      <Header lang="en" path="/voin" />
       <main className="mx-auto max-w-5xl px-6">
         <section className="py-24 sm:py-28">
           <p className="text-sm font-medium text-[var(--accent)]">macOS · Free · Open source</p>
@@ -74,7 +74,7 @@ export default function Voin() {
           <a href={RELEASES} className="mt-8 inline-block rounded-lg bg-[var(--fg)] px-5 py-3 text-sm font-medium text-[var(--bg)]">Download for macOS</a>
         </section>
       </main>
-      <Footer />
+      <Footer lang="en" />
     </>
   );
 }

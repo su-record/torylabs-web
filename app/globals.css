@@ -9,6 +9,11 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
   word-break: keep-all;
 }
+/* Japanese has no spaces to break at, and its kanji need Japanese glyphs. */
+:lang(ja) {
+  word-break: normal; line-break: strict;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+}
 html { scroll-behavior: smooth; }
 .legal h2 { font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: .75rem; }
 .legal p, .legal li { line-height: 1.75; margin-bottom: .75rem; }
