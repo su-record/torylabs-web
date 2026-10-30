@@ -13,6 +13,7 @@ const text = {
       "vica on your Mac.",
       "A Cloudflare account. The free plan is enough.",
       "No domain needed. Cloudflare gives you a free address; you can connect your own domain if you have one.",
+      "Cloudflare is the easiest. Anywhere else needs a server with HTTPS and WebSocket, and your agent can port the code to it. In vica you only enter that server's address and token.",
       "Node.js, for the deploy command. Your agent can install it."
     ],
     "stepsTitle": "Steps",
@@ -80,6 +81,7 @@ const text = {
       "Macのvica。",
       "Cloudflareアカウント。無料プランで十分です。",
       "ドメインは不要です。Cloudflareが無料のアドレスを用意します。独自ドメインがあれば接続もできます。",
+      "Cloudflareが最も簡単です。他の場所を使うにはHTTPSとWebSocketに対応したサーバーが必要で、コードの移行はエージェントに頼めます。vicaにはそのサーバーのアドレスとトークンを入れるだけです。",
       "デプロイコマンド用のNode.js。エージェントがインストールできます。"
     ],
     "stepsTitle": "手順",
@@ -147,6 +149,7 @@ const text = {
       "Mac의 vica.",
       "Cloudflare 계정. 무료 요금제로 충분합니다.",
       "도메인은 없어도 됩니다. Cloudflare가 무료 주소를 만들어 주고, 내 도메인이 있으면 연결해도 됩니다.",
+      "Cloudflare가 가장 쉽습니다. 다른 곳을 쓰려면 HTTPS와 WebSocket을 지원하는 서버가 필요하고, 코드는 에이전트에게 옮겨 달라고 하면 됩니다. Vica에는 그 서버의 주소와 토큰만 넣으면 됩니다.",
       "배포 명령에 쓰는 Node.js. 에이전트가 설치할 수 있습니다."
     ],
     "stepsTitle": "순서",
