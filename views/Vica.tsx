@@ -165,7 +165,7 @@ export function vicaMetadata(lang: Lang): Metadata {
 
 const AGENTS = ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code"];
 
-const H2 = ({ children }: { children: string }) => <h2 className="mb-10 text-2xl font-bold tracking-tight sm:text-3xl">{children}</h2>;
+const H2 = ({ children }: { children: string }) => <h2 data-reveal className="mb-10 text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{children}</h2>;
 
 // One small line icon per feature, in the order of `features`.
 const ICONS = [
@@ -183,15 +183,18 @@ export default function Vica({ lang }: { lang: Lang }) {
   return (
     <>
       <Header lang={lang} path="/vica" />
-      <main lang={lang} className="mx-auto max-w-6xl px-6">
-        <section className="pt-20 pb-14 text-center sm:pt-28">
-          <img src="/vica-icon.png" alt="" className="mx-auto h-20 w-20 rounded-[22px] shadow-[0_12px_30px_-10px_rgba(0,0,0,.35)]" />
-          <p className="mt-8 text-sm font-medium text-[var(--muted)]">{t.eyebrow}<span className="hidden">{t.eyebrowRelay}</span></p>
-          <h1 className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">vica</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed sm:text-2xl">{t.lead}</p>
-          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-[var(--muted)]">{t.sub}</p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <a href={DOWNLOAD} className="inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] transition hover:opacity-85">
+      <main lang={lang} className="mx-auto max-w-6xl overflow-x-clip px-6">
+        <section className="relative isolate pt-20 pb-16 text-center sm:pt-28">
+          <div className="signal" aria-hidden="true">
+            <i style={{ top: "14%", ["--t" as string]: "10s" }} /><i style={{ bottom: "0", ["--t" as string]: "13s", ["--d" as string]: "-6s" }} />
+          </div>
+          <img src="/vica-icon.png" alt="" className="rise mx-auto h-20 w-20 rounded-[22px] shadow-[0_0_0_1px_rgba(255,255,255,.08),0_20px_50px_-12px_rgba(124,108,240,.65)]" style={{ ["--i" as string]: 0 }} />
+          <p className="rise mt-8 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[.03] px-3.5 py-1.5 font-mono text-xs text-[var(--muted)]" style={{ ["--i" as string]: 1 }}><span className="pulse-dot" aria-hidden="true" />{t.eyebrow}<span className="hidden">{t.eyebrowRelay}</span></p>
+          <h1 className="ink rise mt-5 pb-2 text-[clamp(64px,12vw,148px)] font-semibold leading-[.92] tracking-[-0.05em]" style={{ ["--i" as string]: 2 }}>vica</h1>
+          <p className="rise mx-auto mt-6 max-w-2xl text-xl leading-relaxed sm:text-2xl" style={{ ["--i" as string]: 3 }}>{t.lead}</p>
+          <p className="rise mx-auto mt-4 max-w-2xl leading-relaxed text-[var(--muted)]" style={{ ["--i" as string]: 4 }}>{t.sub}</p>
+          <div className="rise mt-10 flex flex-wrap justify-center gap-3" style={{ ["--i" as string]: 5 }}>
+            <a href={DOWNLOAD} className="inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] shadow-[0_0_0_1px_rgba(255,255,255,.2),0_10px_30px_-10px_rgba(169,156,255,.6)] transition hover:bg-white">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
               {t.mac}
             </a>
@@ -202,17 +205,18 @@ export default function Vica({ lang }: { lang: Lang }) {
             {/* The relay subscription stays out of sight for now (owner request 2026-10-30). */}
             <a href={SUBSCRIBE} className="hidden rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)]">{t.subscribe}</a>
           </div>
-          <p className="mt-5 text-sm text-[var(--muted)]">{t.noLogin}</p>
+          <p className="rise mt-5 text-sm text-[var(--muted)]" style={{ ["--i" as string]: 6 }}>{t.noLogin}</p>
         </section>
 
-        <section className="pb-24"><VicaScene lang={lang} /></section>
+        <section data-reveal className="pb-24"><VicaScene lang={lang} /></section>
 
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.howTitle}</H2>
-          <ol className="grid gap-8 md:grid-cols-3">
+          <ol className="relative grid gap-8 md:grid-cols-3">
+            <span aria-hidden="true" className="absolute left-0 right-0 top-[18px] hidden h-px bg-gradient-to-r from-[var(--glow)] via-[var(--line)] to-transparent md:block" />
             {t.how.map((h, i) => (
-              <li key={h.t}>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold text-white" style={{ background: "#7c6cf0" }}>{i + 1}</span>
+              <li key={h.t} data-reveal className="relative">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(169,156,255,.4)] bg-[#0f0d1f] font-mono text-sm font-semibold text-[var(--accent)] shadow-[0_0_20px_-4px_rgba(124,108,240,.7)]">{i + 1}</span>
                 <h3 className="mt-4 text-lg font-semibold">{h.t}</h3>
                 <p className="mt-2 leading-relaxed text-[var(--muted)]">{h.d}</p>
               </li>
@@ -222,16 +226,16 @@ export default function Vica({ lang }: { lang: Lang }) {
 
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.agentsTitle}</H2>
-          <p className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.agentsLead}</p>
-          <ul className="mt-8 flex flex-wrap gap-3">
-            {AGENTS.map((agent) => <li key={agent} className="rounded-full border border-[var(--line)] bg-[var(--card)] px-4 py-2 text-sm">{agent}</li>)}
+          <p data-reveal className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.agentsLead}</p>
+          <ul data-reveal className="mt-8 flex flex-wrap gap-3">
+            {AGENTS.map((agent) => <li key={agent} className="surface surface-hover flex items-center gap-2.5 rounded-full px-4 py-2 font-mono text-sm"><span className="font-semibold text-[var(--accent)]" aria-hidden="true">›</span>{agent}</li>)}
           </ul>
         </section>
 
         <section id="phone" className="scroll-mt-20 border-t border-[var(--line)] py-24">
           <H2>{t.phoneTitle}</H2>
-          <p className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.phoneLead}</p>
-          <ul className="mt-8 max-w-2xl list-disc space-y-3 pl-5">
+          <p data-reveal className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.phoneLead}</p>
+          <ul data-reveal className="mt-8 max-w-2xl list-disc space-y-3 pl-5 marker:text-[var(--accent)]">
             {t.phoneSteps.map((step) => <li key={step}>{step}</li>)}
           </ul>
         </section>
@@ -242,9 +246,9 @@ export default function Vica({ lang }: { lang: Lang }) {
           <H2>{t.featuresTitle}</H2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.features.map((f, i) => (
-              <div key={f.t} className="rounded-2xl border border-[var(--line)] bg-[var(--card)] p-7 transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,.25)]">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(124,108,240,.12)]" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="#7c6cf0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={ICONS[i]} /></svg>
+              <div key={f.t} data-reveal className="surface surface-hover rounded-2xl p-7">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[rgba(169,156,255,.2)] bg-[rgba(124,108,240,.12)]" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="#a99cff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={ICONS[i]} /></svg>
                 </span>
                 <h3 className="mt-5 font-semibold">{f.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{f.d}</p>
@@ -274,12 +278,12 @@ export default function Vica({ lang }: { lang: Lang }) {
 
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.privacyTitle}</H2>
-          <p className="max-w-3xl leading-relaxed text-[var(--muted)]">{t.privacy} <Link href={localized(lang, "/privacy")} className={link}>{t.policy}</Link></p>
+          <p data-reveal className="max-w-3xl leading-relaxed text-[var(--muted)]">{t.privacy} <Link href={localized(lang, "/privacy")} className={link}>{t.policy}</Link></p>
         </section>
 
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.reqTitle}</H2>
-          <ul className="max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
+          <ul data-reveal className="max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
             {t.req.map((r) => <li key={r}>{r}</li>)}
           </ul>
           <p className="mt-6"><a href={ISSUES} className={link}>{t.bugs}</a></p>
@@ -289,7 +293,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <H2>{t.faqTitle}</H2>
           <dl className="max-w-3xl space-y-8">
             {t.faq.map(([q, answer]) => (
-              <div key={q}>
+              <div key={q} data-reveal>
                 <dt className="font-semibold">{q}</dt>
                 <dd className="mt-2 leading-relaxed text-[var(--muted)]">{answer}</dd>
               </div>
@@ -297,9 +301,10 @@ export default function Vica({ lang }: { lang: Lang }) {
           </dl>
         </section>
 
-        <section className="border-t border-[var(--line)] py-24 text-center">
+        <section className="relative isolate border-t border-[var(--line)] py-28 text-center">
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgba(124,108,240,.2),transparent_70%)]" />
           <H2>{t.ctaTitle}</H2>
-          <a href={DOWNLOAD} className="inline-block rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)]">{t.mac}</a>
+          <a data-reveal href={DOWNLOAD} className="inline-block rounded-full bg-[var(--fg)] px-7 py-3.5 text-sm font-medium text-[var(--bg)] shadow-[0_0_0_1px_rgba(255,255,255,.2),0_10px_40px_-8px_rgba(169,156,255,.7)] transition hover:bg-white">{t.mac}</a>
         </section>
       </main>
       <Footer lang={lang} />

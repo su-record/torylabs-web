@@ -26,7 +26,7 @@ function Languages({ lang, path }: { lang: Lang; path: string }) {
     <nav className="flex gap-3 text-sm">
       {langs.map((l) => l === lang
         ? <span key={l} className="font-medium">{langNames[l]}</span>
-        : <a key={l} href={localized(l, path)} data-lang={l} hrefLang={l} className="text-[var(--muted)] hover:text-[var(--fg)]">{langNames[l]}</a>)}
+        : <a key={l} href={localized(l, path)} data-lang={l} hrefLang={l} className="text-[var(--muted)] transition-colors hover:text-[var(--fg)]">{langNames[l]}</a>)}
     </nav>
   );
 }
@@ -34,13 +34,18 @@ function Languages({ lang, path }: { lang: Lang; path: string }) {
 export function Header({ lang, path, home = false }: { lang: Lang; path: string; home?: boolean }) {
   const ids = ["about", "products", "team", "contact"];
   return (
-    <header className="sticky top-0 z-10 border-b border-[var(--line)] bg-[var(--bg)]/85 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-4">
-        <Link href={localized(lang, "/")} className="font-bold">Tory Labs</Link>
+    <header className="sticky top-0 z-20 border-b border-white/[.06] bg-[#07070a]/70 backdrop-blur-xl backdrop-saturate-150">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-3.5">
+        <Link href={localized(lang, "/")} className="group flex items-center gap-2.5 font-semibold tracking-tight">
+          <span aria-hidden="true" className="relative flex h-6 w-6 items-center justify-center rounded-[7px] border border-white/10 bg-gradient-to-b from-white/10 to-white/[.02] shadow-[0_0_18px_-4px_rgba(124,108,240,.7)]">
+            <i className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] transition group-hover:scale-125" />
+          </span>
+          Tory Labs
+        </Link>
         <div className="flex items-center gap-6">
           {home && (
             <nav className="hidden gap-6 text-sm sm:flex">
-              {ids.map((id, i) => <a key={id} href={`#${id}`} className="text-[var(--muted)] hover:text-[var(--fg)]">{text[lang].nav[i]}</a>)}
+              {ids.map((id, i) => <a key={id} href={`#${id}`} className="text-[var(--muted)] transition-colors hover:text-[var(--fg)]">{text[lang].nav[i]}</a>)}
             </nav>
           )}
           <Languages lang={lang} path={path} />
@@ -53,8 +58,9 @@ export function Header({ lang, path, home = false }: { lang: Lang; path: string;
 export function Footer({ lang }: { lang: Lang }) {
   const t = text[lang];
   return (
-    <footer className="border-t border-[var(--line)] bg-[var(--card)]">
-      <div className="mx-auto max-w-5xl px-6 py-10 text-sm text-[var(--muted)]">
+    <footer className="relative border-t border-[var(--line)] bg-[#050507]">
+      <div aria-hidden="true" className="absolute inset-x-0 -top-px mx-auto h-px max-w-3xl bg-gradient-to-r from-transparent via-[var(--glow)] to-transparent opacity-60" />
+      <div className="mx-auto max-w-6xl px-6 py-12 text-sm text-[var(--muted)]">
         <p className="font-semibold text-[var(--fg)]">{company.name}</p>
         <dl className="mt-4 grid gap-x-8 gap-y-1 sm:grid-cols-2">
           <div>{t.company}: {company.name}</div>
@@ -65,12 +71,12 @@ export function Footer({ lang }: { lang: Lang }) {
         <p className="mt-6 flex flex-wrap gap-x-2">
           <span>© 2026 {company.name}</span>·
           {/* Pricing is the relay subscription, out of sight for now (owner request 2026-10-30). */}
-          <span className="hidden"><Link href={localized(lang, "/pricing")} className="hover:underline">{t.pricing}</Link>·</span>
-          <Link href={localized(lang, "/privacy")} className="hover:underline">{t.privacy}</Link>·
-          <Link href={localized(lang, "/terms")} className="hover:underline">{t.terms}</Link>·
+          <span className="hidden"><Link href={localized(lang, "/pricing")} className="transition-colors hover:text-[var(--fg)]">{t.pricing}</Link>·</span>
+          <Link href={localized(lang, "/privacy")} className="transition-colors hover:text-[var(--fg)]">{t.privacy}</Link>·
+          <Link href={localized(lang, "/terms")} className="transition-colors hover:text-[var(--fg)]">{t.terms}</Link>·
           {/* The refund policy is about the subscription, out of sight for now (owner request 2026-10-30). */}
           <Link href={localized(lang, "/refund")} className="hidden">{t.refund}</Link>
-          <a href={`mailto:${company.email}`} className="hover:underline">{company.email}</a>
+          <a href={`mailto:${company.email}`} className="transition-colors hover:text-[var(--fg)]">{company.email}</a>
         </p>
       </div>
     </footer>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { company, founder, TBD } from "@/content/company";
 import { alternates, localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
+import Typed from "@/components/Typed";
 
 type Product = { name: string; href: string; tag: string; d: string; features: string[] };
 
@@ -91,27 +92,27 @@ export function homeMetadata(lang: Lang): Metadata {
 }
 
 function H2({ children }: { children: string }) {
-  return <h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">{children}</h2>;
+  return <h2 data-reveal className="mb-10 text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{children}</h2>;
 }
 
 function ProductCard({ p, lang }: { p: Product; lang: Lang }) {
   const external = p.href.startsWith("http");
   const body = (
     <>
-      <div className="flex items-center justify-between"><span className="text-xl font-bold">{p.name}</span>{p.href && <span className="text-[var(--muted)]">↗</span>}</div>
-      <p className="mt-1 text-xs text-[var(--accent)]">{p.tag}</p>
+      <div className="flex items-center justify-between"><span className="text-2xl font-semibold tracking-tight">{p.name}</span>{p.href && <span className="text-[var(--muted)] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]">↗</span>}</div>
+      <p className="mt-1.5 font-mono text-[11px] tracking-[.04em] text-[var(--accent)]">{p.tag}</p>
       <p className="mt-4 text-sm leading-relaxed">{p.d}</p>
       {p.features.length > 0 && (
         <ul className="mt-4 space-y-1.5 text-xs text-[var(--muted)]">
-          {p.features.map((f) => <li key={f} className="flex gap-2"><span className="text-[var(--accent)]">•</span>{f}</li>)}
+          {p.features.map((f) => <li key={f} className="flex gap-2"><span className="font-mono text-[var(--accent)]">›</span>{f}</li>)}
         </ul>
       )}
     </>
   );
-  const box = "flex flex-col rounded-xl border border-[var(--line)] bg-[var(--card)] p-6";
-  if (!p.href) return <div className={box}>{body}</div>;
+  const box = "surface group flex flex-col rounded-2xl p-7";
+  if (!p.href) return <div data-reveal className={box}>{body}</div>;
   return (
-    <a href={external ? p.href : localized(lang, p.href)} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${box} transition hover:-translate-y-0.5 hover:shadow-md`}>
+    <a href={external ? p.href : localized(lang, p.href)} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} data-reveal className={`${box} surface-hover`}>
       {body}
     </a>
   );
@@ -122,54 +123,60 @@ export default function Home({ lang }: { lang: Lang }) {
   return (
     <>
       <Header lang={lang} path="/" home />
-      <main lang={lang} className="mx-auto max-w-5xl px-6">
-        <section className="py-24 sm:py-32">
-          <p className="text-sm font-medium text-[var(--accent)]">{t.eyebrow}</p>
-          <h1 className="mt-4 text-5xl font-bold tracking-tight sm:text-6xl">Tory Labs</h1>
-          <p className="mt-8 max-w-2xl text-xl leading-relaxed">{t.lead}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a href="#products" className="rounded-lg bg-[var(--fg)] px-5 py-3 text-sm font-medium text-[var(--bg)]">{t.view}</a>
-            <a href={`mailto:${company.email}`} className="rounded-lg border border-[var(--line)] px-5 py-3 text-sm font-medium">{t.contact}</a>
+      <main lang={lang} className="mx-auto max-w-6xl overflow-x-clip px-6">
+        <section className="relative isolate pt-28 pb-24 sm:pt-40 sm:pb-32">
+          <div className="signal" aria-hidden="true">
+            <i style={{ top: "12%", ["--t" as string]: "9s" }} /><i style={{ bottom: "0", ["--t" as string]: "12s", ["--d" as string]: "-4s" }} />
+          </div>
+          <p className="rise inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[.03] px-3.5 py-1.5 font-mono text-xs text-[var(--muted)]" style={{ ["--i" as string]: 0 }}>
+            <span className="pulse-dot" aria-hidden="true" />{t.eyebrow}
+          </p>
+          <h1 className="ink rise mt-7 pb-2 text-[clamp(56px,11vw,136px)] font-semibold leading-[.95] tracking-[-0.045em]" style={{ ["--i" as string]: 1 }}>Tory Labs</h1>
+          <p className="rise mt-8 max-w-2xl text-xl leading-relaxed text-balance text-[#d4d4dc] sm:text-2xl" style={{ ["--i" as string]: 2 }}><Typed text={t.lead} delay={700} /></p>
+          <div className="rise mt-11 flex flex-wrap gap-3" style={{ ["--i" as string]: 3 }}>
+            <a href="#products" className="rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] shadow-[0_0_0_1px_rgba(255,255,255,.2),0_10px_30px_-10px_rgba(169,156,255,.6)] transition hover:bg-white">{t.view}</a>
+            <a href={`mailto:${company.email}`} className="rounded-full border border-white/12 bg-white/[.03] px-6 py-3 text-sm font-medium transition hover:border-white/25 hover:bg-white/[.06]">{t.contact}</a>
           </div>
         </section>
 
-        <section id="about" className="scroll-mt-20 border-t border-[var(--line)] py-20">
+        <section id="about" className="scroll-mt-20 py-24">
           <H2>{t.about}</H2>
           <div className="grid gap-10 md:grid-cols-2">
-            <div>
+            <div data-reveal>
               <h3 className="font-semibold">{t.whatTitle}</h3>
               <p className="mt-2 leading-relaxed text-[var(--muted)]">{t.what}</p>
             </div>
-            <div>
+            <div data-reveal>
               <h3 className="font-semibold">{t.missionTitle}</h3>
               <p className="mt-2 leading-relaxed text-[var(--muted)]">{t.mission}</p>
             </div>
           </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            {t.values.map((v) => (
-              <div key={v.t} className="rounded-xl border border-[var(--line)] bg-[var(--card)] p-6">
-                <h3 className="font-semibold">{v.t}</h3>
+            {t.values.map((v, i) => (
+              <div key={v.t} data-reveal className="surface rounded-2xl p-7">
+                <span className="font-mono text-xs text-[var(--accent)]">0{i + 1}</span>
+                <h3 className="mt-3 font-semibold">{v.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{v.d}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="products" className="scroll-mt-20 border-t border-[var(--line)] py-20">
+        <section id="products" className="scroll-mt-20 border-t border-[var(--line)] py-24">
           <H2>{t.products}</H2>
           <div className="grid gap-4 md:grid-cols-2">
             {t.list.map((p) => <ProductCard key={p.name} p={p} lang={lang} />)}
           </div>
         </section>
 
-        <section id="team" className="scroll-mt-20 border-t border-[var(--line)] py-20">
+        <section id="team" className="scroll-mt-20 border-t border-[var(--line)] py-24">
           <H2>{t.founder}</H2>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+          <div data-reveal className="flex flex-col gap-6 sm:flex-row sm:items-center">
             {founder.photo ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={founder.photo} alt={founder.title} className="h-28 w-28 rounded-full object-cover" />
             ) : (
-              <div className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-[var(--line)] text-xs text-[var(--muted)]">{t.photo} {TBD}</div>
+              <div className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-white/15 text-xs text-[var(--muted)]">{t.photo} {TBD}</div>
             )}
             <div>
               <h3 className="text-xl font-semibold">{founder.title}{founder.name && ` · ${founder.name}`}</h3>
@@ -179,10 +186,10 @@ export default function Home({ lang }: { lang: Lang }) {
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-20 border-t border-[var(--line)] py-20">
+        <section id="contact" className="scroll-mt-20 border-t border-[var(--line)] py-24">
           <H2>{t.contactTitle}</H2>
-          <p className="leading-relaxed text-[var(--muted)]">{t.contactText}</p>
-          <a href={`mailto:${company.email}`} className="mt-6 inline-block rounded-lg bg-[var(--fg)] px-5 py-3 text-sm font-medium text-[var(--bg)]">{company.email}</a>
+          <p data-reveal className="leading-relaxed text-[var(--muted)]">{t.contactText}</p>
+          <a data-reveal href={`mailto:${company.email}`} className="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 font-mono text-sm font-medium text-[var(--bg)] transition hover:bg-white">{company.email} <span aria-hidden="true">→</span></a>
         </section>
       </main>
       <Footer lang={lang} />
