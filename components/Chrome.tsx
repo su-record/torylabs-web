@@ -34,11 +34,11 @@ function Languages({ lang, path }: { lang: Lang; path: string }) {
 export function Header({ lang, path, home = false }: { lang: Lang; path: string; home?: boolean }) {
   const ids = ["about", "products", "team", "contact"];
   return (
-    <header className="sticky top-0 z-20 border-b border-white/[.06] bg-[#07070a]/70 backdrop-blur-xl backdrop-saturate-150">
+    <header className="sticky top-0 z-20 border-b border-[var(--line)] bg-[#fbfbfc]/80 backdrop-blur-xl backdrop-saturate-150">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-3.5">
         <Link href={localized(lang, "/")} className="group flex items-center gap-2.5 font-semibold tracking-tight">
-          <span aria-hidden="true" className="relative flex h-6 w-6 items-center justify-center rounded-[7px] border border-white/10 bg-gradient-to-b from-white/10 to-white/[.02] shadow-[0_0_18px_-4px_rgba(124,108,240,.7)]">
-            <i className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] transition group-hover:scale-125" />
+          <span aria-hidden="true" className="relative flex h-6 w-6 items-center justify-center rounded-[7px] border border-[var(--line)] bg-white shadow-[0_2px_10px_-3px_rgba(124,108,240,.45)]">
+            <i className="h-1.5 w-1.5 rounded-full bg-[var(--glow)] transition group-hover:scale-125" />
           </span>
           Tory Labs
         </Link>
@@ -58,8 +58,8 @@ export function Header({ lang, path, home = false }: { lang: Lang; path: string;
 export function Footer({ lang }: { lang: Lang }) {
   const t = text[lang];
   return (
-    <footer className="relative border-t border-[var(--line)] bg-[#050507]">
-      <div aria-hidden="true" className="absolute inset-x-0 -top-px mx-auto h-px max-w-3xl bg-gradient-to-r from-transparent via-[var(--glow)] to-transparent opacity-60" />
+    <footer className="relative border-t border-[var(--line)] bg-[#f5f5f8]">
+      <div aria-hidden="true" className="absolute inset-x-0 -top-px mx-auto h-px max-w-3xl bg-gradient-to-r from-transparent via-[var(--glow)] to-transparent opacity-40" />
       <div className="mx-auto max-w-6xl px-6 py-12 text-sm text-[var(--muted)]">
         <p className="font-semibold text-[var(--fg)]">{company.name}</p>
         <dl className="mt-4 grid gap-x-8 gap-y-1 sm:grid-cols-2">

@@ -128,14 +128,14 @@ export default function Home({ lang }: { lang: Lang }) {
           <div className="signal" aria-hidden="true">
             <i style={{ top: "12%", ["--t" as string]: "9s" }} /><i style={{ bottom: "0", ["--t" as string]: "12s", ["--d" as string]: "-4s" }} />
           </div>
-          <p className="rise inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[.03] px-3.5 py-1.5 font-mono text-xs text-[var(--muted)]" style={{ ["--i" as string]: 0 }}>
+          <p className="rise inline-flex items-center gap-2.5 rounded-full border border-[var(--line)] bg-white/80 px-3.5 py-1.5 font-mono text-xs shadow-[0_1px_2px_rgba(16,16,24,.04)] text-[var(--muted)]" style={{ ["--i" as string]: 0 }}>
             <span className="pulse-dot" aria-hidden="true" />{t.eyebrow}
           </p>
           <h1 className="ink rise mt-7 pb-2 text-[clamp(56px,11vw,136px)] font-semibold leading-[.95] tracking-[-0.045em]" style={{ ["--i" as string]: 1 }}>Tory Labs</h1>
-          <p className="rise mt-8 max-w-2xl text-xl leading-relaxed text-balance text-[#d4d4dc] sm:text-2xl" style={{ ["--i" as string]: 2 }}><Typed text={t.lead} delay={700} /></p>
+          <p className="rise mt-8 max-w-2xl text-xl leading-relaxed text-balance text-[#3a3a44] sm:text-2xl" style={{ ["--i" as string]: 2 }}><Typed text={t.lead} delay={700} /></p>
           <div className="rise mt-11 flex flex-wrap gap-3" style={{ ["--i" as string]: 3 }}>
-            <a href="#products" className="rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] shadow-[0_0_0_1px_rgba(255,255,255,.2),0_10px_30px_-10px_rgba(169,156,255,.6)] transition hover:bg-white">{t.view}</a>
-            <a href={`mailto:${company.email}`} className="rounded-full border border-white/12 bg-white/[.03] px-6 py-3 text-sm font-medium transition hover:border-white/25 hover:bg-white/[.06]">{t.contact}</a>
+            <a href="#products" className="rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] shadow-[0_10px_24px_-12px_rgba(91,75,214,.55)] transition hover:bg-[#2a2a33]">{t.view}</a>
+            <a href={`mailto:${company.email}`} className="rounded-full border border-[var(--line)] bg-white px-6 py-3 text-sm font-medium transition hover:border-[#cfcfd8] hover:bg-[#f5f5f8]">{t.contact}</a>
           </div>
         </section>
 
@@ -176,7 +176,7 @@ export default function Home({ lang }: { lang: Lang }) {
               // eslint-disable-next-line @next/next/no-img-element
               <img src={founder.photo} alt={founder.title} className="h-28 w-28 rounded-full object-cover" />
             ) : (
-              <div className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-white/15 text-xs text-[var(--muted)]">{t.photo} {TBD}</div>
+              <div className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-[#d4d4dc] text-xs text-[var(--muted)]">{t.photo} {TBD}</div>
             )}
             <div>
               <h3 className="text-xl font-semibold">{founder.title}{founder.name && ` · ${founder.name}`}</h3>
@@ -189,7 +189,7 @@ export default function Home({ lang }: { lang: Lang }) {
         <section id="contact" className="scroll-mt-20 border-t border-[var(--line)] py-24">
           <H2>{t.contactTitle}</H2>
           <p data-reveal className="leading-relaxed text-[var(--muted)]">{t.contactText}</p>
-          <a data-reveal href={`mailto:${company.email}`} className="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 font-mono text-sm font-medium text-[var(--bg)] transition hover:bg-white">{company.email} <span aria-hidden="true">→</span></a>
+          <a data-reveal href={`mailto:${company.email}`} className="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 font-mono text-sm font-medium text-[var(--bg)] transition hover:bg-[#2a2a33]">{company.email} <span aria-hidden="true">→</span></a>
         </section>
       </main>
       <Footer lang={lang} />

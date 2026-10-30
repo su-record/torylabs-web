@@ -41,10 +41,10 @@ const step = (at: number, n: number) => ({ "data-step": n, "data-off": at < n ||
 
 function Mac({ t, at, typed }: { t: T; at: number; typed: number }) {
   return (
-    <div className="surface w-full max-w-[540px] overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgba(0,0,0,.9),0_0_0_1px_rgba(255,255,255,.02)]">
+    <div className="surface w-full max-w-[540px] overflow-hidden rounded-2xl shadow-[0_30px_60px_-30px_rgba(16,16,24,.25)]">
       <div className="flex items-center gap-2 border-b border-[var(--line)] px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-[#ff5f57]" /><span className="h-3 w-3 rounded-full bg-[#febc2e]" /><span className="h-3 w-3 rounded-full bg-[#28c840]" />
-        <span className="ml-4 flex items-center gap-1.5 rounded-md bg-white/[.05] px-2.5 py-1 text-xs font-medium">
+        <span className="ml-4 flex items-center gap-1.5 rounded-md bg-[#f2f2f6] px-2.5 py-1 text-xs font-medium">
           <img src="/vica-icon.png" alt="" className="h-3.5 w-3.5 rounded-[4px]" />Vica
         </span>
       </div>
@@ -52,11 +52,11 @@ function Mac({ t, at, typed }: { t: T; at: number; typed: number }) {
         <div {...step(at, 1)} className="ml-auto w-fit max-w-[85%] rounded-2xl bg-[var(--fg)] px-4 py-2 text-[var(--bg)]">
           {t.ask.slice(0, typed)}<span className="text-transparent">{t.ask.slice(typed)}</span>
         </div>
-        <div className="rounded-xl border border-[var(--line)] bg-[#050507] px-4 py-3 font-mono text-[11.5px] leading-6" aria-hidden="true">
+        <div className="rounded-xl border border-[var(--line)] bg-[#f7f7fa] px-4 py-3 font-mono text-[11.5px] leading-6" aria-hidden="true">
           {TERMINAL.map(([who, what], i) => (
             <div key={what} {...step(at, 2 + i)} className="flex flex-wrap gap-x-3 sm:flex-nowrap sm:truncate">
-              <span className={who === "codex" ? "text-[#7dd3fc]" : "text-[var(--accent)]"}>{who}</span>
-              <span className={i === 2 ? "text-[#86efac]" : "text-[var(--muted)]"}>{what}</span>
+              <span className={who === "codex" ? "text-[#0369a1]" : "text-[var(--accent)]"}>{who}</span>
+              <span className={i === 2 ? "text-[#15803d]" : "text-[var(--muted)]"}>{what}</span>
             </div>
           ))}
         </div>
@@ -64,7 +64,7 @@ function Mac({ t, at, typed }: { t: T; at: number; typed: number }) {
           <div className="flex items-center gap-1 border-b border-[var(--line)] pb-2 text-xs text-[var(--muted)]">{t.worked} <span aria-hidden="true">›</span></div>
           {t.answer.map((a) => <p key={a}>{a}</p>)}
           <div className="flex items-center justify-between rounded-xl border border-[var(--line)] px-4 py-3 text-xs">
-            <span>{t.files}</span><span><b className="font-medium text-[#4ade80]">+42</b> <b className="font-medium text-[#f87171]">−7</b></span>
+            <span>{t.files}</span><span><b className="font-medium text-[#16a34a]">+42</b> <b className="font-medium text-[#dc2626]">−7</b></span>
           </div>
         </div>
       </div>
@@ -75,8 +75,8 @@ function Mac({ t, at, typed }: { t: T; at: number; typed: number }) {
 function Relay({ t, on }: { t: T; on: boolean }) {
   return (
     <div className="flex flex-col items-center gap-2 text-center">
-      <span className="relay-node flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-[#0b0b10]" data-on={on || undefined}>
-        <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="#c4b9ff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <span className="relay-node flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--line)] bg-white shadow-[0_6px_20px_-12px_rgba(16,16,24,.2)]" data-on={on || undefined}>
+        <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="#6d5ce8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5z" />
           <rect x="10" y="12" width="4" height="3.5" rx=".6" /><path d="M10.8 12v-1a1.2 1.2 0 0 1 2.4 0v1" />
         </svg>
@@ -89,9 +89,9 @@ function Relay({ t, on }: { t: T; on: boolean }) {
 
 function Phone({ t, at }: { t: T; at: number }) {
   return (
-    <div className="w-[228px] shrink-0 rounded-[38px] border border-white/15 bg-[#0b0b10] p-[5px] shadow-[0_40px_80px_-40px_rgba(0,0,0,.9),inset_0_0_0_1px_rgba(255,255,255,.04)]">
-      <div className="rounded-[33px] bg-[#000] p-3 text-[var(--fg)]">
-        <div className="mx-auto mb-3 h-5 w-20 rounded-full bg-[#16161c]" />
+    <div className="w-[228px] shrink-0 rounded-[38px] border border-[#d8d8e0] bg-[#1c1c22] p-[5px] shadow-[0_30px_60px_-30px_rgba(16,16,24,.35)]">
+      <div className="rounded-[33px] bg-[#f5f5f7] p-3 text-[var(--fg)]">
+        <div className="mx-auto mb-3 h-5 w-20 rounded-full bg-[#1c1c22]" />
         <div className="mb-3 flex items-center gap-1.5 text-[11px]">
           <img src="/vica-icon.png" alt="" className="h-5 w-5 rounded-md" />
           <span className="text-[var(--muted)]">›</span><span className="text-[var(--muted)]">Mac</span><span className="text-[var(--muted)]">›</span><b className="font-semibold">vica</b>
@@ -103,7 +103,7 @@ function Phone({ t, at }: { t: T; at: number }) {
           </div>
           <div {...step(at, 8)} className="space-y-2.5">{t.answer.map((a) => <p key={a}>{a}</p>)}</div>
         </div>
-        <div className="mt-4 flex items-center gap-2 rounded-full border border-white/10 bg-white/[.04] py-1.5 pl-3 pr-1.5 text-[10px] text-[var(--muted)]">
+        <div className="mt-4 flex items-center gap-2 rounded-full border border-[var(--line)] bg-white py-1.5 pl-3 pr-1.5 text-[10px] text-[var(--muted)]">
           <span className="flex-1 truncate">{t.placeholder}</span>
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--fg)] text-[11px] text-[var(--bg)]">↑</span>
         </div>
@@ -155,8 +155,8 @@ export default function VicaScene({ lang }: { lang: Lang }) {
   const done = at >= DONE;
   return (
     <div ref={root} data-scene data-live={live || undefined} className="surface relative isolate overflow-hidden rounded-3xl px-3 py-10 sm:px-10 sm:py-16">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_70%_at_50%_0%,rgba(124,108,240,.18),transparent_70%)]" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(rgba(255,255,255,.06)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,#000,transparent_75%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_70%_at_50%_0%,rgba(124,108,240,.09),transparent_70%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(rgba(22,22,40,.08)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,#000,transparent_75%)]" />
       <div className="flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:gap-4">
         <Mac t={t} at={at} typed={typed} />
         <Wire on={at >= 6} idle={done} />
