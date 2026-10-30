@@ -11,7 +11,7 @@ const paddlePolicy = <a href="https://www.paddle.com/legal/privacy" target="_bla
 const body: Record<Lang, React.ReactNode> = {
   en: (
     <>
-      <p>This Privacy Policy explains how Tory Labs (&quot;we&quot;, &quot;us&quot;) handles information across our website, our products, our paid subscription, and our content automation tools.</p>
+      <p>This Privacy Policy explains how Tory Labs (&quot;we&quot;, &quot;us&quot;) handles information across our website, our products, and our content automation tools.</p>
 
       <h2>This website</h2>
       <p>torylabs.dev does not collect personal data. It uses no cookies, no analytics, and no tracking. If you choose a language, that choice is kept in your browser only. If you email us, we use your message and address only to reply.</p>
@@ -19,12 +19,13 @@ const body: Record<Lang, React.ReactNode> = {
       <h2>Our products</h2>
       <p>Our products are designed to run on your own device whenever possible.</p>
       <ul>
-        <li><strong>vica</strong> runs on your computer. Your code and prompts go from your computer to the agent providers you use (such as Anthropic, OpenAI, Google, xAI or Meta), under their terms; they do not pass through our servers. To check for updates, vica sends its platform, CPU architecture and version to vica.torylabs.dev. If you entered a subscription key, vica sends it to vica.torylabs.dev to check the subscription.</li>
+        <li><strong>vica</strong> runs on your computer. Your code and prompts go from your computer to the agent providers you use (such as Anthropic, OpenAI, Google, xAI or Meta), under their terms; they do not pass through our servers. To check for updates, vica sends its platform, CPU architecture and version to vica.torylabs.dev.</li>
         <li><strong>voin</strong> processes audio, transcription, and meeting notes locally on your computer. It does not send your audio or transcripts to our servers. If you choose to enable an optional third-party service or model, that provider&apos;s terms and privacy policy apply to data you send to it.</li>
         <li><strong>vibe</strong> runs locally alongside the AI coding tools you already use. We do not collect your code or project data through it.</li>
         <li><strong>Tory</strong> may have its own privacy notice within the service, which applies in addition to this policy.</li>
       </ul>
 
+      <div hidden>
       <h2>vica relay subscription</h2>
       <p>The subscription needs no account.</p>
       <ul>
@@ -34,6 +35,7 @@ const body: Record<Lang, React.ReactNode> = {
         <li><strong>Retention.</strong> We keep the subscription record while the subscription exists. After it ends, email us to have it deleted.</li>
       </ul>
 
+      </div>
       <h2>Social media publishing tools</h2>
       <p>Tory Labs operates automation tools that publish content to social media platforms on behalf of the account owner.</p>
       <p><strong>Information we access.</strong> With your explicit authorization through each platform&apos;s OAuth flow, our application may access:</p>
@@ -55,7 +57,7 @@ const body: Record<Lang, React.ReactNode> = {
   ),
   ja: (
     <>
-      <p>本プライバシーポリシーは、Tory Labs（以下「当社」）が、ウェブサイト、製品、有料サブスクリプション、コンテンツ自動化ツールで情報をどう扱うかを説明します。翻訳と英語版が異なる場合は英語版が優先します。</p>
+      <p>本プライバシーポリシーは、Tory Labs（以下「当社」）が、ウェブサイト、製品、コンテンツ自動化ツールで情報をどう扱うかを説明します。翻訳と英語版が異なる場合は英語版が優先します。</p>
 
       <h2>このウェブサイト</h2>
       <p>torylabs.devは個人データを収集しません。Cookie、アクセス解析、トラッキングは使いません。言語を選ぶと、その選択はお使いのブラウザにだけ保存されます。メールをいただいた場合、その内容とアドレスは返信のためだけに使います。</p>
@@ -63,12 +65,13 @@ const body: Record<Lang, React.ReactNode> = {
       <h2>当社の製品</h2>
       <p>当社の製品は、できる限りユーザーのデバイス上で動くよう作られています。</p>
       <ul>
-        <li><strong>vica</strong>はお使いのパソコンで動きます。コードとプロンプトは、パソコンから利用中のエージェント提供元（Anthropic、OpenAI、Google、xAI、Metaなど）へ、その提供元の規約のもとで送られ、当社のサーバーは通りません。更新の確認のため、vicaはプラットフォーム、CPUアーキテクチャ、バージョンをvica.torylabs.devに送ります。サブスクリプションキーを入力した場合は、購読状態の確認のためにそのキーをvica.torylabs.devに送ります。</li>
+        <li><strong>vica</strong>はお使いのパソコンで動きます。コードとプロンプトは、パソコンから利用中のエージェント提供元（Anthropic、OpenAI、Google、xAI、Metaなど）へ、その提供元の規約のもとで送られ、当社のサーバーは通りません。更新の確認のため、vicaはプラットフォーム、CPUアーキテクチャ、バージョンをvica.torylabs.devに送ります。</li>
         <li><strong>voin</strong>は音声、文字起こし、会議メモをパソコン上で処理します。音声や文字起こしを当社のサーバーに送りません。任意の第三者サービスやモデルを有効にした場合、送るデータにはその提供元の規約とプライバシーポリシーが適用されます。</li>
         <li><strong>vibe</strong>は、すでにお使いのAIコーディングツールと一緒にローカルで動きます。vibeを通じてコードやプロジェクトのデータを収集しません。</li>
         <li><strong>Tory</strong>には、サービス内に独自のプライバシー通知がある場合があり、本ポリシーに加えて適用されます。</li>
       </ul>
 
+      <div hidden>
       <h2>vica 中継サブスクリプション</h2>
       <p>サブスクリプションにアカウントは不要です。</p>
       <ul>
@@ -78,6 +81,7 @@ const body: Record<Lang, React.ReactNode> = {
         <li><strong>保存期間。</strong>購読が続く間は記録を保存します。購読終了後に削除を希望する場合はメールでご連絡ください。</li>
       </ul>
 
+      </div>
       <h2>ソーシャルメディア投稿ツール</h2>
       <p>Tory Labsは、アカウント所有者に代わってソーシャルメディアにコンテンツを投稿する自動化ツールを運用しています。</p>
       <p><strong>アクセスする情報。</strong>各プラットフォームのOAuthで明示的に許可された場合、当社のアプリケーションは次にアクセスすることがあります。</p>
@@ -99,7 +103,7 @@ const body: Record<Lang, React.ReactNode> = {
   ),
   ko: (
     <>
-      <p>이 개인정보처리방침은 Tory Labs(&quot;저희&quot;)가 웹사이트, 제품, 유료 구독, 콘텐츠 자동화 도구에서 정보를 어떻게 다루는지 설명합니다. 번역본과 영문본이 다르면 영문본을 따릅니다.</p>
+      <p>이 개인정보처리방침은 Tory Labs(&quot;저희&quot;)가 웹사이트, 제품, 콘텐츠 자동화 도구에서 정보를 어떻게 다루는지 설명합니다. 번역본과 영문본이 다르면 영문본을 따릅니다.</p>
 
       <h2>이 웹사이트</h2>
       <p>torylabs.dev는 개인정보를 수집하지 않습니다. 쿠키, 분석 도구, 추적을 쓰지 않습니다. 언어를 고르면 그 선택은 사용자의 브라우저에만 저장됩니다. 메일을 보내시면 그 내용과 주소는 답장에만 씁니다.</p>
@@ -107,12 +111,13 @@ const body: Record<Lang, React.ReactNode> = {
       <h2>저희 제품</h2>
       <p>저희 제품은 가능한 한 사용자의 기기에서 돌아가도록 만듭니다.</p>
       <ul>
-        <li><strong>vica</strong>는 사용자의 컴퓨터에서 돌아갑니다. 코드와 프롬프트는 컴퓨터에서 사용 중인 에이전트 제공사(Anthropic, OpenAI, Google, xAI, Meta 등)로, 그 회사의 약관에 따라 바로 가며 저희 서버를 거치지 않습니다. 업데이트를 확인하려고 vica는 플랫폼, CPU 종류, 버전을 vica.torylabs.dev에 보냅니다. 구독 키를 넣었다면 구독 상태를 확인하려고 그 키를 vica.torylabs.dev에 보냅니다.</li>
+        <li><strong>vica</strong>는 사용자의 컴퓨터에서 돌아갑니다. 코드와 프롬프트는 컴퓨터에서 사용 중인 에이전트 제공사(Anthropic, OpenAI, Google, xAI, Meta 등)로, 그 회사의 약관에 따라 바로 가며 저희 서버를 거치지 않습니다. 업데이트를 확인하려고 vica는 플랫폼, CPU 종류, 버전을 vica.torylabs.dev에 보냅니다.</li>
         <li><strong>voin</strong>은 소리, 받아쓰기, 회의록을 컴퓨터 안에서 처리합니다. 소리나 받아쓴 글을 저희 서버로 보내지 않습니다. 선택 사항인 제3자 서비스나 모델을 켜면, 그곳에 보내는 데이터에는 그 제공사의 약관과 개인정보처리방침이 적용됩니다.</li>
         <li><strong>vibe</strong>는 이미 쓰고 있는 AI 코딩 도구와 함께 로컬에서 돌아갑니다. vibe로 코드나 프로젝트 데이터를 수집하지 않습니다.</li>
         <li><strong>Tory</strong>는 서비스 안에 별도의 개인정보 안내가 있을 수 있으며, 이 방침과 함께 적용됩니다.</li>
       </ul>
 
+      <div hidden>
       <h2>vica 중계 구독</h2>
       <p>구독에는 계정이 필요 없습니다.</p>
       <ul>
@@ -122,6 +127,7 @@ const body: Record<Lang, React.ReactNode> = {
         <li><strong>보관 기간.</strong> 구독이 있는 동안 기록을 보관합니다. 구독이 끝난 뒤 삭제를 원하시면 메일로 알려 주세요.</li>
       </ul>
 
+      </div>
       <h2>소셜 미디어 게시 도구</h2>
       <p>Tory Labs는 계정 소유자를 대신해 소셜 미디어에 콘텐츠를 게시하는 자동화 도구를 운영합니다.</p>
       <p><strong>접근하는 정보.</strong> 각 플랫폼의 OAuth로 명시적으로 허락하면, 저희 애플리케이션은 다음에 접근할 수 있습니다.</p>

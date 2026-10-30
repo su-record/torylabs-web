@@ -67,7 +67,8 @@ export function Footer({ lang }: { lang: Lang }) {
           <Link href={localized(lang, "/pricing")} className="hover:underline">{t.pricing}</Link>·
           <Link href={localized(lang, "/privacy")} className="hover:underline">{t.privacy}</Link>·
           <Link href={localized(lang, "/terms")} className="hover:underline">{t.terms}</Link>·
-          <Link href={localized(lang, "/refund")} className="hover:underline">{t.refund}</Link>·
+          {/* The refund policy is about the subscription, out of sight for now (owner request 2026-10-30). */}
+          <Link href={localized(lang, "/refund")} className="hidden">{t.refund}</Link>
           <a href={`mailto:${company.email}`} className="hover:underline">{company.email}</a>
         </p>
       </div>

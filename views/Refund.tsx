@@ -12,7 +12,7 @@ const title = { en: "Refund Policy", ja: "返金ポリシー", ko: "환불 정�
 const body: Record<Lang, React.ReactNode> = {
   en: (
     <>
-      <p>This policy covers the vica relay subscription (US$2 per month). Paddle.com, our Merchant of Record, processes payments and refunds.</p>
+      <p>This policy covers the vica relay subscription (US$4.99 per month or US$39.99 per year). Paddle.com, our Merchant of Record, processes payments and refunds.</p>
       <h2>14-day refund</h2>
       <p>You can get a full refund of any payment within 14 days of the charge, for any reason.</p>
       <h2>How to ask</h2>
@@ -29,7 +29,7 @@ const body: Record<Lang, React.ReactNode> = {
   ),
   ja: (
     <>
-      <p>このポリシーは、vica 中継サブスクリプション（月額 US$2）に適用されます。支払いと返金は、当社の販売者（Merchant of Record）であるPaddle.comが処理します。</p>
+      <p>このポリシーは、vica 中継サブスクリプション（月額 US$4.99 または年額 US$39.99）に適用されます。支払いと返金は、当社の販売者（Merchant of Record）であるPaddle.comが処理します。</p>
       <h2>14日間の返金</h2>
       <p>請求日から14日以内であれば、理由を問わず、その支払いの全額を返金します。</p>
       <h2>申請方法</h2>
@@ -46,7 +46,7 @@ const body: Record<Lang, React.ReactNode> = {
   ),
   ko: (
     <>
-      <p>이 정책은 vica 중계 구독(월 US$2)에 적용됩니다. 결제와 환불은 저희 판매자(Merchant of Record)인 Paddle.com이 처리합니다.</p>
+      <p>이 정책은 vica 중계 구독(월 US$4.99 또는 연 US$39.99)에 적용됩니다. 결제와 환불은 저희 판매자(Merchant of Record)인 Paddle.com이 처리합니다.</p>
       <h2>14일 환불</h2>
       <p>청구일로부터 14일 안이면 이유와 상관없이 그 결제 전액을 환불합니다.</p>
       <h2>요청 방법</h2>

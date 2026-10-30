@@ -8,7 +8,7 @@ const text = {
   en: {
     title: "Pricing", description: "Prices of Tory Labs products.",
     rows: [
-      { name: "vica relay subscription", price: "US$2 / month", note: "Connects your phone and vica. Billed monthly; cancel any time." },
+      { name: "vica relay subscription", price: "US$4.99 / month or US$39.99 / year", note: "Connects your phone and vica. Billed monthly or yearly; cancel any time." },
       { name: "vica app", price: "Free", note: "" },
       { name: "voin", price: "Free", note: "Open source (MIT)." },
       { name: "vibe", price: "Free", note: "Open source." },
@@ -19,7 +19,7 @@ const text = {
   ja: {
     title: "料金", description: "Tory Labs製品の料金。",
     rows: [
-      { name: "vica 中継サブスクリプション", price: "月額 US$2", note: "スマートフォンとvicaをつなぎます。毎月請求、いつでも解約できます。" },
+      { name: "vica 中継サブスクリプション", price: "月額 US$4.99 または年額 US$39.99", note: "スマートフォンとvicaをつなぎます。毎月または毎年請求、いつでも解約できます。" },
       { name: "vicaアプリ", price: "無料", note: "" },
       { name: "voin", price: "無料", note: "オープンソース（MIT）。" },
       { name: "vibe", price: "無料", note: "オープンソース。" },
@@ -30,7 +30,7 @@ const text = {
   ko: {
     title: "가격", description: "Tory Labs 제품 가격.",
     rows: [
-      { name: "vica 중계 구독", price: "월 US$2", note: "휴대폰과 vica를 잇습니다. 매달 청구되고 언제든 해지할 수 있습니다." },
+      { name: "vica 중계 구독", price: "월 US$4.99 또는 연 US$39.99", note: "휴대폰과 vica를 잇습니다. 매달 또는 매년 청구되고 언제든 해지할 수 있습니다." },
       { name: "vica 앱", price: "무료", note: "" },
       { name: "voin", price: "무료", note: "오픈소스(MIT)." },
       { name: "vibe", price: "무료", note: "오픈소스." },
@@ -53,7 +53,8 @@ export default function Pricing({ lang }: { lang: Lang }) {
       <main lang={lang} className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="text-4xl font-bold tracking-tight">{t.title}</h1>
         <div className="mt-10 divide-y divide-[var(--line)] rounded-xl border border-[var(--line)] bg-[var(--card)]">
-          {t.rows.map((r) => (
+          {/* The subscription stays out of sight for now, its row first in each language (owner request 2026-10-30). */}
+          {t.rows.slice(1).map((r) => (
             <div key={r.name} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 p-6">
               <div>
                 <h2 className="font-semibold">{r.name}</h2>
@@ -63,11 +64,11 @@ export default function Pricing({ lang }: { lang: Lang }) {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-sm leading-relaxed text-[var(--muted)]">{t.paddle}</p>
+        <p className="hidden">{t.paddle}</p>
         <div className="mt-8 flex flex-wrap items-center gap-6 text-sm">
-          <a href={SUBSCRIBE} className="rounded-lg bg-[var(--fg)] px-5 py-3 font-medium text-[var(--bg)]">{t.subscribe}</a>
+          <a href={SUBSCRIBE} className="hidden">{t.subscribe}</a>
           <Link href={localized(lang, "/vica")} className={link}>{t.vica}</Link>
-          <Link href={localized(lang, "/refund")} className={link}>{t.refund}</Link>
+          <Link href={localized(lang, "/refund")} className="hidden">{t.refund}</Link>
         </div>
       </main>
       <Footer lang={lang} />
