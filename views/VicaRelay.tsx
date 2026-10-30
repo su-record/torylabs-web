@@ -12,6 +12,7 @@ const text = {
     "need": [
       "vica on your Mac.",
       "A Cloudflare account. The free plan is enough.",
+      "No domain needed. Cloudflare gives you a free address; you can connect your own domain if you have one.",
       "Node.js, for the deploy command. Your agent can install it."
     ],
     "stepsTitle": "Steps",
@@ -78,6 +79,7 @@ const text = {
     "need": [
       "Macのvica。",
       "Cloudflareアカウント。無料プランで十分です。",
+      "ドメインは不要です。Cloudflareが無料のアドレスを用意します。独自ドメインがあれば接続もできます。",
       "デプロイコマンド用のNode.js。エージェントがインストールできます。"
     ],
     "stepsTitle": "手順",
@@ -144,6 +146,7 @@ const text = {
     "need": [
       "Mac의 vica.",
       "Cloudflare 계정. 무료 요금제로 충분합니다.",
+      "도메인은 없어도 됩니다. Cloudflare가 무료 주소를 만들어 주고, 내 도메인이 있으면 연결해도 됩니다.",
       "배포 명령에 쓰는 Node.js. 에이전트가 설치할 수 있습니다."
     ],
     "stepsTitle": "순서",
