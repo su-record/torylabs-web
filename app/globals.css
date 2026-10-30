@@ -19,3 +19,7 @@ html { scroll-behavior: smooth; }
 .legal p, .legal li { line-height: 1.75; margin-bottom: .75rem; }
 .legal ul { list-style: disc; padding-left: 1.5rem; }
 .legal a { text-decoration: underline; }
+/* The vica page: dots flow between the Mac, the relay and the phone (views/VicaScene.tsx). */
+.vica-dot { opacity: .15; animation: vica-flow 1.6s infinite; }
+@keyframes vica-flow { 0%, 60%, 100% { opacity: .15; transform: scale(.8); } 25% { opacity: 1; transform: scale(1.15); } }
+@media (prefers-reduced-motion: reduce) { .vica-dot { animation: none; opacity: .6; } }

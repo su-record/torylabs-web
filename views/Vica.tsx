@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { alternates, localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
+import VicaScene from "@/views/VicaScene";
 
 // Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-10-30.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
@@ -16,6 +17,12 @@ const text = {
     lead: "Write what you want built. vica hands the work to the coding agents on your computer and sees it through.",
     sub: "vica runs the agent CLIs you have installed and signed in to: Claude Code, Codex, Antigravity, Grok and Muse Code. It splits each request into steps and gives each step to the agent suited to its role.",
     mac: "Download for Mac (Apple Silicon)", windows: "Windows · Coming soon", subscribe: "Subscribe to the relay",
+    howTitle: "How it works",
+    how: [
+      { t: "Write the request", d: "In vica on your Mac, or from your phone. A greeting gets a reply; work gets a plan." },
+      { t: "vica hands it out", d: "Each step goes to the agent suited to it, and runs in the background." },
+      { t: "Follow it anywhere", d: "Watch the work, answer questions and stop it from vica or your phone." },
+    ],
     featuresTitle: "Features",
     features: [
       { t: "Requests, finished", d: "vica plans a multi-step request, runs the steps, and waits for you only where a person should decide." },
@@ -48,6 +55,12 @@ const text = {
     lead: "作りたいものを書くだけ。vicaがパソコンのコーディングエージェントに任せ、最後までやり遂げます。",
     sub: "vicaは、インストールしてログイン済みのエージェントCLI（Claude Code、Codex、Antigravity、Grok、Muse Code）を動かします。依頼を段階に分け、各段階を役割に合ったエージェントに任せます。",
     mac: "Macをダウンロード（Apple Silicon）", windows: "Windows · 近日公開", subscribe: "中継を購読する",
+    howTitle: "使い方",
+    how: [
+      { t: "依頼を書く", d: "Macのvicaでも、スマートフォンからでも。あいさつには返事を、仕事には計画を返します。" },
+      { t: "vicaが割り振る", d: "各段階を向いたエージェントに任せ、バックグラウンドで動かします。" },
+      { t: "どこからでも見守る", d: "vicaやスマートフォンで作業を見て、質問に答え、止めることもできます。" },
+    ],
     featuresTitle: "機能",
     features: [
       { t: "依頼を最後まで", d: "複数段階の依頼は計画を立てて順に実行し、人が決めるべき所でだけ確認を待ちます。" },
@@ -80,6 +93,12 @@ const text = {
     lead: "만들 것을 적으면, vica가 내 컴퓨터의 코딩 에이전트들에게 맡겨 끝까지 해냅니다.",
     sub: "vica는 설치하고 로그인한 에이전트 CLI(Claude Code, Codex, Antigravity, Grok, Muse Code)를 실행합니다. 요청을 단계로 나누고, 단계마다 역할에 맞는 에이전트에게 맡깁니다.",
     mac: "Mac 다운로드 (Apple Silicon)", windows: "Windows · 곧 공개", subscribe: "중계 구독하기",
+    howTitle: "이렇게 씁니다",
+    how: [
+      { t: "요청을 적습니다", d: "Mac의 vica에서도, 휴대폰에서도. 인사에는 답을, 일에는 계획을 돌려줍니다." },
+      { t: "vica가 나눠 맡깁니다", d: "단계마다 알맞은 에이전트에게 맡기고, 뒤에서 실행합니다." },
+      { t: "어디서든 지켜봅니다", d: "vica나 휴대폰에서 작업을 보고, 질문에 답하고, 멈출 수도 있습니다." },
+    ],
     featuresTitle: "기능",
     features: [
       { t: "요청을 끝까지", d: "여러 단계 요청은 계획을 세워 차례로 실행하고, 사람이 정해야 하는 곳에서만 확인을 기다립니다." },
@@ -112,7 +131,17 @@ export function vicaMetadata(lang: Lang): Metadata {
   return { title, description, alternates: alternates(lang, "/vica"), openGraph: { title: "vica by Tory Labs", url: localized(lang, "/vica"), description } };
 }
 
-const H2 = ({ children }: { children: string }) => <h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">{children}</h2>;
+const H2 = ({ children }: { children: string }) => <h2 className="mb-10 text-2xl font-bold tracking-tight sm:text-3xl">{children}</h2>;
+
+// One small line icon per feature, in the order of `features`.
+const ICONS = [
+  "M5 12l4 4L19 6",
+  "M8 7a3 3 0 1 0 0 .01M16 7a3 3 0 1 0 0 .01M3 20c0-3 2.5-5 5-5s5 2 5 5M13 20c0-2.2 1.5-4.2 3-4.8 2.4-.6 5 1.3 5 4.8",
+  "M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18",
+  "M12 3l8 4v5c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V7z",
+  "M4 5h16v14H4zM8 10l3 2-3 2M13 15h3",
+  "M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 21c0-4 3.6-6 8-6s8 2 8 6",
+];
 
 export default function Vica({ lang }: { lang: Lang }) {
   const t = text[lang];
@@ -120,27 +149,52 @@ export default function Vica({ lang }: { lang: Lang }) {
   return (
     <>
       <Header lang={lang} path="/vica" />
-      <main lang={lang} className="mx-auto max-w-5xl px-6">
-        <section className="py-24 sm:py-28">
-          <p className="text-sm font-medium text-[var(--accent)]">{t.eyebrow}<span className="hidden">{t.eyebrowRelay}</span></p>
-          <h1 className="mt-4 text-5xl font-bold tracking-tight sm:text-6xl">vica</h1>
-          <p className="mt-6 max-w-2xl text-xl leading-relaxed">{t.lead}</p>
-          <p className="mt-3 max-w-2xl leading-relaxed text-[var(--muted)]">{t.sub}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a href={DOWNLOAD} className="rounded-lg bg-[var(--fg)] px-5 py-3 text-sm font-medium text-[var(--bg)]">{t.mac}</a>
-            <span aria-disabled="true" className="rounded-lg border border-[var(--line)] px-5 py-3 text-sm font-medium text-[var(--muted)]">{t.windows}</span>
+      <main lang={lang} className="mx-auto max-w-6xl px-6">
+        <section className="pt-20 pb-14 text-center sm:pt-28">
+          <img src="/vica-icon.png" alt="" className="mx-auto h-20 w-20 rounded-[22px] shadow-[0_12px_30px_-10px_rgba(0,0,0,.35)]" />
+          <p className="mt-8 text-sm font-medium text-[var(--muted)]">{t.eyebrow}<span className="hidden">{t.eyebrowRelay}</span></p>
+          <h1 className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">vica</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed sm:text-2xl">{t.lead}</p>
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-[var(--muted)]">{t.sub}</p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <a href={DOWNLOAD} className="inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] transition hover:opacity-85">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+              {t.mac}
+            </a>
+            <span aria-disabled="true" className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] px-6 py-3 text-sm font-medium text-[var(--muted)]">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1v7H3zM11.5 4.4L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></svg>
+              {t.windows}
+            </span>
             {/* The relay subscription stays out of sight for now (owner request 2026-10-30). */}
-            <a href={SUBSCRIBE} className="hidden rounded-lg bg-[var(--fg)] px-5 py-3 text-sm font-medium text-[var(--bg)]">{t.subscribe}</a>
+            <a href={SUBSCRIBE} className="hidden rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)]">{t.subscribe}</a>
           </div>
         </section>
 
-        <section className="border-t border-[var(--line)] py-20">
+        <section className="pb-24"><VicaScene lang={lang} /></section>
+
+        <section className="border-t border-[var(--line)] py-24">
+          <H2>{t.howTitle}</H2>
+          <ol className="grid gap-8 md:grid-cols-3">
+            {t.how.map((h, i) => (
+              <li key={h.t}>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold text-white" style={{ background: "#7c6cf0" }}>{i + 1}</span>
+                <h3 className="mt-4 text-lg font-semibold">{h.t}</h3>
+                <p className="mt-2 leading-relaxed text-[var(--muted)]">{h.d}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="border-t border-[var(--line)] py-24">
           <H2>{t.featuresTitle}</H2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {t.features.map((f) => (
-              <div key={f.t} className="rounded-xl border border-[var(--line)] bg-[var(--card)] p-6">
-                <h3 className="font-semibold">{f.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{f.d}</p>
+            {t.features.map((f, i) => (
+              <div key={f.t} className="rounded-2xl border border-[var(--line)] bg-[var(--card)] p-7 transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-20px_rgba(0,0,0,.25)]">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(124,108,240,.12)]" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="#7c6cf0" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={ICONS[i]} /></svg>
+                </span>
+                <h3 className="mt-5 font-semibold">{f.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{f.d}</p>
               </div>
             ))}
           </div>
@@ -165,12 +219,12 @@ export default function Vica({ lang }: { lang: Lang }) {
           </div>
         </section>
 
-        <section className="border-t border-[var(--line)] py-20">
+        <section className="border-t border-[var(--line)] py-24">
           <H2>{t.privacyTitle}</H2>
           <p className="max-w-3xl leading-relaxed text-[var(--muted)]">{t.privacy} <Link href={localized(lang, "/privacy")} className={link}>{t.policy}</Link></p>
         </section>
 
-        <section className="border-t border-[var(--line)] py-20">
+        <section className="border-t border-[var(--line)] py-24">
           <H2>{t.reqTitle}</H2>
           <ul className="max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-[var(--muted)]">
             {t.req.map((r) => <li key={r}>{r}</li>)}
