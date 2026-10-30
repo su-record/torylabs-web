@@ -217,8 +217,8 @@ export default function VicaRelay({ lang }: { lang: Lang }) {
   const t = text[lang];
   return (
     <section id="relay" className="scroll-mt-20 border-t border-[var(--line)] py-24">
-      <h2 className="mb-5 text-2xl font-bold tracking-tight sm:text-3xl">{t.h1}</h2>
-      <p className="mb-10 max-w-2xl leading-relaxed text-[var(--muted)]">{t.lead}</p>
+      <h2 data-reveal className="mb-5 text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{t.h1}</h2>
+      <p data-reveal className="mb-10 max-w-2xl leading-relaxed text-[var(--muted)]">{t.lead}</p>
       <VicaRelayAccordion steps={[t.s1, t.s2, t.s3, t.s4] as [string, string][]} prompt={t.prompt} selfLabel={t.self} labels={t.labels} />
       <div className="grid gap-x-12 md:grid-cols-2">
         <div>
@@ -231,7 +231,7 @@ export default function VicaRelay({ lang }: { lang: Lang }) {
           <H3>{t.helpTitle}</H3>
           <div className="space-y-2">
             {t.help.map(([q, answer]) => (
-              <details key={q} className="rounded-xl border border-[var(--line)] bg-[var(--card)] px-4 py-3">
+              <details key={q} className="surface rounded-xl px-4 py-3">
                 <summary className="cursor-pointer text-sm font-medium">{q}</summary>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{answer}</p>
               </details>
