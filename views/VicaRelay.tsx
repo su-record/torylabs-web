@@ -23,7 +23,7 @@ const text = {
       "Deploy it",
       "Paste this to your agent in a terminal tab:"
     ],
-    "prompt": "Deploy the ~/vica-relay folder to my Cloudflare account. Run npx wrangler login so I can sign in, then npx wrangler deploy, and tell me the workers.dev address it prints.",
+    "prompt": "Deploy the ~/vica-relay folder to my Cloudflare account. Run npx wrangler login so I can sign in, then npx wrangler deploy, and tell me the server address it prints.",
     "self": "Or run it yourself:",
     "s3": [
       "Enter the address",
@@ -63,7 +63,6 @@ const text = {
       "files": "Create server files",
       "copy": "Copy",
       "copied": "Copied",
-      "domain": "With your own domain:",
       "prev": "Back",
       "next": "Next",
       "server": "Relay server",
@@ -90,7 +89,7 @@ const text = {
       "デプロイ",
       "ターミナルタブのエージェントにこれを貼り付けます:"
     ],
-    "prompt": "~/vica-relay フォルダーを自分のCloudflareアカウントにデプロイして。npx wrangler login でサインインできるようにしてから npx wrangler deploy を実行し、表示された workers.dev のアドレスを教えて。",
+    "prompt": "~/vica-relay フォルダーを自分のCloudflareアカウントにデプロイして。npx wrangler login でサインインできるようにしてから npx wrangler deploy を実行し、表示されたサーバーアドレスを教えて。",
     "self": "自分で実行する場合:",
     "s3": [
       "アドレスを入力",
@@ -130,7 +129,6 @@ const text = {
       "files": "サーバーファイルを作成",
       "copy": "コピー",
       "copied": "コピーしました",
-      "domain": "独自ドメインの場合:",
       "prev": "戻る",
       "next": "次へ",
       "server": "接続サーバー",
@@ -157,7 +155,7 @@ const text = {
       "배포하기",
       "터미널 탭의 에이전트에게 이 문장을 붙여 넣습니다:"
     ],
-    "prompt": "~/vica-relay 폴더를 내 Cloudflare 계정에 배포해 줘. npx wrangler login으로 로그인하게 한 다음 npx wrangler deploy를 실행하고, 나온 workers.dev 주소를 알려 줘.",
+    "prompt": "~/vica-relay 폴더를 내 Cloudflare 계정에 배포해 줘. npx wrangler login으로 로그인하게 한 다음 npx wrangler deploy를 실행하고, 나온 서버 주소를 알려 줘.",
     "self": "직접 실행하려면:",
     "s3": [
       "주소 넣기",
@@ -197,7 +195,6 @@ const text = {
       "files": "서버 파일 만들기",
       "copy": "복사",
       "copied": "복사했습니다",
-      "domain": "내 도메인을 연결했다면:",
       "prev": "이전",
       "next": "다음",
       "server": "연결 서버",
