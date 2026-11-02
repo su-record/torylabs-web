@@ -9,7 +9,7 @@ export const voinText = {
     requirements: "Apple Silicon · macOS 14.4 이상", screenshot: "받아쓰기 화면 · 예시 대화", imageAlt: "발화자와 시간에 따라 대화를 보여 주는 voin 받아쓰기 화면",
     featuresTitle: "듣는 동안에도, 끝난 뒤에도.",
     features: [
-      {t:"내 PC에서 받아쓰기",d:"마이크와 Zoom·Teams 등 화상회의의 상대방 소리를 함께 받아씁니다. 실시간 모델과 녹음 후 다시 받아쓸 모델을 각각 고를 수 있습니다."},
+      {t:"내 PC에서 받아쓰기",d:"PC 마이크와 Zoom·Teams 등 화상회의의 상대방 소리를 함께 받아씁니다. 실시간 모델과 녹음 후 다시 받아쓸 모델을 각각 고를 수 있습니다."},
       {t:"누가 무슨 말을 했는지",d:"녹음이 끝나면 화자별로 나눕니다. 목소리를 들어 보고 이름을 붙여, 사람별 발언을 다시 확인할 수 있습니다."},
       {t:"내 폴더에 남는 회의록",d:"원문과 요약을 Markdown 파일로 저장합니다. 일반 폴더나 Obsidian 보관함을 고르고, 필요하면 음성 파일도 함께 보관합니다."},
       {t:"정리와 검색까지",d:"핵심 내용·결정·할 일·남은 질문을 요약합니다. 지난 기록을 검색하거나 질문하고, 함께 찾을 노트 폴더도 지정할 수 있습니다."},
@@ -34,7 +34,7 @@ export const voinText = {
     requirements:"Apple Silicon · macOS 14.4 or later",screenshot:"Transcription view · example conversation",imageAlt:"voin transcription showing speakers and timestamps",
     featuresTitle:"While you talk. After you finish.",
     features:[
-      {t:"Transcribe on your PC",d:"Capture your microphone and the other side of Zoom, Teams and other calls. Choose separate models for live transcription and a second pass after recording."},
+      {t:"Transcribe on your PC",d:"Capture your PC microphone and the other side of Zoom, Teams and other calls. Choose separate models for live transcription and a second pass after recording."},
       {t:"Know who said what",d:"After recording, voin separates speakers. Listen to voice samples and add names to revisit each person’s contributions."},
       {t:"Notes in your own folder",d:"Save transcripts and summaries as Markdown in a folder or Obsidian vault. Keep the audio alongside them if you choose."},
       {t:"Summarize and find",d:"Review key points, decisions, tasks and open questions. Search past records, ask questions and include other note folders in your search."},
@@ -53,7 +53,7 @@ export const voinText = {
     eyebrow:"VOICE IN, NOTES OUT",lead:"話して残す。\nあとから見つける。",intro:"会議の双方の声も、忘れたくないアイデアも。voinが自分のPCで文字起こしし、あとで振り返れる記録にします。",
     download:"macOS版をダウンロード",preparing:"0.0.1を公開準備中",github:"GitHub",githubPending:"GitHubでの公開配布を準備中",requirements:"Apple Silicon · macOS 14.4以降",screenshot:"文字起こし画面 · 会話の例",imageAlt:"話者と時刻ごとに会話を表示するvoinの文字起こし画面",
     featuresTitle:"話している間も、終わった後も。",features:[
-      {t:"自分のPCで文字起こし",d:"マイクとZoom・Teamsなどの相手の音声を一緒に文字起こしします。リアルタイム用と録音後に再処理するモデルを別々に選べます。"},
+      {t:"自分のPCで文字起こし",d:"PCのマイクとZoom・Teamsなどの相手の音声を一緒に文字起こしします。リアルタイム用と録音後に再処理するモデルを別々に選べます。"},
       {t:"誰が何を話したか",d:"録音後に話者ごとに分けます。声のサンプルを聞いて名前を付け、一人ずつ発言を確認できます。"},
       {t:"自分のフォルダに残す",d:"原文と要約をMarkdownで保存します。通常のフォルダやObsidian保管庫を選び、必要なら音声も一緒に残せます。"},
       {t:"要約と検索まで",d:"要点・決定事項・タスク・未解決の質問を整理します。過去の記録を検索したり質問したり、他のノートフォルダも検索対象にできます。"},
