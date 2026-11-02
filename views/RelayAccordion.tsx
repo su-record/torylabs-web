@@ -7,7 +7,7 @@ import { useState } from "react";
 const PURPLE = "#7c6cf0";
 
 export type RelayLabels = {
-  file: string; token: string; save: string; files: string; copy: string; copied: string;
+  file: string; token: string; save: string; files: string; copy: string; copied: string; copyFailed: string;
   prev: string; next: string; server: string; yourMac: string; yourPhone: string; scan: string;
 };
 type Step = readonly [string, string];
@@ -53,35 +53,34 @@ const QR = () => {
   );
 };
 
-function Picture({ step, labels, prompt, tokenShown }: { step: number; labels: RelayLabels; prompt: string; tokenShown: string }) {
+function Picture({ step, labels, prompt, tokenShown, folder, address }: { step: number; labels: RelayLabels; prompt: string; tokenShown: string; folder: string; address: string }) {
   if (step === 0) return (
-    <div className="flex items-center gap-4">
-      <div className="min-w-0 flex-1"><Window>
+    <div className="flex flex-col items-center gap-4 sm:flex-row">
+      <div className="w-full min-w-0 flex-1"><Window>
         <p className="text-xs font-semibold">{labels.server}</p>
         <p className="mt-3"><Button>{labels.files}</Button></p>
       </Window></div>
-      <Link />
+      <div className="hidden sm:block"><Link /></div>
       <div className="flex flex-col items-center gap-1 text-[11px] text-[var(--muted)]">
         <svg viewBox="0 0 24 24" className="h-10 w-10" fill="none" stroke={PURPLE} strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true"><path d="M3 7h6l2 2h10v10H3z" /></svg>
-        ~/vica-relay
+        {folder}
       </div>
     </div>
   );
   if (step === 1) return (
     <div className="flex items-center gap-4">
       <div className="min-w-0 flex-1"><Window dark>
-        <p className="text-xs leading-relaxed opacity-90">{prompt}</p>
-        <p className="mt-3 truncate font-mono text-xs" style={{ color: "#a79cff" }}>https://vica-relay.you.domain</p>
+        <p className="text-sm leading-relaxed opacity-90">{prompt}</p>
+        <p className="mt-3 truncate font-mono text-xs" style={{ color: "#a79cff" }}>{address}</p>
       </Window></div>
-      <Link />
-      <Cloud label="Cloudflare" />
+      <div className="hidden sm:contents"><Link /><Cloud label="Cloudflare" /></div>
     </div>
   );
   if (step === 2) return (
     <Window>
       <p className="text-xs font-semibold">{labels.server}</p>
       <div className="mt-3 space-y-2">
-        <Field>https://vica-relay.you.domain</Field>
+        <Field>{address}</Field>
         <Field dim>{`${labels.token}  ${tokenShown}`}</Field>
       </div>
       <p className="mt-3 text-right"><Button>{labels.save}</Button></p>
@@ -93,9 +92,8 @@ function Picture({ step, labels, prompt, tokenShown }: { step: number; labels: R
         <div className="rounded-xl border border-[var(--line)] bg-white p-2 text-[#1f1f24]"><QR /></div>
         {labels.yourMac}
       </div>
-      <Link label={labels.scan} />
-      <Cloud label={labels.server} />
-      <Link />
+      <div className="sm:hidden"><Link label={labels.scan} /></div>
+      <div className="hidden sm:contents"><Link label={labels.scan} /><Cloud label={labels.server} /><Link /></div>
       <div className="flex flex-col items-center gap-2 text-[11px] text-[var(--muted)]">
         <div className="flex h-24 w-12 items-center justify-center rounded-xl border-2 border-[var(--fg)]"><i className="h-1.5 w-1.5 rounded-full" style={{ background: PURPLE }} /></div>
         {labels.yourPhone}
@@ -104,30 +102,39 @@ function Picture({ step, labels, prompt, tokenShown }: { step: number; labels: R
   );
 }
 
-export default function VicaRelayAccordion({ steps, prompt, selfLabel, labels }: { steps: readonly Step[]; prompt: string; selfLabel: string; labels: RelayLabels }) {
+export default function RelayAccordion({ steps, prompt, selfLabel, labels, folder, address }: { steps: readonly Step[]; prompt: string; selfLabel: string; labels: RelayLabels; folder: string; address: string }) {
   const [open, setOpen] = useState(0);
-  const [copied, setCopied] = useState(false);
-  const copy = () => navigator.clipboard.writeText(prompt).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500); });
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopyState("copied");
+    } catch {
+      setCopyState("failed");
+    }
+  };
   return (
     <div>
-      <div className="flex flex-col gap-3 lg:h-[360px] lg:flex-row">
+      <div className="flex flex-col gap-3 lg:min-h-[390px] lg:flex-row">
         {steps.map(([title, body], i) => {
           const here = i === open;
           return (
             <div key={title} className={`overflow-hidden rounded-2xl border bg-[var(--card)] transition-[flex-grow] duration-300 lg:basis-[76px] ${here ? "border-[#7c6cf0] lg:grow" : "border-[var(--line)] lg:grow-0"}`}>
-              <button type="button" aria-expanded={here} onClick={() => setOpen(i)} className={`flex w-full items-center gap-3 p-4 text-left ${here ? "" : "lg:h-full lg:flex-col"}`}>
+              <button type="button" aria-expanded={here} aria-controls={here ? `relay-step-${i}` : undefined} onClick={() => setOpen(i)} className={`flex w-full items-center gap-3 p-4 text-left ${here ? "" : "lg:h-full lg:flex-col"}`}>
                 <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-sm font-semibold text-white" style={{ background: here ? PURPLE : "#a8a3c9" }}>{i + 1}</span>
                 <span className={`font-semibold ${here ? "" : "lg:[writing-mode:vertical-rl]"}`}>{title}</span>
               </button>
               {here && (
-                <div className="px-5 pb-5 lg:w-[calc(1104px-3*88px-40px)] lg:max-w-full">
+                <div id={`relay-step-${i}`} className="px-5 pb-5 lg:w-[calc(1104px-3*88px-40px)] lg:max-w-full">
                   <p className="leading-relaxed text-[var(--muted)]">{body}</p>
-                  <div className="mt-5"><Picture step={i} labels={labels} prompt={prompt} tokenShown="••••••••••••" /></div>
+                  <div className="mt-5"><Picture step={i} labels={labels} prompt={prompt} tokenShown="••••••••••••" folder={folder} address={address} /></div>
                   {i === 1 && (
-                    <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-                      <button type="button" onClick={copy} className="rounded-lg border border-[var(--line)] px-3 py-1.5">{copied ? labels.copied : labels.copy}</button>
-                      <span className="text-[var(--muted)]">{selfLabel}</span>
-                      <code className="text-xs">npx wrangler login && npx wrangler deploy</code>
+                    <div className="mt-4 text-sm">
+                      <button type="button" onClick={copy} className="rounded-lg border border-[var(--line)] px-4 py-2">{copyState === "copied" ? labels.copied : labels.copy}</button>
+                      <span role="status" aria-live="polite" className="sr-only">{copyState === "copied" ? labels.copied : ""}</span>
+                      {copyState === "failed" && <p role="alert" className="mt-2 leading-relaxed">{labels.copyFailed}</p>}
+                      <p className="mt-5 leading-relaxed text-[var(--muted)]">{selfLabel}</p>
+                      <pre className="mt-2 overflow-x-auto rounded-lg border border-[var(--line)] px-4 py-3 text-xs leading-relaxed"><code>{"npx wrangler login\nnpx wrangler deploy"}</code></pre>
                     </div>
                   )}
                 </div>

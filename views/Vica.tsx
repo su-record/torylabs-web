@@ -3,7 +3,6 @@ import Link from "next/link";
 import { alternates, localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
 import VicaScene from "@/views/VicaScene";
-import VicaRelay from "@/views/VicaRelay";
 
 // Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-10-30.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
@@ -61,6 +60,7 @@ const text = {
     ctaTitle: "Hand it your next request",
     pricingTitle: "Pricing",
     appName: "vica app", appPrice: "Free",
+    relayGuide: ["Set up your relay server", "Make your own relay on a free Cloudflare account. vica writes the files and your agent can deploy them.", "Read the guide"],
     relayName: "Relay subscription", relayPrice: "US$4.99 / month · US$39.99 / year",
     relay: [
       "Connects your phone and vica through our relay server (vica.torylabs.dev).",
@@ -124,6 +124,7 @@ const text = {
     ctaTitle: "次の依頼を任せてみましょう",
     pricingTitle: "料金",
     appName: "vicaアプリ", appPrice: "無料",
+    relayGuide: ["中継サーバーの作り方", "無料のCloudflareアカウントに自分の中継サーバーを作れます。ファイルはvicaが作り、デプロイはエージェントに任せられます。", "ガイドを見る"],
     relayName: "中継サブスクリプション", relayPrice: "月額 US$4.99 · 年額 US$39.99",
     relay: [
       "当社の中継サーバー（vica.torylabs.dev）を通じて、スマートフォンとvicaをつなぎます。",
@@ -187,6 +188,7 @@ const text = {
     ctaTitle: "다음 요청을 맡겨 보세요",
     pricingTitle: "가격",
     appName: "vica 앱", appPrice: "무료",
+    relayGuide: ["연결 서버 구축 가이드", "무료 Cloudflare 계정에 내 연결 서버를 만들 수 있습니다. 파일은 vica가 만들고 배포는 에이전트에게 맡기면 됩니다.", "가이드 보기"],
     relayName: "중계 구독", relayPrice: "월 US$4.99 · 연 US$39.99",
     relay: [
       "저희 중계 서버(vica.torylabs.dev)를 통해 휴대폰과 vica를 잇습니다.",
@@ -322,7 +324,12 @@ export default function Vica({ lang }: { lang: Lang }) {
           </ul>
         </section>
 
-        <VicaRelay lang={lang} />
+        {/* Keeps /vica#relay working: released vica apps link to it. */}
+        <section id="relay" className="scroll-mt-20 border-t border-[var(--line)] py-24">
+          <H2>{t.relayGuide[0]}</H2>
+          <p data-reveal className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.relayGuide[1]}</p>
+          <p data-reveal className="mt-6"><Link href={`${localized(lang, "/relay")}`} className={link}>{t.relayGuide[2]}</Link></p>
+        </section>
 
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.featuresTitle}</H2>

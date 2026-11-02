@@ -24,7 +24,7 @@ const text = {
     products: "Products",
     list: [
       { name: "vica", href: "/vica", tag: "macOS · Free app", d: "A desktop app that hands your coding requests to the AI coding agents on your computer and sees them through.", features: ["Claude Code, Codex, Antigravity, Grok and Muse Code in one window", "Each role goes to the agent suited to it", "Sessions keep running after you close the window"] },
-      { name: "voin", href: "", tag: "macOS · Open source · Free", d: "Free, open-source on-device dictation and meeting notes app for Mac.", features: ["Local transcription", "Zoom/Teams system audio capture", "Speaker diarization", "Markdown meeting notes with summaries", "Voice commands to coding agents", "Windows support planned"] },
+      { name: "voin", href: "/voin", tag: "macOS · Free app", d: "Meeting notes and dictation that run on your PC.", features: ["Local live and post-recording transcription", "Both sides of Zoom and Teams calls", "Speaker separation and Markdown notes", "Windows · Coming soon"] },
       { name: "vibe", href: "https://github.com/su-record/vibe", tag: "Developer tool · Open source", d: "A harness for Claude Code, Codex and ChatGPT desktop: you approve the scenarios, and the harness proves the work.", features: [] },
       { name: "Tory", href: "https://tory.me", tag: "AI companion", d: "An AI companion that remembers.", features: [] },
     ] as Product[],
@@ -48,7 +48,7 @@ const text = {
     products: "製品",
     list: [
       { name: "vica", href: "/vica", tag: "macOS · アプリ無料", d: "コーディングの依頼を、パソコンにあるAIコーディングエージェントに任せて最後までやり遂げるデスクトップアプリ。", features: ["Claude Code、Codex、Antigravity、Grok、Muse Codeをひとつのウィンドウで", "役割ごとに向いたエージェントへ", "ウィンドウを閉じてもセッションは動き続ける"] },
-      { name: "voin", href: "", tag: "macOS · オープンソース · 無料", d: "Mac向けの無料・オープンソースのオンデバイス音声入力・会議メモアプリ。", features: ["ローカル文字起こし", "Zoom/Teamsのシステム音声を録音", "話者分離", "要約付きのMarkdown会議メモ", "コーディングエージェントへの音声コマンド", "Windows対応予定"] },
+      { name: "voin", href: "/voin", tag: "macOS · アプリ無料", d: "自分のPCで動く文字起こし・会議の記録アプリ。", features: ["リアルタイムと録音後の文字起こし", "Zoom・Teamsの双方の音声", "話者分離とMarkdown記録", "Windows · Coming soon"] },
       { name: "vibe", href: "https://github.com/su-record/vibe", tag: "開発ツール · オープンソース", d: "Claude Code、Codex、ChatGPTデスクトップ用のハーネス。シナリオを承認すれば、ハーネスが作業を検証します。", features: [] },
       { name: "Tory", href: "https://tory.me", tag: "AIコンパニオン", d: "覚えていてくれるAIコンパニオン。", features: [] },
     ] as Product[],
@@ -72,7 +72,7 @@ const text = {
     products: "제품",
     list: [
       { name: "vica", href: "/vica", tag: "macOS · 앱 무료", d: "코딩 요청을 내 컴퓨터의 AI 코딩 에이전트들에게 맡겨 끝까지 해내는 데스크톱 앱.", features: ["Claude Code, Codex, Antigravity, Grok, Muse Code를 한 창에서", "역할마다 맞는 에이전트에게", "창을 닫아도 세션은 계속 실행"] },
-      { name: "voin", href: "", tag: "macOS · 오픈소스 · 무료", d: "Mac용 무료 오픈소스 온디바이스 받아쓰기·회의록 앱.", features: ["로컬 음성 인식", "Zoom/Teams 시스템 소리 녹음", "화자 구분", "요약이 붙은 Markdown 회의록", "코딩 에이전트에 음성 명령", "Windows 지원 예정"] },
+      { name: "voin", href: "/voin", tag: "macOS · 앱 무료", d: "내 PC에서 회의와 생각을 받아쓰고 기록으로 남기는 앱.", features: ["실시간·녹음 후 로컬 받아쓰기", "Zoom·Teams 양쪽 목소리", "화자 구분과 Markdown 기록", "Windows · Coming soon"] },
       { name: "vibe", href: "https://github.com/su-record/vibe", tag: "개발 도구 · 오픈소스", d: "Claude Code, Codex, ChatGPT 데스크톱용 하네스. 시나리오를 승인하면 하네스가 작업을 증명합니다.", features: [] },
       { name: "Tory", href: "https://tory.me", tag: "AI 동반자", d: "기억하는 AI 동반자.", features: [] },
     ] as Product[],
