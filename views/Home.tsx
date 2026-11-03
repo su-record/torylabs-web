@@ -1,6 +1,10 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
-import { company, founder, TBD } from "@/content/company";
-import { alternates, localized, type Lang } from "@/content/i18n";
+import { company, founder } from "@/content/company";
+import { PageSchema } from "@/components/StructuredData";
+import Questions from "@/components/Questions";
+import { faqTitles, homeQuestions } from "@/content/questions";
+import { localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
 import Typed from "@/components/Typed";
 
@@ -8,17 +12,17 @@ type Product = { name: string; href: string; tag: string; d: string; features: s
 
 const text = {
   en: {
-    title: "Tory Labs | Practical AI that runs on your own device",
-    description: "Tory Labs builds practical, privacy-first AI that runs on your own device.",
+    title: "Tory Labs | AI coding tools and local meeting notes",
+    description: "Meet vica for AI coding agents, voin for local transcription and meeting notes, and vibe for verified development work. Free Mac apps from Tory Labs.",
     eyebrow: "On-device · Private · Practical AI",
-    lead: "Practical AI that runs on your own device and keeps your data private.",
+    lead: "AI coding tools, transcription and meeting notes on your own computer.",
     view: "View products", contact: "Contact us",
     about: "About", whatTitle: "What we do",
-    what: "Tory Labs builds AI software that runs directly on users' devices instead of depending on the cloud. We focus on tools that help with everyday work: meeting notes, dictation, and AI developer tooling.",
+    what: "Tory Labs builds desktop AI tools for coding, meeting notes and dictation. voin transcribes locally; vica works with the coding agents and provider accounts you choose.",
     missionTitle: "Mission", mission: "Make useful AI available to everyone without asking them to give up their data.",
     values: [
       { t: "Privacy-first, on-device AI", d: "We process on the user's device whenever possible. Your data stays yours." },
-      { t: "Open source", d: "Our code is public so anyone can inspect and improve it." },
+      { t: "Open source", d: "vibe is open source. You can inspect its code and contribute on GitHub." },
       { t: "Fast shipping", d: "Build small, ship fast, and improve through real use." },
     ],
     products: "Products",
@@ -32,17 +36,17 @@ const text = {
     contactTitle: "Contact", contactText: "For partnerships, collaboration, or product questions, please email us.",
   },
   ja: {
-    title: "Tory Labs | 自分のデバイスで動く実用的なAI",
-    description: "Tory Labsは、自分のデバイスで動き、データを手元に残す実用的なAIを作っています。",
+    title: "Tory Labs | AI開発ツールとローカル文字起こし",
+    description: "AIコーディングエージェントを連携するvica、ローカル文字起こしと会議の記録のvoin、開発作業を検証するvibe。Tory Labsの無料Macアプリと開発ツール。",
     eyebrow: "オンデバイス · プライベート · 実用AI",
-    lead: "自分のデバイスで動き、データを外に出さない実用的なAI。",
+    lead: "自分のコンピューターで、AI開発ツールと文字起こし、会議の記録を。",
     view: "製品を見る", contact: "お問い合わせ",
     about: "概要", whatTitle: "事業内容",
-    what: "Tory Labsは、クラウドに頼らずユーザーのデバイス上で直接動くAIソフトウェアを作っています。会議メモ、音声入力、AI開発ツールなど、日々の仕事に役立つツールに注力しています。",
+    what: "Tory Labsは、開発、会議の記録、音声入力を支えるデスクトップAIツールを作っています。voinはローカルで文字起こしし、vicaは選んだコーディングエージェントとご自身のアカウントを使います。",
     missionTitle: "ミッション", mission: "データを手放さなくても、誰もが役立つAIを使えるようにすること。",
     values: [
       { t: "プライバシー優先のオンデバイスAI", d: "できる限りユーザーのデバイス上で処理します。データはあなたのものです。" },
-      { t: "オープンソース", d: "コードを公開し、誰でも確認・改善できるようにしています。" },
+      { t: "オープンソース", d: "vibeのコードを公開しています。GitHubで確認し、改善に参加できます。" },
       { t: "素早いリリース", d: "小さく作って早く出し、実際の利用から改善します。" },
     ],
     products: "製品",
@@ -56,17 +60,17 @@ const text = {
     contactTitle: "お問い合わせ", contactText: "提携、協業、製品に関するご質問はメールでどうぞ。",
   },
   ko: {
-    title: "Tory Labs | 내 기기에서 돌아가는 실용 AI",
-    description: "Tory Labs는 내 기기에서 돌아가고 데이터를 지키는 실용 AI를 만듭니다.",
+    title: "토리랩스 Tory Labs | AI 코딩 도구·로컬 받아쓰기·회의록",
+    description: "AI 코딩 에이전트를 연결하는 vica, 내 PC에서 받아쓰고 회의록을 남기는 voin, 개발 작업을 검증하는 vibe. 토리랩스의 무료 Mac 앱과 개발 도구를 만나 보세요.",
     eyebrow: "온디바이스 · 프라이버시 · 실용 AI",
-    lead: "내 기기에서 돌아가고, 데이터를 밖으로 내보내지 않는 실용 AI.",
+    lead: "내 컴퓨터에서 쓰는 AI 코딩 도구, 받아쓰기와 회의록.",
     view: "제품 보기", contact: "문의하기",
     about: "소개", whatTitle: "하는 일",
-    what: "Tory Labs는 클라우드에 기대지 않고 사용자의 기기에서 바로 돌아가는 AI 소프트웨어를 만듭니다. 회의록, 받아쓰기, AI 개발 도구처럼 매일의 일을 돕는 도구에 집중합니다.",
+    what: "토리랩스(Tory Labs)는 개발, 회의록, 받아쓰기를 돕는 데스크톱 AI 도구를 만듭니다. voin은 로컬에서 받아쓰고, vica는 사용자가 선택한 코딩 에이전트와 본인 계정으로 작업합니다.",
     missionTitle: "미션", mission: "데이터를 내주지 않고도 누구나 쓸모 있는 AI를 쓰게 하는 것.",
     values: [
       { t: "프라이버시 우선 온디바이스 AI", d: "가능한 한 사용자 기기에서 처리합니다. 데이터는 사용자의 것입니다." },
-      { t: "오픈소스", d: "코드를 공개해 누구나 살펴보고 고칠 수 있습니다." },
+      { t: "오픈소스", d: "vibe의 코드를 공개합니다. GitHub에서 살펴보고 개선에 참여할 수 있습니다." },
       { t: "빠른 출시", d: "작게 만들고 빨리 내놓고, 실제 사용으로 다듬습니다." },
     ],
     products: "제품",
@@ -83,12 +87,7 @@ const text = {
 
 export function homeMetadata(lang: Lang): Metadata {
   const { title, description } = text[lang];
-  return {
-    title, description,
-    alternates: alternates(lang, "/"),
-    openGraph: { type: "website", url: localized(lang, "/"), siteName: "Tory Labs", title, description },
-    twitter: { card: "summary_large_image", title, description },
-  };
+  return pageMetadata(lang, "/", title, description);
 }
 
 function H2({ children }: { children: string }) {
@@ -122,6 +121,7 @@ export default function Home({ lang }: { lang: Lang }) {
   const t = text[lang];
   return (
     <>
+      <PageSchema lang={lang} path="/" title={t.title} description={t.description} questions={homeQuestions[lang]} />
       <Header lang={lang} path="/" home />
       <main lang={lang} className="mx-auto max-w-6xl overflow-x-clip px-6">
         <section className="relative isolate pt-28 pb-24 sm:pt-40 sm:pb-32">
@@ -175,16 +175,16 @@ export default function Home({ lang }: { lang: Lang }) {
             {founder.photo ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={founder.photo} alt={founder.title} className="h-28 w-28 rounded-full object-cover" />
-            ) : (
-              <div className="flex h-28 w-28 items-center justify-center rounded-full border border-dashed border-[#d4d4dc] text-xs text-[var(--muted)]">{t.photo} {TBD}</div>
-            )}
+            ) : null}
             <div>
               <h3 className="text-xl font-semibold">{founder.title}{founder.name && ` · ${founder.name}`}</h3>
-              <p className="mt-2 leading-relaxed text-[var(--muted)]">{founder.bio || `${t.bio} ${TBD}`}</p>
+              {founder.bio && <p className="mt-2 leading-relaxed text-[var(--muted)]">{founder.bio}</p>}
               <a href={company.github} className="mt-3 inline-block text-sm underline underline-offset-4" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
         </section>
+
+        <Questions title={faqTitles[lang]} items={homeQuestions[lang]} />
 
         <section id="contact" className="scroll-mt-20 border-t border-[var(--line)] py-24">
           <H2>{t.contactTitle}</H2>

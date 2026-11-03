@@ -1,6 +1,7 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { alternates, localized, type Lang } from "@/content/i18n";
+import { localized, type Lang } from "@/content/i18n";
 import { LegalPage } from "@/components/Chrome";
 import { company } from "@/content/company";
 
@@ -102,10 +103,16 @@ function body(lang: Lang): React.ReactNode {
   );
 }
 
+const description = {
+  "en": "Terms for using Tory Labs products, connected services and content tools, including user responsibilities and permissions.",
+  "ko": "Tory Labs 제품과 연결 서비스, 콘텐츠 도구 이용에 관한 책임과 권한, 이용 조건을 안내합니다.",
+  "ja": "Tory Labsの製品、連携サービス、コンテンツツールの利用条件、責任と権限について説明します。"
+};
+
 export function termsMetadata(lang: Lang): Metadata {
-  return { title: `${title[lang]} | Tory Labs`, alternates: alternates(lang, "/terms") };
+  return pageMetadata(lang, "/terms", `${title[lang]} | Tory Labs`, description[lang]);
 }
 
 export default function Terms({ lang }: { lang: Lang }) {
-  return <LegalPage lang={lang} path="/terms" title={title[lang]} updated={UPDATED[lang]}>{body(lang)}</LegalPage>;
+  return <LegalPage lang={lang} path="/terms" title={title[lang]} description={description[lang]} updated={UPDATED[lang]}>{body(lang)}</LegalPage>;
 }

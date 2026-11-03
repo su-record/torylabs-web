@@ -1,225 +1,17 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { alternates, localized, type Lang } from "@/content/i18n";
+import { localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
 import VicaScene from "@/views/VicaScene";
+import { PageSchema, softwareEntity } from "@/components/StructuredData";
+import Questions from "@/components/Questions";
 
-// Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-11-03 (pattern access included).
-export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
-// The newest release (scripts/release.sh in the vica repository publishes it there).
-export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
-export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
-
-const text = {
-  en: {
-    title: "vica | Hand your coding requests to the agents on your Mac | Tory Labs",
-    description: "vica is a desktop app that splits a coding request into steps and hands each step to Claude Code, Codex, Antigravity, Grok or Muse Code on your computer.",
-    eyebrow: "macOS · Free app", eyebrowRelay: " · Optional relay from US$4.99/month",
-    lead: "Say what you want built. vica sees it through.",
-    sub: "Tell vica the work in one chat, from your Mac or your phone. It hands each step to the coding agents you already use, and reports back when it is done.",
-    mac: "Download for Mac (Apple Silicon)", windows: "Windows · Coming soon", subscribe: "Subscribe to the relay",
-    howTitle: "How it works",
-    how: [
-      { t: "Write the request", d: "In vica on your Mac, or from your phone. A greeting gets a reply; work gets a plan." },
-      { t: "vica hands it out", d: "Each step goes to the agent suited to it, and runs in the background." },
-      { t: "Follow it anywhere", d: "Watch the work, answer questions and stop it from vica or your phone." },
-    ],
-    featuresTitle: "Features",
-    features: [
-      { t: "Requests, finished", d: "vica plans a multi-step request, runs the steps, and waits for you only where a person should decide." },
-      { t: "Roles", d: "Planning, image drafts, implementation, debugging and tests, review, screen checks, research, UI and bulk reading. Review goes to a different company than the one that built." },
-      { t: "Runs in the background", d: "Agents run without a window. Their output is kept, so you can close vica and pick up where it left off." },
-      { t: "Limits and confirmations", d: "Each request has time and token limits, and vica asks before anything hard to undo." },
-      { t: "Terminal", d: "Tabs and splits, sessions that keep running after the window closes, and projects on SSH servers. Agents in one tab can read another tab's screen and type into it with the vica command." },
-      { t: "Your own agents", d: "vica uses the agents with your own accounts and plans. It does not sell model access." },
-      { t: "Computer use", d: "Agents can work the apps on your Mac. Pick apps they may only read, answer before anything hard to undo, from the Mac or your phone, and stop it any time." },
-      { t: "Waiting on you", d: "Questions, permissions and sign-ins from every project gather in one list at the top right, with failures and unread answers beside them." },
-      { t: "Work history", d: "The Claude Code and Codex sessions you opened and vica's chats, per project or group. Resume one in a terminal, or hand it to Chat." },
-      { t: "Projects in groups", d: "Projects, chats and files stack in one sidebar. Gather projects into groups, clone a repository straight into one, and remove a project from vica without touching its files." },
-    ],
-    noLogin: "No sign-up. Just use it.",
-    bugs: "Found a bug? Report it on GitHub",
-    agentsTitle: "The agents you already use",
-    agentsLead: "vica runs the CLIs you have installed, on your own accounts and plans. It does not sell model access.",
-    chatTitle: "Chat: one assistant, models from several companies",
-    chatLead: "Chat is the first tab. You talk to one assistant, Vica; behind it, each step goes to the model suited to it, through Claude Code, Codex, Antigravity, Grok or Muse Code on your Mac.",
-    layaTitle: "A local model, laya, picks",
-    layaLead: "laya is a small decision model that runs locally. For each request it decides:",
-    laya: ["One step or several. Several get a plan of up to 8 steps, which pauses for you where a person should decide, such as a mockup.", "Which role takes it.", "Whether it is hard to undo (deploy, publish, delete, send outside). Then Vica asks you first."],
-    layaNote: "Install it from Settings → laya. vica puts it in its own folder, checks it, runs it on your computer's GPU and stops it when idle.",
-    rolesTitle: "Who does what, by default",
-    roles: [["Plan · build", "Claude Code"], ["Image mockup", "Codex"], ["Canvas mockup", "Claude Code"], ["Debug · test", "Codex"], ["Review", "A different company than the builder"], ["Screen check in a browser", "Antigravity"], ["Research", "Muse Code + Grok, merged"], ["UI · bulk reading", "Muse Code"], ["Conversation", "Claude Code"]],
-    rolesNote: "A company you have not installed hands its roles to one you have; vica works with just one. Settings show who takes each role and how it has done.",
-        chat: [
-      { t: "See it work", d: "An answer shows what is being read and run as it happens. Under it: Copy answer, Hand to review or Hand to build, and Stop while it runs." },
-      { t: "Conversations and a map", d: "Pin, archive or delete conversations; ones left alone for 14 days move to the archive. A map beside the conversation marks each request, and a click takes you back to it." },
-      { t: "Send what you are looking at", d: "Select lines in a file or output in a terminal and choose Send to Vica. It goes straight into the chat box." },
-      { t: "Carry on from your phone", d: "Requests from your phone go into the same conversations the window shows." },
-    ],
-    phoneTitle: "On your phone, it is just a chat",
-    phoneLead: "No terminals to manage. Tell Vica what you need, by voice or text. It opens a terminal on your computer, gives the agent the work, and answers in the chat when it is done.",
-    phoneSteps: ["Just speak. Your words become the request and go to Vica.", "Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "On a tablet, the whole app opens in the browser, not a mirrored screen.", "On any other browser, open your relay's address and approve it with your phone or tablet: scan the code, check the six digits.", "No registered device at hand? Open your computer's name address, scan the code with any phone and draw the pattern you set. The pattern never leaves the phone, five wrong tries lock it, and the browser stays 12 hours.", "While a device is connected, your computer stays awake.", "Everything between your devices and the computer is end-to-end encrypted."],
-    faqTitle: "Questions",
-    faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How do my phone, tablet or browser connect?", "Through a relay: our subscription, or a small one on your own Cloudflare account that vica writes for you. In vica, open Remote → Issue a key and scan the QR code with a phone or tablet. Any browser then opens your relay's address and is approved by that device. Without it, set a name and a pattern for the computer and draw the pattern on any phone."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
-    ctaTitle: "Hand it your next request",
-    pricingTitle: "Pricing",
-    appName: "vica app", appPrice: "Free",
-    relayGuide: ["Set up your relay server", "Make your own relay on a free Cloudflare account. vica writes the files and your agent can deploy them.", "Read the guide"],
-    relayName: "Relay subscription", relayPrice: "US$4.99 / month · US$39.99 / year",
-    relay: [
-      "Connects your phone, tablet or browser and vica through our relay server (vica.torylabs.dev).",
-      "No account: paying gives you a subscription key, which you enter in vica on any computer.",
-      "Billed monthly by Paddle. Taxes may be added at checkout depending on your country.",
-      "Cancel any time; the key works until the end of the paid period.",
-    ],
-    refund: "Refund policy",
-    privacyTitle: "Privacy",
-    privacy: "Your code and prompts go from your computer to the agent providers you use, under their terms, not through our servers. Messages between your phone and vica pass, encrypted, through your own relay server.",
-    policy: "Privacy Policy",
-    reqTitle: "Requirements",
-    req: ["A Mac with Apple Silicon.", "The agent CLIs you want to use, signed in with your own accounts. vica can install and sign in to them from its settings."],
-  },
-  ja: {
-    title: "vica | コーディングの依頼をMacのエージェントに任せる | Tory Labs",
-    description: "vicaは、コーディングの依頼を段階に分け、パソコンにあるClaude Code、Codex、Antigravity、Grok、Muse Codeに任せるデスクトップアプリです。",
-    eyebrow: "macOS · アプリ無料", eyebrowRelay: " · 中継は月額US$4.99から（任意）",
-    lead: "頼むだけで、vicaが最後までやり遂げます。",
-    sub: "Macでもスマートフォンでも、ひとつの会話でvicaに頼むだけ。使い慣れたコーディングエージェントに段階ごとに任せ、終わったら報告します。",
-    mac: "Macをダウンロード（Apple Silicon）", windows: "Windows · 近日公開", subscribe: "中継を購読する",
-    howTitle: "使い方",
-    how: [
-      { t: "依頼を書く", d: "Macのvicaでも、スマートフォンからでも。あいさつには返事を、仕事には計画を返します。" },
-      { t: "vicaが割り振る", d: "各段階を向いたエージェントに任せ、バックグラウンドで動かします。" },
-      { t: "どこからでも見守る", d: "vicaやスマートフォンで作業を見て、質問に答え、止めることもできます。" },
-    ],
-    featuresTitle: "機能",
-    features: [
-      { t: "依頼を最後まで", d: "複数段階の依頼は計画を立てて順に実行し、人が決めるべき所でだけ確認を待ちます。" },
-      { t: "役割", d: "設計、画像案、実装、デバッグとテスト、レビュー、画面確認、調査、UI・大量の読み込み。レビューは実装とは別の会社が担当します。" },
-      { t: "バックグラウンド実行", d: "エージェントはウィンドウなしで動きます。出力は保存されるので、vicaを閉じても続きから再開できます。" },
-      { t: "上限と確認", d: "依頼ごとに時間とトークンの上限があり、元に戻しにくい操作の前には確認します。" },
-      { t: "ターミナル", d: "タブと分割、ウィンドウを閉じても続くセッション、SSHサーバー上のプロジェクト。あるタブのエージェントがvicaコマンドで別のタブの画面を読み、入力を送れます。" },
-      { t: "あなたのエージェント", d: "vicaはあなた自身のアカウントとプランでエージェントを使います。モデルの利用権は販売しません。" },
-      { t: "コンピューター操作", d: "エージェントがMacのアプリを直接操作します。読むだけにするアプリを選び、元に戻しにくい操作はMacかスマートフォンで先に答え、いつでも止められます。" },
-      { t: "応答待ち", d: "すべてのプロジェクトで待っている質問、許可、ログインが右上のひとつの一覧に集まり、失敗や未読の回答も並びます。" },
-      { t: "作業記録", d: "自分で開いたClaude Code・Codexのセッションとvicaの会話を、プロジェクトやグループごとに見られます。ターミナルで再開するか、Chatに渡せます。" },
-      { t: "プロジェクトのグループ", d: "プロジェクト、会話、ファイルがひとつのサイドバーに重なります。プロジェクトをグループにまとめ、リポジトリをグループに直接クローンし、ファイルはそのままvicaからだけ外せます。" },
-    ],
-    noLogin: "ログイン不要。そのまま使えます。",
-    bugs: "不具合はGitHubでお知らせください",
-    agentsTitle: "いま使っているエージェントのまま",
-    agentsLead: "インストール済みのCLIを、ご自身のアカウントとプランで動かします。モデルの利用権は販売しません。",
-    chatTitle: "チャット：アシスタントはひとり、モデルは複数の会社から",
-    chatLead: "Chat は最初のタブです。話す相手は Vica ひとり。その裏で、ステップごとに向いたモデルへ、Mac の Claude Code、Codex、Antigravity、Grok、Muse Code を通して任せます。",
-    layaTitle: "選ぶのはローカルモデル laya",
-    layaLead: "laya はローカルで動く小さな判断モデルです。リクエストごとに決めます:",
-    laya: ["1ステップか複数か。複数なら最大8ステップの計画を立て、モックなど人が決めるべきところで止まります。", "どのロールが担当するか。", "取り消しにくい作業(デプロイ・公開・削除・外部送信)か。そうなら Vica が先に確認します。"],
-    layaNote: "設定 → laya からインストールします。vica が自分のフォルダーに入れて検証し、このコンピューターの GPU で動かし、使わないときは止めます。",
-    rolesTitle: "標準の担当",
-    roles: [["計画・実装", "Claude Code"], ["画像モック", "Codex"], ["キャンバスモック", "Claude Code"], ["デバッグ・テスト", "Codex"], ["レビュー", "実装とは別の会社"], ["ブラウザで画面確認", "Antigravity"], ["調査", "Muse Code と Grok を並行してまとめる"], ["UI・大量読み込み", "Muse Code"], ["会話", "Claude Code"]],
-    rolesNote: "入っていない会社のロールは、入っている会社へ移ります。1社だけでも使えます。設定でロールの担当と実績を確認できます。",
-        chat: [
-      { t: "作業の様子が見える", d: "何を読み、何を実行しているかが答えにその場で出ます。答えの下で「回答をコピー」「レビューを任せる」「実装を任せる」、実行中なら「停止」。" },
-      { t: "会話リストとマップ", d: "会話を固定・アーカイブ・削除できます。14日触れていない会話はアーカイブへ移ります。会話の横のマップにリクエストごとの印があり、押すとそこへ戻ります。" },
-      { t: "見ているものをそのまま渡す", d: "ファイルで選んだ行やターミナルで選んだ出力を「Vica に渡す」と、チャットの入力欄にそのまま入ります。" },
-      { t: "スマートフォンで続ける", d: "スマートフォンから送ったリクエストは、ウィンドウと同じ会話に入ります。" },
-    ],
-    phoneTitle: "スマートフォンでは、会話だけ",
-    phoneLead: "ターミナルを管理する必要はありません。声でも文字でもVicaに頼めば、コンピューターでターミナルを開いてエージェントに任せ、終わったら会話で答えます。",
-    phoneSteps: ["話すだけ。声がそのまま依頼になってVicaに届きます。", "どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "タブレットでは画面ミラーリングではなく、アプリの画面全体がブラウザで開きます。", "ほかのブラウザでは自分の中継のアドレスを開き、スマートフォンかタブレットで承認します。コードを読み取り、6桁の数字を確かめるだけです。", "登録したデバイスが手元にないときは、コンピューターの名前のアドレスを開き、どのスマートフォンでもコードを読み取って決めておいたパターンを描きます。パターンはスマートフォンの外に出ず、5回間違えるとロックされ、ブラウザは12時間で切れます。", "デバイスが接続している間、コンピューターはスリープしません。", "デバイスとコンピューターの間はエンドツーエンドで暗号化されます。"],
-    faqTitle: "よくある質問",
-    faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォン、タブレット、ブラウザはどうつなぎますか？", "中継を通します。当社のサブスクリプションか、vicaが作るファイルで自分のCloudflareアカウントに置く小さな中継です。vicaのリモート → 認証キーを発行のQRコードをスマートフォンかタブレットで読み取って登録すると、そのあとはどのブラウザでも自分の中継のアドレスを開き、そのデバイスで承認して入れます。手元にないときは、コンピューターに名前とパターンを決めておき、どのスマートフォンでもパターンを描いて入れます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
-    ctaTitle: "次の依頼を任せてみましょう",
-    pricingTitle: "料金",
-    appName: "vicaアプリ", appPrice: "無料",
-    relayGuide: ["中継サーバーの作り方", "無料のCloudflareアカウントに自分の中継サーバーを作れます。ファイルはvicaが作り、デプロイはエージェントに任せられます。", "ガイドを見る"],
-    relayName: "中継サブスクリプション", relayPrice: "月額 US$4.99 · 年額 US$39.99",
-    relay: [
-      "当社の中継サーバー（vica.torylabs.dev）を通じて、スマートフォン、タブレット、ブラウザとvicaをつなぎます。",
-      "アカウント不要。支払うとサブスクリプションキーが発行され、どのパソコンのvicaにも入力して使えます。",
-      "Paddleが毎月または毎年請求します。国によっては決済時に税金が加算されます。",
-      "いつでも解約でき、支払済みの期間が終わるまでキーは有効です。",
-    ],
-    refund: "返金ポリシー",
-    privacyTitle: "プライバシー",
-    privacy: "コードとプロンプトは、パソコンから利用中のエージェント提供元へ、その提供元の規約のもとで送られ、当社のサーバーは通りません。スマートフォンとvicaの間のメッセージは、暗号化されて自分の中継サーバーを通ります。",
-    policy: "プライバシーポリシー",
-    reqTitle: "動作環境",
-    req: ["Apple Silicon搭載のMac。", "使いたいエージェントCLIと、ご自身のアカウントでのログイン。vicaの設定からインストールとログインができます。"],
-  },
-  ko: {
-    title: "vica | 코딩 요청을 Mac의 에이전트에게 맡기기 | Tory Labs",
-    description: "vica는 코딩 요청을 단계로 나눠 내 컴퓨터의 Claude Code, Codex, Antigravity, Grok, Muse Code에게 맡기는 데스크톱 앱입니다.",
-    eyebrow: "macOS · 앱 무료", eyebrowRelay: " · 중계 월 US$4.99부터 (선택)",
-    lead: "말로 맡기면, vica가 끝까지 해냅니다.",
-    sub: "Mac에서든 휴대폰에서든 대화 하나로 말하면 됩니다. 이미 쓰는 코딩 에이전트들에게 단계별로 맡기고, 끝나면 보고합니다.",
-    mac: "Mac 다운로드 (Apple Silicon)", windows: "Windows · 곧 공개", subscribe: "중계 구독하기",
-    howTitle: "이렇게 씁니다",
-    how: [
-      { t: "요청을 적습니다", d: "Mac의 vica에서도, 휴대폰에서도. 인사에는 답을, 일에는 계획을 돌려줍니다." },
-      { t: "vica가 나눠 맡깁니다", d: "단계마다 알맞은 에이전트에게 맡기고, 뒤에서 실행합니다." },
-      { t: "어디서든 지켜봅니다", d: "vica나 휴대폰에서 작업을 보고, 질문에 답하고, 멈출 수도 있습니다." },
-    ],
-    featuresTitle: "기능",
-    features: [
-      { t: "요청을 끝까지", d: "여러 단계 요청은 계획을 세워 차례로 실행하고, 사람이 정해야 하는 곳에서만 확인을 기다립니다." },
-      { t: "역할", d: "설계, 이미지 시안, 구현, 디버깅과 테스트, 리뷰, 화면 확인, 조사, UI·대량 읽기. 리뷰는 구현한 회사와 다른 회사가 맡습니다." },
-      { t: "뒤에서 실행", d: "에이전트는 창 없이 실행됩니다. 출력이 저장되어 vica를 닫았다 열어도 이어서 받습니다." },
-      { t: "상한과 확인", d: "요청마다 시간과 토큰 상한이 있고, 되돌리기 어려운 일은 먼저 묻습니다." },
-      { t: "터미널", d: "탭과 분할, 창을 닫아도 계속 도는 세션, SSH 서버의 프로젝트. 한 탭의 에이전트가 vica 명령으로 다른 탭의 화면을 읽고 입력을 보낼 수 있습니다." },
-      { t: "내 에이전트", d: "vica는 사용자 본인의 계정과 요금제로 에이전트를 씁니다. 모델 사용권을 팔지 않습니다." },
-      { t: "컴퓨터 사용", d: "에이전트가 Mac의 앱을 직접 조작합니다. 읽기만 할 앱을 고르고, 되돌리기 어려운 동작은 Mac이나 휴대폰에서 먼저 답하며, 언제든 멈출 수 있습니다." },
-      { t: "응답 대기", d: "모든 프로젝트에서 나를 기다리는 질문, 권한, 로그인이 오른쪽 위 한 목록에 모이고, 실패와 안 읽은 답도 함께 보입니다." },
-      { t: "작업 기록", d: "내가 연 Claude Code·Codex 세션과 vica 대화를 프로젝트나 그룹별로 모아 봅니다. 터미널에서 이어서 하거나 Chat으로 넘깁니다." },
-      { t: "프로젝트 그룹", d: "프로젝트, 대화, 파일이 사이드바 하나에 쌓입니다. 프로젝트를 그룹으로 묶고, 저장소를 그룹으로 바로 클론하고, 파일은 그대로 둔 채 vica에서만 뺄 수 있습니다." },
-    ],
-    noLogin: "로그인 없이 그냥 사용하세요.",
-    bugs: "버그는 GitHub 이슈로 알려 주세요",
-    agentsTitle: "이미 쓰는 에이전트 그대로",
-    agentsLead: "설치해 둔 CLI를 내 계정과 요금제로 실행합니다. 모델 사용권을 팔지 않습니다.",
-    chatTitle: "채팅: 비서는 하나, 모델은 여러 회사에서",
-    chatLead: "Chat은 첫 탭입니다. 말할 상대는 Vica 하나이고, 그 뒤에서 단계마다 맞는 모델에게 Mac의 Claude Code, Codex, Antigravity, Grok, Muse Code를 통해 맡깁니다.",
-    layaTitle: "고르는 건 로컬 모델 laya",
-    layaLead: "laya는 내 컴퓨터에서 돌아가는 작은 판단 모델입니다. 요청마다 정합니다:",
-    laya: ["한 단계인지 여러 단계인지. 여러 단계면 최대 8단계 계획을 세우고, 시안처럼 사람이 정해야 할 곳에서 멈춥니다.", "어느 역할이 맡을지.", "되돌리기 어려운 일(배포·공개·삭제·외부 전송)인지. 그러면 Vica가 먼저 묻습니다."],
-    layaNote: "설정 → laya에서 설치합니다. vica가 자기 폴더에 받아 검증하고, 내 컴퓨터의 GPU로 돌리고, 쓰지 않으면 멈춥니다.",
-    rolesTitle: "기본 담당",
-    roles: [["설계·구현", "Claude Code"], ["이미지 시안", "Codex"], ["캔버스 시안", "Claude Code"], ["디버깅·테스트", "Codex"], ["리뷰", "구현한 곳과 다른 회사"], ["브라우저 화면 확인", "Antigravity"], ["조사", "Muse Code와 Grok을 함께 돌려 합침"], ["UI·대량 읽기", "Muse Code"], ["대화", "Claude Code"]],
-    rolesNote: "설치하지 않은 회사의 역할은 설치한 회사로 옮겨 갑니다. 한 회사만 있어도 됩니다. 설정에서 역할 담당과 성과 기록을 볼 수 있습니다.",
-        chat: [
-      { t: "일하는 모습이 보입니다", d: "무엇을 읽고 실행하는지 답에 그때그때 나옵니다. 답 아래에서 답 복사, 리뷰 맡기기·구현 맡기기, 도는 중이면 멈추기." },
-      { t: "대화 목록과 맵", d: "대화를 고정·보관·삭제합니다. 14일 동안 손대지 않은 대화는 보관함으로 갑니다. 대화 옆 맵에 요청마다 표시가 있어 누르면 그곳으로 돌아갑니다." },
-      { t: "보고 있는 것을 바로 넘기기", d: "파일에서 고른 줄이나 터미널에서 고른 출력을 Vica에 전달하면 채팅 입력창에 바로 들어갑니다." },
-      { t: "휴대폰에서 이어서", d: "휴대폰에서 보낸 요청은 창에 보이는 같은 대화로 들어갑니다." },
-    ],
-    phoneTitle: "휴대폰에서는 대화만",
-    phoneLead: "터미널을 관리할 필요가 없습니다. 말이나 글로 Vica에게 맡기면, 컴퓨터에서 터미널을 열어 에이전트에게 지시하고 끝나면 대화로 답합니다.",
-    phoneSteps: ["말로 요청하세요. 말한 내용이 그대로 Vica에게 전달됩니다.", "어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "태블릿에서는 화면 미러링이 아니라 앱 화면 전체가 브라우저로 열립니다.", "다른 브라우저에서는 내 중계 주소를 열고 휴대폰이나 패드로 승인합니다. 코드를 찍고 6자리 숫자를 확인하면 됩니다.", "등록한 기기가 손에 없으면 컴퓨터 이름 주소를 열고, 아무 휴대폰으로나 코드를 찍어 정해 둔 패턴을 그립니다. 패턴은 휴대폰 밖으로 나가지 않고, 다섯 번 틀리면 잠기며, 브라우저는 12시간 뒤 끊깁니다.", "기기가 연결된 동안 컴퓨터는 잠들지 않습니다.", "기기와 컴퓨터 사이는 종단 간 암호화됩니다."],
-    faqTitle: "자주 묻는 질문",
-    faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰, 태블릿, 브라우저는 어떻게 연결하나요?", "중계를 거칩니다. 저희 구독 중계를 쓰거나, vica가 만들어 주는 파일로 내 Cloudflare 계정에 작은 중계를 둡니다. vica의 원격 → 인증키 발급 QR을 휴대폰이나 패드로 찍어 등록하면, 그 뒤로는 어느 브라우저든 내 중계 주소를 열고 그 기기로 승인해 들어갑니다. 그 기기가 없을 때는 컴퓨터에 이름과 패턴을 정해 두고, 아무 휴대폰으로나 패턴을 그려 들어갑니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
-    ctaTitle: "다음 요청을 맡겨 보세요",
-    pricingTitle: "가격",
-    appName: "vica 앱", appPrice: "무료",
-    relayGuide: ["연결 서버 구축 가이드", "무료 Cloudflare 계정에 내 연결 서버를 만들 수 있습니다. 파일은 vica가 만들고 배포는 에이전트에게 맡기면 됩니다.", "가이드 보기"],
-    relayName: "중계 구독", relayPrice: "월 US$4.99 · 연 US$39.99",
-    relay: [
-      "저희 중계 서버(vica.torylabs.dev)를 통해 휴대폰, 태블릿, 브라우저와 vica를 잇습니다.",
-      "계정 없음: 결제하면 구독 키가 나오고, 어느 컴퓨터의 vica에든 넣어 씁니다.",
-      "Paddle이 매달 또는 매년 청구합니다. 나라에 따라 결제 때 세금이 더해질 수 있습니다.",
-      "언제든 해지할 수 있고, 결제한 기간이 끝날 때까지 키를 쓸 수 있습니다.",
-    ],
-    refund: "환불 정책",
-    privacyTitle: "개인정보",
-    privacy: "코드와 프롬프트는 내 컴퓨터에서 사용 중인 에이전트 제공사로, 그 회사의 약관에 따라 바로 갑니다. 저희 서버를 거치지 않습니다. 휴대폰과 vica 사이의 메시지는 암호화되어 내 연결 서버를 거칩니다.",
-    policy: "개인정보처리방침",
-    reqTitle: "필요 환경",
-    req: ["Apple Silicon Mac.", "쓰려는 에이전트 CLI와 본인 계정 로그인. vica 설정에서 설치와 로그인을 할 수 있습니다."],
-  },
-} satisfies Record<Lang, unknown>;
+import { vicaText as text, DOWNLOAD, ISSUES, SUBSCRIBE } from "@/content/vica";
 
 export function vicaMetadata(lang: Lang): Metadata {
   const { title, description } = text[lang];
-  return { title, description, alternates: alternates(lang, "/vica"), openGraph: { title: "vica by Tory Labs", url: localized(lang, "/vica"), description } };
+  return pageMetadata(lang, "/vica", title, description);
 }
 
 const AGENTS = ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code"];
@@ -243,8 +35,12 @@ const ICONS = [
 export default function Vica({ lang }: { lang: Lang }) {
   const t = text[lang];
   const link = "underline underline-offset-4";
+  const software = softwareEntity({ name: "vica", lang, description: t.description,
+    features: t.features.map((f) => f.t), download: DOWNLOAD, requirements: t.req.join(" ") });
   return (
     <>
+      <PageSchema lang={lang} path="/vica" title={t.title} description={t.description} questions={t.faq}
+        mainEntity={software["@id"]} entities={[software]} />
       <Header lang={lang} path="/vica" />
       <main lang={lang} className="mx-auto max-w-6xl overflow-x-clip px-6">
         <section className="relative isolate pt-20 pb-16 text-center sm:pt-28">
@@ -255,7 +51,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <p className="rise mt-8 inline-flex items-center gap-2.5 rounded-full border border-[var(--line)] bg-white/80 px-3.5 py-1.5 font-mono text-xs shadow-[0_1px_2px_rgba(16,16,24,.04)] text-[var(--muted)]" style={{ ["--i" as string]: 1 }}><span className="pulse-dot" aria-hidden="true" />{t.eyebrow}<span className="hidden">{t.eyebrowRelay}</span></p>
           <h1 className="ink rise mt-5 pb-2 text-[clamp(64px,12vw,148px)] font-semibold leading-[.92] tracking-[-0.05em]" style={{ ["--i" as string]: 2 }}>vica</h1>
           <p className="rise mx-auto mt-6 max-w-2xl text-xl leading-relaxed sm:text-2xl" style={{ ["--i" as string]: 3 }}>{t.lead}</p>
-          <p className="rise mx-auto mt-4 max-w-2xl leading-relaxed text-[var(--muted)]" style={{ ["--i" as string]: 4 }}>{t.sub}</p>
+          <p className="rise mx-auto mt-4 max-w-2xl leading-relaxed text-[var(--muted)]" style={{ ["--i" as string]: 4 }}>{t.description} {t.sub}</p>
           <div className="rise mt-10 flex flex-wrap justify-center gap-3" style={{ ["--i" as string]: 5 }}>
             <a href={DOWNLOAD} className="inline-flex items-center gap-2 rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)] shadow-[0_10px_24px_-12px_rgba(91,75,214,.55)] transition hover:bg-[#2a2a33]">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
@@ -394,17 +190,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <p className="mt-6"><a href={ISSUES} className={link}>{t.bugs}</a></p>
         </section>
 
-        <section className="border-t border-[var(--line)] py-24">
-          <H2>{t.faqTitle}</H2>
-          <dl className="max-w-3xl space-y-8">
-            {t.faq.map(([q, answer]) => (
-              <div key={q} data-reveal>
-                <dt className="font-semibold">{q}</dt>
-                <dd className="mt-2 leading-relaxed text-[var(--muted)]">{answer}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+        <Questions title={t.faqTitle} items={t.faq} />
 
         <section className="relative isolate border-t border-[var(--line)] py-28 text-center">
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgba(124,108,240,.10),transparent_70%)]" />

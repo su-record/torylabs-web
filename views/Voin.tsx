@@ -1,16 +1,18 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Header, Footer } from "@/components/Chrome";
-import { alternates, localized, type Lang } from "@/content/i18n";
+import { localized, type Lang } from "@/content/i18n";
 import { voinText } from "@/content/voin";
 import release from "@/content/voin-release.json";
+import { PageSchema, softwareEntity } from "@/components/StructuredData";
+import Questions from "@/components/Questions";
+import { faqTitles, voinAnswers } from "@/content/questions";
 
 export function voinMetadata(lang: Lang): Metadata {
   const { title, description } = voinText[lang];
-  return { title, description, alternates: alternates(lang, "/voin"),
-    openGraph: { type: "website", title, description, url: localized(lang, "/voin"), siteName: "Tory Labs" },
-  };
+  return pageMetadata(lang, "/voin", title, description);
 }
 
 function Downloads({ lang }: { lang: Lang }) {
@@ -27,7 +29,11 @@ function Downloads({ lang }: { lang: Lang }) {
 
 export default function Voin({ lang }: { lang: Lang }) {
   const t = voinText[lang];
+  const questions = voinAnswers(lang);
+  const software = softwareEntity({ name: "voin", lang, description: t.description,
+    features: t.features.map((f) => f.t), download: release.download, version: release.version, requirements: t.requirements });
   return <>
+    <PageSchema lang={lang} path="/voin" title={t.title} description={t.description} questions={questions} entities={[software]} mainEntity={software["@id"]} />
     <Header lang={lang} path="/voin" />
     <main lang={lang} className="mx-auto max-w-6xl overflow-x-clip px-6">
       <section className="grid items-center gap-14 pt-24 pb-20 lg:grid-cols-[1fr_1fr] lg:pt-32 lg:pb-28">
@@ -36,7 +42,7 @@ export default function Voin({ lang }: { lang: Lang }) {
           <h1 className="mt-6 whitespace-pre-line text-[clamp(38px,5vw,64px)] font-semibold leading-[1.2] tracking-[-.045em]">{t.lead}</h1>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-[var(--muted)]">{t.intro}</p>
           <div className="mt-9"><Downloads lang={lang} /></div>
-          <p className="mt-4 text-xs text-[var(--muted)]">v{release.version} · {t.requirements}</p>
+          <p className="mt-4 text-xs text-[var(--muted)]">v{release.version} · {t.price} · {t.requirements}</p>
           <p className="mt-2 text-xs text-[var(--muted)]">Windows · {t.soon}</p>
         </div>
         <figure className="min-w-0">
@@ -80,9 +86,11 @@ export default function Voin({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+      <Questions title={faqTitles[lang]} items={questions} />
+
       <section id="download" className="border-t border-[var(--line)] py-20">
         <h2 className="text-3xl font-semibold tracking-tight">{t.installTitle}</h2>
-        <p className="mt-3 text-sm text-[var(--muted)]">v{release.version} · {t.requirements}</p>
+        <p className="mt-3 text-sm text-[var(--muted)]">v{release.version} · {t.price} · {t.requirements}</p>
         <ol className="mt-7 max-w-2xl list-decimal space-y-3 pl-5 text-sm leading-relaxed text-[var(--muted)]">
           {t.install.map((step) => <li key={step}>{step}</li>)}
         </ol>

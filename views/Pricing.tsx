@@ -1,8 +1,9 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { alternates, localized, type Lang } from "@/content/i18n";
+import { localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
-import { SUBSCRIBE } from "@/views/Vica";
+import { SUBSCRIBE } from "@/content/vica";
 
 const text = {
   en: {
@@ -41,7 +42,7 @@ const text = {
 } satisfies Record<Lang, unknown>;
 
 export function pricingMetadata(lang: Lang): Metadata {
-  return { title: `${text[lang].title} | Tory Labs`, description: text[lang].description, alternates: alternates(lang, "/pricing") };
+  return pageMetadata(lang, "/pricing", `${text[lang].title} | Tory Labs`, text[lang].description);
 }
 
 export default function Pricing({ lang }: { lang: Lang }) {

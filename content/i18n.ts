@@ -20,16 +20,6 @@ export function localized(lang: Lang, path: string) {
 export function alternates(lang: Lang, path: string) {
   return {
     canonical: localized(lang, path),
-    languages: Object.fromEntries(langs.map((l) => [l, localized(l, path)])),
+    languages: { ...Object.fromEntries(langs.map((l) => [l, localized(l, path)])), "x-default": localized("en", path) },
   };
 }
-
-// Before the page renders: an English page opens in Japanese or Korean when the
-// browser prefers it, unless the visitor picked a language (links with data-lang).
-export const languageScript = `(function(){
-var k="lang",s;try{s=localStorage.getItem(k)}catch(e){}
-document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-lang]");if(a)try{localStorage.setItem(k,a.dataset.lang)}catch(e){}});
-var p=location.pathname,m=/^\\/(ja|ko)(\\/|$)/.exec(p);if(m){document.documentElement.lang=m[1];return}
-var l=s||(navigator.languages&&navigator.languages[0]||navigator.language||"").slice(0,2).toLowerCase();
-if(l==="ja"||l==="ko")location.replace("/"+l+(p==="/"?"":p)+location.search+location.hash);
-})();`;

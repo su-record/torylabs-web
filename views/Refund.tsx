@@ -1,5 +1,6 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
-import { alternates, type Lang } from "@/content/i18n";
+import { type Lang } from "@/content/i18n";
 import { LegalPage } from "@/components/Chrome";
 import { company } from "@/content/company";
 
@@ -63,10 +64,16 @@ const body: Record<Lang, React.ReactNode> = {
   ),
 };
 
+const description = {
+  "en": "Refund and cancellation terms for Tory Labs subscriptions.",
+  "ko": "Tory Labs 구독 환불과 해지 조건을 안내합니다.",
+  "ja": "Tory Labsのサブスクリプションの返金・解約条件について説明します。"
+};
+
 export function refundMetadata(lang: Lang): Metadata {
-  return { title: `${title[lang]} | Tory Labs`, alternates: alternates(lang, "/refund") };
+  return pageMetadata(lang, "/refund", `${title[lang]} | Tory Labs`, description[lang]);
 }
 
 export default function Refund({ lang }: { lang: Lang }) {
-  return <LegalPage lang={lang} path="/refund" title={title[lang]} updated={UPDATED[lang]}>{body[lang]}</LegalPage>;
+  return <LegalPage lang={lang} path="/refund" title={title[lang]} description={description[lang]} updated={UPDATED[lang]}>{body[lang]}</LegalPage>;
 }

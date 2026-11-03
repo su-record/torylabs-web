@@ -1,5 +1,6 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
-import { alternates, type Lang } from "@/content/i18n";
+import { type Lang } from "@/content/i18n";
 import { LegalPage } from "@/components/Chrome";
 import { company } from "@/content/company";
 
@@ -14,7 +15,7 @@ const body: Record<Lang, React.ReactNode> = {
       <p>This Privacy Policy explains how Tory Labs (&quot;we&quot;, &quot;us&quot;) handles information across our website, our products, and our content automation tools.</p>
 
       <h2>This website</h2>
-      <p>torylabs.dev does not collect personal data. It uses no cookies, no analytics, and no tracking. If you choose a language, that choice is kept in your browser only. If you email us, we use your message and address only to reply.</p>
+      <p>torylabs.dev does not collect personal data. It uses no cookies, no analytics, and no tracking. If you email us, we use your message and address only to reply.</p>
 
       <h2>Our products</h2>
       <p>Our products are designed to run on your own device whenever possible.</p>
@@ -60,7 +61,7 @@ const body: Record<Lang, React.ReactNode> = {
       <p>本プライバシーポリシーは、Tory Labs（以下「当社」）が、ウェブサイト、製品、コンテンツ自動化ツールで情報をどう扱うかを説明します。翻訳と英語版が異なる場合は英語版が優先します。</p>
 
       <h2>このウェブサイト</h2>
-      <p>torylabs.devは個人データを収集しません。Cookie、アクセス解析、トラッキングは使いません。言語を選ぶと、その選択はお使いのブラウザにだけ保存されます。メールをいただいた場合、その内容とアドレスは返信のためだけに使います。</p>
+      <p>torylabs.devは個人データを収集しません。Cookie、アクセス解析、トラッキングは使いません。メールをいただいた場合、その内容とアドレスは返信のためだけに使います。</p>
 
       <h2>当社の製品</h2>
       <p>当社の製品は、できる限りユーザーのデバイス上で動くよう作られています。</p>
@@ -106,7 +107,7 @@ const body: Record<Lang, React.ReactNode> = {
       <p>이 개인정보처리방침은 Tory Labs(&quot;저희&quot;)가 웹사이트, 제품, 콘텐츠 자동화 도구에서 정보를 어떻게 다루는지 설명합니다. 번역본과 영문본이 다르면 영문본을 따릅니다.</p>
 
       <h2>이 웹사이트</h2>
-      <p>torylabs.dev는 개인정보를 수집하지 않습니다. 쿠키, 분석 도구, 추적을 쓰지 않습니다. 언어를 고르면 그 선택은 사용자의 브라우저에만 저장됩니다. 메일을 보내시면 그 내용과 주소는 답장에만 씁니다.</p>
+      <p>torylabs.dev는 개인정보를 수집하지 않습니다. 쿠키, 분석 도구, 추적을 쓰지 않습니다. 메일을 보내시면 그 내용과 주소는 답장에만 씁니다.</p>
 
       <h2>저희 제품</h2>
       <p>저희 제품은 가능한 한 사용자의 기기에서 돌아가도록 만듭니다.</p>
@@ -149,10 +150,16 @@ const body: Record<Lang, React.ReactNode> = {
   ),
 };
 
+const description = {
+  "en": "How Tory Labs handles website data, local processing, external AI providers and product privacy.",
+  "ko": "Tory Labs 웹사이트와 제품의 개인정보 처리, 로컬 처리와 외부 AI 서비스 이용 방식을 설명합니다.",
+  "ja": "Tory Labsのウェブサイトと製品における個人情報、ローカル処理、外部AIサービスの利用について説明します。"
+};
+
 export function privacyMetadata(lang: Lang): Metadata {
-  return { title: `${title[lang]} | Tory Labs`, alternates: alternates(lang, "/privacy") };
+  return pageMetadata(lang, "/privacy", `${title[lang]} | Tory Labs`, description[lang]);
 }
 
 export default function Privacy({ lang }: { lang: Lang }) {
-  return <LegalPage lang={lang} path="/privacy" title={title[lang]} updated={UPDATED[lang]}>{body[lang]}</LegalPage>;
+  return <LegalPage lang={lang} path="/privacy" title={title[lang]} description={description[lang]} updated={UPDATED[lang]}>{body[lang]}</LegalPage>;
 }

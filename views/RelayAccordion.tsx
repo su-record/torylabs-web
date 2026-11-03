@@ -120,12 +120,11 @@ export default function RelayAccordion({ steps, prompt, selfLabel, labels, folde
           const here = i === open;
           return (
             <div key={title} className={`overflow-hidden rounded-2xl border bg-[var(--card)] transition-[flex-grow] duration-300 lg:basis-[76px] ${here ? "border-[#7c6cf0] lg:grow" : "border-[var(--line)] lg:grow-0"}`}>
-              <button type="button" aria-expanded={here} aria-controls={here ? `relay-step-${i}` : undefined} onClick={() => setOpen(i)} className={`flex w-full items-center gap-3 p-4 text-left ${here ? "" : "lg:h-full lg:flex-col"}`}>
+              <button type="button" aria-expanded={here} aria-controls={`relay-step-${i}`} onClick={() => setOpen(i)} className={`flex w-full items-center gap-3 p-4 text-left ${here ? "" : "lg:h-full lg:flex-col"}`}>
                 <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-sm font-semibold text-white" style={{ background: here ? PURPLE : "#a8a3c9" }}>{i + 1}</span>
                 <span className={`font-semibold ${here ? "" : "lg:[writing-mode:vertical-rl]"}`}>{title}</span>
               </button>
-              {here && (
-                <div id={`relay-step-${i}`} className="px-5 pb-5 lg:w-[calc(1104px-3*88px-40px)] lg:max-w-full">
+                <div id={`relay-step-${i}`} hidden={!here} className="px-5 pb-5 lg:w-[calc(1104px-3*88px-40px)] lg:max-w-full">
                   <p className="leading-relaxed text-[var(--muted)]">{body}</p>
                   <div className="mt-5"><Picture step={i} labels={labels} prompt={prompt} tokenShown="••••••••••••" folder={folder} address={address} /></div>
                   {i === 1 && (
@@ -138,7 +137,6 @@ export default function RelayAccordion({ steps, prompt, selfLabel, labels, folde
                     </div>
                   )}
                 </div>
-              )}
             </div>
           );
         })}

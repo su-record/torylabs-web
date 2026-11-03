@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { company } from "@/content/company";
+import { company, TBD } from "@/content/company";
 import { langs, langNames, localized, type Lang } from "@/content/i18n";
+import { PageSchema } from "./StructuredData";
 
 const text = {
   en: {
@@ -20,13 +21,13 @@ const text = {
   },
 } satisfies Record<Lang, unknown>;
 
-/** Links to this page in the other languages; the choice is remembered (languageScript). */
+/** Stable language URLs let visitors and crawlers reach every translation. */
 function Languages({ lang, path }: { lang: Lang; path: string }) {
   return (
-    <nav className="flex gap-3 text-sm">
+    <nav className="flex gap-2 whitespace-nowrap text-xs sm:gap-3 sm:text-sm">
       {langs.map((l) => l === lang
         ? <span key={l} className="font-medium">{langNames[l]}</span>
-        : <a key={l} href={localized(l, path)} data-lang={l} hrefLang={l} className="text-[var(--muted)] transition-colors hover:text-[var(--fg)]">{langNames[l]}</a>)}
+        : <a key={l} href={localized(l, path)} data-lang={l} hrefLang={l} lang={l} className="text-[var(--muted)] transition-colors hover:text-[var(--fg)]">{langNames[l]}</a>)}
     </nav>
   );
 }
@@ -35,14 +36,14 @@ export function Header({ lang, path, home = false }: { lang: Lang; path: string;
   const ids = ["about", "products", "team", "contact"];
   return (
     <header className="sticky top-0 z-20 border-b border-[var(--line)] bg-[#fbfbfc]/80 backdrop-blur-xl backdrop-saturate-150">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-3.5">
-        <Link href={localized(lang, "/")} className="group flex items-center gap-2.5 font-semibold tracking-tight">
-          <span aria-hidden="true" className="relative flex h-6 w-6 items-center justify-center rounded-[7px] border border-[var(--line)] bg-white shadow-[0_2px_10px_-3px_rgba(124,108,240,.45)]">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5 sm:gap-6 sm:px-6">
+        <Link href={localized(lang, "/")} className="group flex shrink-0 items-center gap-2.5 whitespace-nowrap font-semibold tracking-tight">
+          <span aria-hidden="true" className="relative flex h-6 w-6 shrink-0 items-center justify-center rounded-[7px] border border-[var(--line)] bg-white shadow-[0_2px_10px_-3px_rgba(124,108,240,.45)]">
             <i className="h-1.5 w-1.5 rounded-full bg-[var(--glow)] transition group-hover:scale-125" />
           </span>
           Tory Labs
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           {home && (
             <nav className="hidden gap-6 text-sm sm:flex">
               {ids.map((id, i) => <a key={id} href={`#${id}`} className="text-[var(--muted)] transition-colors hover:text-[var(--fg)]">{text[lang].nav[i]}</a>)}
@@ -57,17 +58,23 @@ export function Header({ lang, path, home = false }: { lang: Lang; path: string;
 
 export function Footer({ lang }: { lang: Lang }) {
   const t = text[lang];
+  const details = [[t.company, company.name], [t.ceo, company.ceo], [t.biz, company.bizNumber], [t.address, company.address]];
+  const guide = { en: "Relay setup guide", ja: "中継サーバーガイド", ko: "중계 서버 구축 가이드" };
   return (
     <footer className="relative border-t border-[var(--line)] bg-[#f5f5f8]">
       <div aria-hidden="true" className="absolute inset-x-0 -top-px mx-auto h-px max-w-3xl bg-gradient-to-r from-transparent via-[var(--glow)] to-transparent opacity-40" />
       <div className="mx-auto max-w-6xl px-6 py-12 text-sm text-[var(--muted)]">
         <p className="font-semibold text-[var(--fg)]">{company.name}</p>
         <dl className="mt-4 grid gap-x-8 gap-y-1 sm:grid-cols-2">
-          <div>{t.company}: {company.name}</div>
-          <div>{t.ceo}: {company.ceo}</div>
-          <div>{t.biz}: {company.bizNumber}</div>
-          <div>{t.address}: {company.address}</div>
+          {details.filter(([, value]) => value && value !== TBD).map(([label, value]) => (
+            <div key={label} className="flex gap-1"><dt>{label}:</dt><dd>{value}</dd></div>
+          ))}
         </dl>
+        <nav className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+          <Link href={localized(lang, "/vica")}>vica</Link>
+          <Link href={localized(lang, "/voin")}>voin</Link>
+          <Link href={localized(lang, "/relay")}>{guide[lang]}</Link>
+        </nav>
         <p className="mt-6 flex flex-wrap gap-x-2">
           <span>© 2026 {company.name}</span>·
           {/* Pricing is the relay subscription, out of sight for now (owner request 2026-10-30). */}
@@ -83,9 +90,10 @@ export function Footer({ lang }: { lang: Lang }) {
   );
 }
 
-export function LegalPage({ lang, path, title, updated, children }: { lang: Lang; path: string; title: string; updated: string; children: React.ReactNode }) {
+export function LegalPage({ lang, path, title, description, updated, children }: { lang: Lang; path: string; title: string; description: string; updated: string; children: React.ReactNode }) {
   return (
     <>
+      <PageSchema lang={lang} path={path} title={title} description={description} />
       <Header lang={lang} path={path} />
       <main lang={lang} className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="text-4xl font-bold tracking-tight">{title}</h1>

@@ -1,6 +1,8 @@
+import { pageMetadata } from "@/content/seo";
 import type { Metadata } from "next";
-import { alternates, localized, type Lang } from "@/content/i18n";
+import { type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
+import { PageSchema } from "@/components/StructuredData";
 import RelayAccordion, { type RelayLabels } from "@/views/RelayAccordion";
 
 type GuideText = {
@@ -107,14 +109,15 @@ const text = {
 } satisfies Record<Lang, GuideText>;
 
 export function relayMetadata(lang: Lang): Metadata {
-  const { h1: title, lead: description } = text[lang];
-  return { title: `${title} | Tory Labs`, description, alternates: alternates(lang, "/relay"), openGraph: { title, url: localized(lang, "/relay"), description } };
+  const { h1, lead } = text[lang];
+  return pageMetadata(lang, "/relay", `${h1} | Tory Labs`, lead);
 }
 
 export default function Relay({ lang }: { lang: Lang }) {
   const t = text[lang];
   return (
     <>
+      <PageSchema lang={lang} path="/relay" title={t.h1} description={t.lead} questions={t.help} />
       <Header lang={lang} path="/relay" />
       <main lang={lang} className="mx-auto max-w-6xl px-6 pt-16 pb-20">
         {/* Released apps may still link to these fragments. Both lead to the common guide. */}
@@ -135,9 +138,21 @@ export default function Relay({ lang }: { lang: Lang }) {
         </section>
         <section id="steps" className="scroll-mt-24 pt-12">
           <h2 className="mb-6 text-2xl font-semibold tracking-tight">{t.stepsTitle}</h2>
-          <RelayAccordion steps={t.steps} prompt={t.prompt} selfLabel={t.self} labels={t.labels} folder={t.folder} address="https://my-relay.example.workers.dev" />
+          <div className="relay-interactive">
+            <RelayAccordion steps={t.steps} prompt={t.prompt} selfLabel={t.self} labels={t.labels} folder={t.folder} address="https://my-relay.example.workers.dev" />
+          </div>
+          <noscript>
+            <style>{".relay-interactive { display: none; }"}</style>
+            <ol className="list-decimal space-y-6 pl-5">
+              {t.steps.map(([title, body]) => <li key={title}><h3 className="font-semibold">{title}</h3><p className="mt-2 leading-relaxed">{body}</p></li>)}
+            </ol>
+            <p className="mt-6 whitespace-pre-wrap break-words rounded-xl border border-[var(--line)] p-5">{t.prompt}</p>
+            <p className="mt-5">{t.self}</p>
+            <pre className="mt-2 overflow-x-auto text-sm"><code>{"npx wrangler login\nnpx wrangler deploy"}</code></pre>
+          </noscript>
         </section>
         <section id="help" className="scroll-mt-24 pt-14">
+          <span id="faq" />
           <h2 className="mb-6 text-2xl font-semibold tracking-tight">{t.helpTitle}</h2>
           <div className="grid items-start gap-3 md:grid-cols-2">
             {t.help.map(([question, answer]) => (
