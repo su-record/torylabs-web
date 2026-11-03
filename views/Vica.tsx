@@ -4,7 +4,7 @@ import { alternates, localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
 import VicaScene from "@/views/VicaScene";
 
-// Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-10-30.
+// Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-11-03.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 // The newest release (scripts/release.sh in the vica repository publishes it there).
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
@@ -32,6 +32,10 @@ const text = {
       { t: "Limits and confirmations", d: "Each request has time and token limits, and vica asks before anything hard to undo." },
       { t: "Terminal", d: "Tabs and splits, sessions that keep running after the window closes, and projects on SSH servers. Agents in one tab can read another tab's screen and type into it with the vica command." },
       { t: "Your own agents", d: "vica uses the agents with your own accounts and plans. It does not sell model access." },
+      { t: "Computer use", d: "Agents can work the apps on your Mac. Pick apps they may only read, answer before anything hard to undo, from the Mac or your phone, and stop it any time." },
+      { t: "Waiting on you", d: "Questions, permissions and sign-ins from every project gather in one list at the top right, with failures and unread answers beside them." },
+      { t: "Work history", d: "The Claude Code and Codex sessions you opened and vica's chats, per project or group. Resume one in a terminal, or hand it to Chat." },
+      { t: "Projects in groups", d: "Projects, chats and files stack in one sidebar. Gather projects into groups, clone a repository straight into one, and remove a project from vica without touching its files." },
     ],
     noLogin: "No sign-up. Just use it.",
     bugs: "Found a bug? Report it on GitHub",
@@ -54,16 +58,16 @@ const text = {
     ],
     phoneTitle: "On your phone, it is just a chat",
     phoneLead: "No terminals to manage. Tell Vica what you need, by voice or text. It opens a terminal on your computer, gives the agent the work, and answers in the chat when it is done.",
-    phoneSteps: ["Just speak. Your words become the request and go to Vica.", "Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "Everything between phone and computer is end-to-end encrypted."],
+    phoneSteps: ["Just speak. Your words become the request and go to Vica.", "Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "On a tablet, the whole app opens in the browser, not a mirrored screen.", "On any other browser, open your relay's address and approve it with your phone or tablet: scan the code, check the six digits.", "While a device is connected, your computer stays awake.", "Everything between your devices and the computer is end-to-end encrypted."],
     faqTitle: "Questions",
-    faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How does my phone connect?", "Through a small relay server on your own Cloudflare account. vica makes the files and your agent can deploy them."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
+    faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How do my phone, tablet or browser connect?", "Through a relay: our subscription, or a small one on your own Cloudflare account that vica writes for you. In vica, open Remote → Issue a key and scan the QR code with a phone or tablet. Any browser then opens your relay's address and is approved by that device."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
     ctaTitle: "Hand it your next request",
     pricingTitle: "Pricing",
     appName: "vica app", appPrice: "Free",
     relayGuide: ["Set up your relay server", "Make your own relay on a free Cloudflare account. vica writes the files and your agent can deploy them.", "Read the guide"],
     relayName: "Relay subscription", relayPrice: "US$4.99 / month · US$39.99 / year",
     relay: [
-      "Connects your phone and vica through our relay server (vica.torylabs.dev).",
+      "Connects your phone, tablet or browser and vica through our relay server (vica.torylabs.dev).",
       "No account: paying gives you a subscription key, which you enter in vica on any computer.",
       "Billed monthly by Paddle. Taxes may be added at checkout depending on your country.",
       "Cancel any time; the key works until the end of the paid period.",
@@ -96,6 +100,10 @@ const text = {
       { t: "上限と確認", d: "依頼ごとに時間とトークンの上限があり、元に戻しにくい操作の前には確認します。" },
       { t: "ターミナル", d: "タブと分割、ウィンドウを閉じても続くセッション、SSHサーバー上のプロジェクト。あるタブのエージェントがvicaコマンドで別のタブの画面を読み、入力を送れます。" },
       { t: "あなたのエージェント", d: "vicaはあなた自身のアカウントとプランでエージェントを使います。モデルの利用権は販売しません。" },
+      { t: "コンピューター操作", d: "エージェントがMacのアプリを直接操作します。読むだけにするアプリを選び、元に戻しにくい操作はMacかスマートフォンで先に答え、いつでも止められます。" },
+      { t: "応答待ち", d: "すべてのプロジェクトで待っている質問、許可、ログインが右上のひとつの一覧に集まり、失敗や未読の回答も並びます。" },
+      { t: "作業記録", d: "自分で開いたClaude Code・Codexのセッションとvicaの会話を、プロジェクトやグループごとに見られます。ターミナルで再開するか、Chatに渡せます。" },
+      { t: "プロジェクトのグループ", d: "プロジェクト、会話、ファイルがひとつのサイドバーに重なります。プロジェクトをグループにまとめ、リポジトリをグループに直接クローンし、ファイルはそのままvicaからだけ外せます。" },
     ],
     noLogin: "ログイン不要。そのまま使えます。",
     bugs: "不具合はGitHubでお知らせください",
@@ -118,16 +126,16 @@ const text = {
     ],
     phoneTitle: "スマートフォンでは、会話だけ",
     phoneLead: "ターミナルを管理する必要はありません。声でも文字でもVicaに頼めば、コンピューターでターミナルを開いてエージェントに任せ、終わったら会話で答えます。",
-    phoneSteps: ["話すだけ。声がそのまま依頼になってVicaに届きます。", "どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "スマートフォンとコンピューターの間はエンドツーエンドで暗号化されます。"],
+    phoneSteps: ["話すだけ。声がそのまま依頼になってVicaに届きます。", "どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "タブレットでは画面ミラーリングではなく、アプリの画面全体がブラウザで開きます。", "ほかのブラウザでは自分の中継のアドレスを開き、スマートフォンかタブレットで承認します。コードを読み取り、6桁の数字を確かめるだけです。", "デバイスが接続している間、コンピューターはスリープしません。", "デバイスとコンピューターの間はエンドツーエンドで暗号化されます。"],
     faqTitle: "よくある質問",
-    faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォンはどうつなぎますか？", "自分のCloudflareアカウントに置く小さな中継サーバーを通します。ファイルはvicaが作り、デプロイはエージェントに任せられます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
+    faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォン、タブレット、ブラウザはどうつなぎますか？", "中継を通します。当社のサブスクリプションか、vicaが作るファイルで自分のCloudflareアカウントに置く小さな中継です。vicaのリモート → 認証キーを発行のQRコードをスマートフォンかタブレットで読み取って登録すると、そのあとはどのブラウザでも自分の中継のアドレスを開き、そのデバイスで承認して入れます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
     ctaTitle: "次の依頼を任せてみましょう",
     pricingTitle: "料金",
     appName: "vicaアプリ", appPrice: "無料",
     relayGuide: ["中継サーバーの作り方", "無料のCloudflareアカウントに自分の中継サーバーを作れます。ファイルはvicaが作り、デプロイはエージェントに任せられます。", "ガイドを見る"],
     relayName: "中継サブスクリプション", relayPrice: "月額 US$4.99 · 年額 US$39.99",
     relay: [
-      "当社の中継サーバー（vica.torylabs.dev）を通じて、スマートフォンとvicaをつなぎます。",
+      "当社の中継サーバー（vica.torylabs.dev）を通じて、スマートフォン、タブレット、ブラウザとvicaをつなぎます。",
       "アカウント不要。支払うとサブスクリプションキーが発行され、どのパソコンのvicaにも入力して使えます。",
       "Paddleが毎月または毎年請求します。国によっては決済時に税金が加算されます。",
       "いつでも解約でき、支払済みの期間が終わるまでキーは有効です。",
@@ -160,6 +168,10 @@ const text = {
       { t: "상한과 확인", d: "요청마다 시간과 토큰 상한이 있고, 되돌리기 어려운 일은 먼저 묻습니다." },
       { t: "터미널", d: "탭과 분할, 창을 닫아도 계속 도는 세션, SSH 서버의 프로젝트. 한 탭의 에이전트가 vica 명령으로 다른 탭의 화면을 읽고 입력을 보낼 수 있습니다." },
       { t: "내 에이전트", d: "vica는 사용자 본인의 계정과 요금제로 에이전트를 씁니다. 모델 사용권을 팔지 않습니다." },
+      { t: "컴퓨터 사용", d: "에이전트가 Mac의 앱을 직접 조작합니다. 읽기만 할 앱을 고르고, 되돌리기 어려운 동작은 Mac이나 휴대폰에서 먼저 답하며, 언제든 멈출 수 있습니다." },
+      { t: "응답 대기", d: "모든 프로젝트에서 나를 기다리는 질문, 권한, 로그인이 오른쪽 위 한 목록에 모이고, 실패와 안 읽은 답도 함께 보입니다." },
+      { t: "작업 기록", d: "내가 연 Claude Code·Codex 세션과 vica 대화를 프로젝트나 그룹별로 모아 봅니다. 터미널에서 이어서 하거나 Chat으로 넘깁니다." },
+      { t: "프로젝트 그룹", d: "프로젝트, 대화, 파일이 사이드바 하나에 쌓입니다. 프로젝트를 그룹으로 묶고, 저장소를 그룹으로 바로 클론하고, 파일은 그대로 둔 채 vica에서만 뺄 수 있습니다." },
     ],
     noLogin: "로그인 없이 그냥 사용하세요.",
     bugs: "버그는 GitHub 이슈로 알려 주세요",
@@ -182,16 +194,16 @@ const text = {
     ],
     phoneTitle: "휴대폰에서는 대화만",
     phoneLead: "터미널을 관리할 필요가 없습니다. 말이나 글로 Vica에게 맡기면, 컴퓨터에서 터미널을 열어 에이전트에게 지시하고 끝나면 대화로 답합니다.",
-    phoneSteps: ["말로 요청하세요. 말한 내용이 그대로 Vica에게 전달됩니다.", "어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "휴대폰과 컴퓨터 사이는 종단 간 암호화됩니다."],
+    phoneSteps: ["말로 요청하세요. 말한 내용이 그대로 Vica에게 전달됩니다.", "어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "태블릿에서는 화면 미러링이 아니라 앱 화면 전체가 브라우저로 열립니다.", "다른 브라우저에서는 내 중계 주소를 열고 휴대폰이나 패드로 승인합니다. 코드를 찍고 6자리 숫자를 확인하면 됩니다.", "기기가 연결된 동안 컴퓨터는 잠들지 않습니다.", "기기와 컴퓨터 사이는 종단 간 암호화됩니다."],
     faqTitle: "자주 묻는 질문",
-    faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰은 어떻게 연결하나요?", "내 Cloudflare 계정에 둔 작은 연결 서버를 거칩니다. 파일은 vica가 만들고, 배포는 에이전트에게 맡기면 됩니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
+    faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰, 태블릿, 브라우저는 어떻게 연결하나요?", "중계를 거칩니다. 저희 구독 중계를 쓰거나, vica가 만들어 주는 파일로 내 Cloudflare 계정에 작은 중계를 둡니다. vica의 원격 → 인증키 발급 QR을 휴대폰이나 패드로 찍어 등록하면, 그 뒤로는 어느 브라우저든 내 중계 주소를 열고 그 기기로 승인해 들어갑니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
     ctaTitle: "다음 요청을 맡겨 보세요",
     pricingTitle: "가격",
     appName: "vica 앱", appPrice: "무료",
     relayGuide: ["연결 서버 구축 가이드", "무료 Cloudflare 계정에 내 연결 서버를 만들 수 있습니다. 파일은 vica가 만들고 배포는 에이전트에게 맡기면 됩니다.", "가이드 보기"],
     relayName: "중계 구독", relayPrice: "월 US$4.99 · 연 US$39.99",
     relay: [
-      "저희 중계 서버(vica.torylabs.dev)를 통해 휴대폰과 vica를 잇습니다.",
+      "저희 중계 서버(vica.torylabs.dev)를 통해 휴대폰, 태블릿, 브라우저와 vica를 잇습니다.",
       "계정 없음: 결제하면 구독 키가 나오고, 어느 컴퓨터의 vica에든 넣어 씁니다.",
       "Paddle이 매달 또는 매년 청구합니다. 나라에 따라 결제 때 세금이 더해질 수 있습니다.",
       "언제든 해지할 수 있고, 결제한 기간이 끝날 때까지 키를 쓸 수 있습니다.",
@@ -222,6 +234,10 @@ const ICONS = [
   "M12 3l8 4v5c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V7z",
   "M4 5h16v14H4zM8 10l3 2-3 2M13 15h3",
   "M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 21c0-4 3.6-6 8-6s8 2 8 6",
+  "M5 3l14 7-6 2-2 6z",
+  "M12 7v5l2.5 2M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16",
+  "M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4M12 8v4l3 2",
+  "M3 9a2 2 0 0 1 2-2h3l2 2h7a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM7 7V6a2 2 0 0 1 2-2h3l2 2h5a2 2 0 0 1 2 2v6",
 ];
 
 export default function Vica({ lang }: { lang: Lang }) {
