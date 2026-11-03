@@ -4,7 +4,7 @@ import { alternates, localized, type Lang } from "@/content/i18n";
 import { Header, Footer } from "@/components/Chrome";
 import VicaScene from "@/views/VicaScene";
 
-// Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-11-03.
+// Facts sourced from the vica README (github.com/su-record/vica, private) as of 2026-11-03 (pattern access included).
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 // The newest release (scripts/release.sh in the vica repository publishes it there).
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
@@ -58,9 +58,9 @@ const text = {
     ],
     phoneTitle: "On your phone, it is just a chat",
     phoneLead: "No terminals to manage. Tell Vica what you need, by voice or text. It opens a terminal on your computer, gives the agent the work, and answers in the chat when it is done.",
-    phoneSteps: ["Just speak. Your words become the request and go to Vica.", "Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "On a tablet, the whole app opens in the browser, not a mirrored screen.", "On any other browser, open your relay's address and approve it with your phone or tablet: scan the code, check the six digits.", "While a device is connected, your computer stays awake.", "Everything between your devices and the computer is end-to-end encrypted."],
+    phoneSteps: ["Just speak. Your words become the request and go to Vica.", "Ask from anywhere. Your computer does the work.", "Terminals stay open on your computer, ready to pick up.", "On a tablet, the whole app opens in the browser, not a mirrored screen.", "On any other browser, open your relay's address and approve it with your phone or tablet: scan the code, check the six digits.", "No registered device at hand? Open your computer's name address, scan the code with any phone and draw the pattern you set. The pattern never leaves the phone, five wrong tries lock it, and the browser stays 12 hours.", "While a device is connected, your computer stays awake.", "Everything between your devices and the computer is end-to-end encrypted."],
     faqTitle: "Questions",
-    faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How do my phone, tablet or browser connect?", "Through a relay: our subscription, or a small one on your own Cloudflare account that vica writes for you. In vica, open Remote → Issue a key and scan the QR code with a phone or tablet. Any browser then opens your relay's address and is approved by that device."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
+    faq: [["Is vica free?", "Yes. The app is free, and you use your own agent accounts."], ["How do my phone, tablet or browser connect?", "Through a relay: our subscription, or a small one on your own Cloudflare account that vica writes for you. In vica, open Remote → Issue a key and scan the QR code with a phone or tablet. Any browser then opens your relay's address and is approved by that device. Without it, set a name and a pattern for the computer and draw the pattern on any phone."], ["Does the server cost anything?", "It fits Cloudflare's free plan for one person. If you ever pass the daily limit, it stops until the next day; you are not charged."], ["Can the server read my work?", "No. Messages are encrypted with a key only your phone and computer hold."], ["Does my code leave my computer?", "Only to the agent providers you use, under their terms. It does not go through our servers."]],
     ctaTitle: "Hand it your next request",
     pricingTitle: "Pricing",
     appName: "vica app", appPrice: "Free",
@@ -126,9 +126,9 @@ const text = {
     ],
     phoneTitle: "スマートフォンでは、会話だけ",
     phoneLead: "ターミナルを管理する必要はありません。声でも文字でもVicaに頼めば、コンピューターでターミナルを開いてエージェントに任せ、終わったら会話で答えます。",
-    phoneSteps: ["話すだけ。声がそのまま依頼になってVicaに届きます。", "どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "タブレットでは画面ミラーリングではなく、アプリの画面全体がブラウザで開きます。", "ほかのブラウザでは自分の中継のアドレスを開き、スマートフォンかタブレットで承認します。コードを読み取り、6桁の数字を確かめるだけです。", "デバイスが接続している間、コンピューターはスリープしません。", "デバイスとコンピューターの間はエンドツーエンドで暗号化されます。"],
+    phoneSteps: ["話すだけ。声がそのまま依頼になってVicaに届きます。", "どこからでも依頼でき、作業はコンピューターで進みます。", "ターミナルはコンピューターに開いたまま残り、続きができます。", "タブレットでは画面ミラーリングではなく、アプリの画面全体がブラウザで開きます。", "ほかのブラウザでは自分の中継のアドレスを開き、スマートフォンかタブレットで承認します。コードを読み取り、6桁の数字を確かめるだけです。", "登録したデバイスが手元にないときは、コンピューターの名前のアドレスを開き、どのスマートフォンでもコードを読み取って決めておいたパターンを描きます。パターンはスマートフォンの外に出ず、5回間違えるとロックされ、ブラウザは12時間で切れます。", "デバイスが接続している間、コンピューターはスリープしません。", "デバイスとコンピューターの間はエンドツーエンドで暗号化されます。"],
     faqTitle: "よくある質問",
-    faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォン、タブレット、ブラウザはどうつなぎますか？", "中継を通します。当社のサブスクリプションか、vicaが作るファイルで自分のCloudflareアカウントに置く小さな中継です。vicaのリモート → 認証キーを発行のQRコードをスマートフォンかタブレットで読み取って登録すると、そのあとはどのブラウザでも自分の中継のアドレスを開き、そのデバイスで承認して入れます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
+    faq: [["vicaは無料ですか？", "はい。アプリは無料で、エージェントはご自身のアカウントで使います。"], ["スマートフォン、タブレット、ブラウザはどうつなぎますか？", "中継を通します。当社のサブスクリプションか、vicaが作るファイルで自分のCloudflareアカウントに置く小さな中継です。vicaのリモート → 認証キーを発行のQRコードをスマートフォンかタブレットで読み取って登録すると、そのあとはどのブラウザでも自分の中継のアドレスを開き、そのデバイスで承認して入れます。手元にないときは、コンピューターに名前とパターンを決めておき、どのスマートフォンでもパターンを描いて入れます。"], ["サーバーに費用はかかりますか？", "個人の利用ならCloudflareの無料プランに収まります。1日の上限を超えても翌日まで止まるだけで、請求はされません。"], ["サーバーから作業内容は見えますか？", "見えません。メッセージはスマートフォンとコンピューターだけが持つ鍵で暗号化されます。"], ["コードはコンピューターの外に出ますか？", "利用中のエージェント提供元にのみ、その規約のもとで送られます。当社のサーバーは通りません。"]],
     ctaTitle: "次の依頼を任せてみましょう",
     pricingTitle: "料金",
     appName: "vicaアプリ", appPrice: "無料",
@@ -194,9 +194,9 @@ const text = {
     ],
     phoneTitle: "휴대폰에서는 대화만",
     phoneLead: "터미널을 관리할 필요가 없습니다. 말이나 글로 Vica에게 맡기면, 컴퓨터에서 터미널을 열어 에이전트에게 지시하고 끝나면 대화로 답합니다.",
-    phoneSteps: ["말로 요청하세요. 말한 내용이 그대로 Vica에게 전달됩니다.", "어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "태블릿에서는 화면 미러링이 아니라 앱 화면 전체가 브라우저로 열립니다.", "다른 브라우저에서는 내 중계 주소를 열고 휴대폰이나 패드로 승인합니다. 코드를 찍고 6자리 숫자를 확인하면 됩니다.", "기기가 연결된 동안 컴퓨터는 잠들지 않습니다.", "기기와 컴퓨터 사이는 종단 간 암호화됩니다."],
+    phoneSteps: ["말로 요청하세요. 말한 내용이 그대로 Vica에게 전달됩니다.", "어디서든 요청하고, 일은 컴퓨터가 합니다.", "터미널은 컴퓨터에 열린 채로 남아 이어서 볼 수 있습니다.", "태블릿에서는 화면 미러링이 아니라 앱 화면 전체가 브라우저로 열립니다.", "다른 브라우저에서는 내 중계 주소를 열고 휴대폰이나 패드로 승인합니다. 코드를 찍고 6자리 숫자를 확인하면 됩니다.", "등록한 기기가 손에 없으면 컴퓨터 이름 주소를 열고, 아무 휴대폰으로나 코드를 찍어 정해 둔 패턴을 그립니다. 패턴은 휴대폰 밖으로 나가지 않고, 다섯 번 틀리면 잠기며, 브라우저는 12시간 뒤 끊깁니다.", "기기가 연결된 동안 컴퓨터는 잠들지 않습니다.", "기기와 컴퓨터 사이는 종단 간 암호화됩니다."],
     faqTitle: "자주 묻는 질문",
-    faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰, 태블릿, 브라우저는 어떻게 연결하나요?", "중계를 거칩니다. 저희 구독 중계를 쓰거나, vica가 만들어 주는 파일로 내 Cloudflare 계정에 작은 중계를 둡니다. vica의 원격 → 인증키 발급 QR을 휴대폰이나 패드로 찍어 등록하면, 그 뒤로는 어느 브라우저든 내 중계 주소를 열고 그 기기로 승인해 들어갑니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
+    faq: [["vica는 무료인가요?", "네. 앱은 무료이고, 에이전트는 본인 계정으로 씁니다."], ["휴대폰, 태블릿, 브라우저는 어떻게 연결하나요?", "중계를 거칩니다. 저희 구독 중계를 쓰거나, vica가 만들어 주는 파일로 내 Cloudflare 계정에 작은 중계를 둡니다. vica의 원격 → 인증키 발급 QR을 휴대폰이나 패드로 찍어 등록하면, 그 뒤로는 어느 브라우저든 내 중계 주소를 열고 그 기기로 승인해 들어갑니다. 그 기기가 없을 때는 컴퓨터에 이름과 패턴을 정해 두고, 아무 휴대폰으로나 패턴을 그려 들어갑니다."], ["서버 비용이 드나요?", "한 사람이 쓰기에는 Cloudflare 무료 요금제로 충분합니다. 하루 한도를 넘어도 다음 날까지 멈출 뿐 요금은 나오지 않습니다."], ["서버가 내 작업을 볼 수 있나요?", "없습니다. 메시지는 휴대폰과 컴퓨터만 가진 키로 암호화됩니다."], ["코드가 컴퓨터 밖으로 나가나요?", "사용 중인 에이전트 제공사로만, 그 회사의 약관에 따라 갑니다. 저희 서버를 거치지 않습니다."]],
     ctaTitle: "다음 요청을 맡겨 보세요",
     pricingTitle: "가격",
     appName: "vica 앱", appPrice: "무료",
