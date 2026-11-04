@@ -7,7 +7,7 @@ import VicaScene from "@/views/VicaScene";
 import { PageSchema, softwareEntity } from "@/components/StructuredData";
 import Questions from "@/components/Questions";
 
-import { vicaText as text, DOWNLOAD, ISSUES, SUBSCRIBE } from "@/content/vica";
+import { vicaText as text, DOWNLOAD, WINDOWS_DOWNLOAD, ISSUES, SUBSCRIBE } from "@/content/vica";
 
 export function vicaMetadata(lang: Lang): Metadata {
   const { title, description } = text[lang];
@@ -61,14 +61,15 @@ export default function Vica({ lang }: { lang: Lang }) {
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
               {t.mac}
             </a>
-            <span aria-disabled="true" className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] px-6 py-3 text-sm font-medium text-[var(--muted)]">
+            <a href={WINDOWS_DOWNLOAD} className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] px-6 py-3 text-sm font-medium text-[var(--fg)] transition hover:bg-[var(--card)]">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1v7H3zM11.5 4.4L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></svg>
               {t.windows}
-            </span>
+            </a>
             {/* The relay subscription stays out of sight for now (owner request 2026-10-30). */}
             <a href={SUBSCRIBE} className="hidden rounded-full bg-[var(--fg)] px-6 py-3 text-sm font-medium text-[var(--bg)]">{t.subscribe}</a>
           </div>
           <p className="rise mt-5 text-sm text-[var(--muted)]" style={{ ["--i" as string]: 6 }}>{t.noLogin}</p>
+          <p className="mx-auto mt-2 max-w-2xl text-xs leading-relaxed text-[var(--muted)]">{t.windowsNote}</p>
         </section>
 
         <section data-reveal className="pb-24"><VicaScene lang={lang} /></section>
@@ -200,7 +201,10 @@ export default function Vica({ lang }: { lang: Lang }) {
         <section className="relative isolate border-t border-[var(--line)] py-28 text-center">
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,rgba(124,108,240,.10),transparent_70%)]" />
           <H2>{t.ctaTitle}</H2>
-          <a data-reveal href={DOWNLOAD} className="inline-block rounded-full bg-[var(--fg)] px-7 py-3.5 text-sm font-medium text-[var(--bg)] shadow-[0_12px_30px_-12px_rgba(91,75,214,.6)] transition hover:bg-[#2a2a33]">{t.mac}</a>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a data-reveal href={DOWNLOAD} className="inline-block rounded-full bg-[var(--fg)] px-7 py-3.5 text-sm font-medium text-[var(--bg)] shadow-[0_12px_30px_-12px_rgba(91,75,214,.6)] transition hover:bg-[#2a2a33]">{t.mac}</a>
+            <a data-reveal href={WINDOWS_DOWNLOAD} className="inline-block rounded-full border border-[var(--line)] px-7 py-3.5 text-sm font-medium text-[var(--fg)] transition hover:bg-[var(--card)]">{t.windows}</a>
+          </div>
         </section>
       </main>
       <Footer lang={lang} />

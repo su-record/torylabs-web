@@ -11,6 +11,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'out'
 ARTIFACTS = Path.home() / 'sutory/work/torylabs-seo'
+WINDOWS_DOWNLOAD = 'https://github.com/su-record/vica-releases/releases/download/v0.1.0/Vica_0.1.0_x64_ko-KR.msi'
 sys.path.insert(0, str(Path(os.environ.get('SUTORY_ROOT', Path.home() / 'repos/sutory'))))
 from capabilities.browser import Browser
 
@@ -58,6 +59,12 @@ def check_browser(browser, base):
                 for route in ('', '/vica', '/voin', '/relay'):
                     path = prefix + route or '/'
                     inspect_page(page, base, path, lang)
+                    if route == '/vica':
+                        windows = page.locator(f'a[href="{WINDOWS_DOWNLOAD}"]')
+                        assert windows.count() == 2, path
+                        assert windows.first.is_visible() and windows.first.is_enabled(), path
+                        assert windows.first.get_attribute('aria-disabled') is None, path
+                        assert 'x64' in windows.first.inner_text(), path
                     if route in ('', '/vica', '/voin'):
                         assert page.locator('#faq dt').count() >= 4
                         # Whole question and answer are visible to visitors, not schema-only.
@@ -107,7 +114,8 @@ def check_relay(page, javascript):
 def screenshots(browser, base):
     context = browser._browser.new_context(viewport={'width': 1280, 'height': 900}, reduced_motion='reduce')
     page = context.new_page()
-    for path, name, width in [('/ko', 'home-desktop', 1280), ('/ko/voin', 'voin-mobile', 390), ('/ja/relay', 'relay-mobile', 320)]:
+    for path, name, width in [('/ko', 'home-desktop', 1280), ('/ko/voin', 'voin-mobile', 390), ('/ja/relay', 'relay-mobile', 320),
+        ('/ko/vica', 'vica-desktop', 1280), ('/ko/vica', 'vica-mobile', 320), ('/ja/vica', 'vica-ja-mobile', 320)]:
         page.set_viewport_size({'width': width, 'height': 900})
         page.goto(base + path, wait_until='networkidle')
         page.screenshot(path=str(ARTIFACTS / f'{name}.png'), full_page=True)

@@ -117,7 +117,8 @@ def check_schema(doc, route, path, lang):
         assert 'faq' in doc.ids
     if path in ('/vica', '/voin'):
         app = nodes[ORIGIN + path + '#software']
-        assert app['@type'] == 'SoftwareApplication' and app['operatingSystem'] == 'macOS'
+        assert app['@type'] == 'SoftwareApplication'
+        assert app['operatingSystem'] == (['macOS', 'Windows'] if path == '/vica' else 'macOS')
         assert app['offers']['price'] == '0'
         assert {'en': 'Free app', 'ko': '앱 무료', 'ja': 'アプリ無料'}[lang] in normalize(' '.join(doc.text))
         assert app['downloadUrl'] in doc.hrefs, route

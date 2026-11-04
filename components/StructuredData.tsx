@@ -53,7 +53,7 @@ export function softwareEntity({ name, lang, description, features, download, ve
     "@type": "SoftwareApplication", "@id": `${company.domain}/${name}#software`,
     name, url: absoluteUrl(localized(lang, `/${name}`)), description,
     applicationCategory: name === "vica" ? "DeveloperApplication" : "ProductivityApplication",
-    operatingSystem: "macOS", softwareRequirements: requirements,
+    operatingSystem: name === "vica" ? ["macOS", "Windows"] : "macOS", softwareRequirements: requirements,
     ...(version ? { softwareVersion: version } : {}),
     downloadUrl: download, featureList: features,
     publisher: { "@id": `${company.domain}/#organization` },

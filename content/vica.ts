@@ -6,15 +6,17 @@ export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 // The newest release (scripts/release.sh in the vica repository publishes it there).
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
+export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.1.0/Vica_0.1.0_x64_ko-KR.msi";
 
 export const vicaText = {
   en: {
-    title: "vica | AI coding agents in one Mac app | Tory Labs",
+    title: "vica | AI coding agents for Mac and Windows | Tory Labs",
     description: "vica is a desktop app that splits a coding request into steps and hands each step to Claude Code, Codex, Antigravity, Grok or Muse Code on your computer.",
-    eyebrow: "macOS · Free app", eyebrowRelay: " · Optional relay from US$4.99/month",
+    eyebrow: "macOS · Windows · Free app", eyebrowRelay: " · Optional relay from US$4.99/month",
     lead: "Say what you want built. vica sees it through.",
     sub: "Tell vica the work in one chat, from your Mac or your phone. It hands each step to the coding agents you already use, and reports back when it is done.",
-    mac: "Download for Mac (Apple Silicon)", windows: "Windows · Coming soon", subscribe: "Subscribe to the relay",
+    mac: "Download for Mac (Apple Silicon)", windows: "Download for Windows (x64 beta)", subscribe: "Subscribe to the relay",
+    windowsNote: "Windows: unsigned MSI installer. Setup downloads WebView2 if it is missing.",
     howTitle: "How it works",
     how: [
       { t: "Write the request", d: "In vica on your Mac, or from your phone. A greeting gets a reply; work gets a plan." },
@@ -84,15 +86,16 @@ export const vicaText = {
     privacy: "Your code and prompts go from your computer to the agent providers you use, under their terms, not through our servers. Messages between your phone and vica pass, encrypted, through your own relay server.",
     policy: "Privacy Policy",
     reqTitle: "Requirements",
-    req: ["A Mac with Apple Silicon.", "The agent CLIs you want to use, signed in with your own accounts. vica can install and sign in to them from its settings."],
+    req: ["A Mac with Apple Silicon, or Windows 10 1809 or later (x64).", "The agent CLIs you want to use, signed in with your own accounts. vica can install and sign in to them from its settings."],
   },
   ja: {
-    title: "vica | MacのAIコーディングエージェントをひとつに | Tory Labs",
+    title: "vica | MacとWindowsのAIコーディングエージェント | Tory Labs",
     description: "vicaは、コーディングの依頼を段階に分け、パソコンにあるClaude Code、Codex、Antigravity、Grok、Muse Codeに任せるデスクトップアプリです。",
-    eyebrow: "macOS · アプリ無料", eyebrowRelay: " · 中継は月額US$4.99から（任意）",
+    eyebrow: "macOS · Windows · アプリ無料", eyebrowRelay: " · 中継は月額US$4.99から（任意）",
     lead: "頼むだけで、vicaが最後までやり遂げます。",
     sub: "Macでもスマートフォンでも、ひとつの会話でvicaに頼むだけ。使い慣れたコーディングエージェントに段階ごとに任せ、終わったら報告します。",
-    mac: "Macをダウンロード（Apple Silicon）", windows: "Windows · 近日公開", subscribe: "中継を購読する",
+    mac: "Macをダウンロード（Apple Silicon）", windows: "Windowsをダウンロード（x64ベータ）", subscribe: "中継を購読する",
+    windowsNote: "Windows版は署名なしのMSIです。WebView2がない場合は、セットアップ中にダウンロードします。",
     howTitle: "使い方",
     how: [
       { t: "依頼を書く", d: "Macのvicaでも、スマートフォンからでも。あいさつには返事を、仕事には計画を返します。" },
@@ -162,15 +165,16 @@ export const vicaText = {
     privacy: "コードとプロンプトは、パソコンから利用中のエージェント提供元へ、その提供元の規約のもとで送られ、当社のサーバーは通りません。スマートフォンとvicaの間のメッセージは、暗号化されて自分の中継サーバーを通ります。",
     policy: "プライバシーポリシー",
     reqTitle: "動作環境",
-    req: ["Apple Silicon搭載のMac。", "使いたいエージェントCLIと、ご自身のアカウントでのログイン。vicaの設定からインストールとログインができます。"],
+    req: ["Apple Silicon搭載のMac、またはWindows 10 1809以降（x64）。", "使いたいエージェントCLIと、ご自身のアカウントでのログイン。vicaの設定からインストールとログインができます。"],
   },
   ko: {
-    title: "vica | 코딩 요청을 Mac의 에이전트에게 맡기기 | Tory Labs",
+    title: "vica | Mac·Windows의 AI 코딩 에이전트 | Tory Labs",
     description: "vica는 코딩 요청을 단계로 나눠 내 컴퓨터의 Claude Code, Codex, Antigravity, Grok, Muse Code에게 맡기는 데스크톱 앱입니다.",
-    eyebrow: "macOS · 앱 무료", eyebrowRelay: " · 중계 월 US$4.99부터 (선택)",
+    eyebrow: "macOS · Windows · 앱 무료", eyebrowRelay: " · 중계 월 US$4.99부터 (선택)",
     lead: "말로 맡기면, vica가 끝까지 해냅니다.",
     sub: "Mac에서든 휴대폰에서든 대화 하나로 말하면 됩니다. 이미 쓰는 코딩 에이전트들에게 단계별로 맡기고, 끝나면 보고합니다.",
-    mac: "Mac 다운로드 (Apple Silicon)", windows: "Windows · 곧 공개", subscribe: "중계 구독하기",
+    mac: "Mac 다운로드 (Apple Silicon)", windows: "Windows 다운로드 (x64 베타)", subscribe: "중계 구독하기",
+    windowsNote: "Windows는 서명 없는 MSI 설치 파일입니다. WebView2가 없으면 설치 중 내려받습니다.",
     howTitle: "이렇게 씁니다",
     how: [
       { t: "요청을 적습니다", d: "Mac의 vica에서도, 휴대폰에서도. 인사에는 답을, 일에는 계획을 돌려줍니다." },
@@ -240,7 +244,7 @@ export const vicaText = {
     privacy: "코드와 프롬프트는 내 컴퓨터에서 사용 중인 에이전트 제공사로, 그 회사의 약관에 따라 바로 갑니다. 저희 서버를 거치지 않습니다. 휴대폰과 vica 사이의 메시지는 암호화되어 내 연결 서버를 거칩니다.",
     policy: "개인정보처리방침",
     reqTitle: "필요 환경",
-    req: ["Apple Silicon Mac.", "쓰려는 에이전트 CLI와 본인 계정 로그인. vica 설정에서 설치와 로그인을 할 수 있습니다."],
+    req: ["Apple Silicon Mac 또는 Windows 10 1809 이상(x64).", "쓰려는 에이전트 CLI와 본인 계정 로그인. vica 설정에서 설치와 로그인을 할 수 있습니다."],
   },
 } satisfies Record<Lang, { faq: [string, string][] } & Record<string, unknown>>;
 
