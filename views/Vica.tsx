@@ -30,13 +30,17 @@ const ICONS = [
   "M12 7v5l2.5 2M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16",
   "M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4M12 8v4l3 2",
   "M3 9a2 2 0 0 1 2-2h3l2 2h7a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM7 7V6a2 2 0 0 1 2-2h3l2 2h5a2 2 0 0 1 2 2v6",
+  "M4 5h16v14H4zM14 11h5v6h-5z",
+  "M4 4h16v16H4zM9 4v16M13 9h4M13 13h4",
+  "M5 4h14v12H5zM9 20h6M12 16v4M9 9l2 2 4-4",
 ];
+const Soon = ({ label }: { label: string }) => <span className="ml-2 inline-flex rounded-full border border-[rgba(124,108,240,.25)] bg-[rgba(124,108,240,.08)] px-2 py-0.5 align-middle text-[11px] font-medium text-[#6d5ce8]">{label}</span>;
 
 export default function Vica({ lang }: { lang: Lang }) {
   const t = text[lang];
   const link = "underline underline-offset-4";
   const software = softwareEntity({ name: "vica", lang, description: t.description,
-    features: t.features.map((f) => f.t), download: DOWNLOAD, requirements: t.req.join(" ") });
+    features: t.features.filter((f) => !f.soon).map((f) => f.t), download: DOWNLOAD, requirements: t.req.join(" ") });
   return (
     <>
       <PageSchema lang={lang} path="/vica" title={t.title} description={t.description} questions={t.faq}
@@ -121,7 +125,7 @@ export default function Vica({ lang }: { lang: Lang }) {
             {t.chat.map((c, i) => (
               <div key={c.t} data-reveal className="surface surface-hover rounded-2xl p-7">
                 <span className="font-mono text-xs text-[var(--accent)]">0{i + 1}</span>
-                <h3 className="mt-3 font-semibold">{c.t}</h3>
+                <h3 className="mt-3 font-semibold">{c.t}{c.soon && <Soon label={t.soon} />}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{c.d}</p>
               </div>
             ))}
@@ -133,6 +137,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <p data-reveal className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.phoneLead}</p>
           <ul data-reveal className="mt-8 max-w-2xl list-disc space-y-3 pl-5 marker:text-[var(--accent)]">
             {t.phoneSteps.map((step) => <li key={step}>{step}</li>)}
+            {t.phoneSoon.map((step) => <li key={step}>{step}<Soon label={t.soon} /></li>)}
           </ul>
         </section>
 
@@ -151,7 +156,7 @@ export default function Vica({ lang }: { lang: Lang }) {
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[rgba(124,108,240,.18)] bg-[rgba(124,108,240,.08)]" aria-hidden="true">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="#6d5ce8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={ICONS[i]} /></svg>
                 </span>
-                <h3 className="mt-5 font-semibold">{f.t}</h3>
+                <h3 className="mt-5 font-semibold">{f.t}{f.soon && <Soon label={t.soon} />}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{f.d}</p>
               </div>
             ))}
