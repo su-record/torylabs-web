@@ -6,7 +6,7 @@ export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 // The newest release (scripts/release.sh in the vica repository publishes it there).
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
-export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.1.0/Vica_0.1.0_x64_ko-KR.msi";
+export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.1.3/Vica_0.1.3_x64_ko-KR.msi";
 
 export const vicaText = {
   en: {

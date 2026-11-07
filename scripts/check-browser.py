@@ -2,6 +2,7 @@
 import functools
 import json
 import os
+import re
 import sys
 import threading
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -11,7 +12,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'out'
 ARTIFACTS = Path.home() / 'sutory/work/torylabs-seo'
-WINDOWS_DOWNLOAD = 'https://github.com/su-record/vica-releases/releases/download/v0.1.0/Vica_0.1.0_x64_ko-KR.msi'
+WINDOWS_DOWNLOAD = re.search(r'export const WINDOWS_DOWNLOAD = "([^"]+)";', (ROOT / 'content/vica.ts').read_text()).group(1)
 sys.path.insert(0, str(Path(os.environ.get('SUTORY_ROOT', Path.home() / 'repos/sutory'))))
 from capabilities.browser import Browser
 
