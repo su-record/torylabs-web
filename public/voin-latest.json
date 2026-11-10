@@ -1,11 +1,11 @@
 {
-  "version": "0.0.5",
-  "notes": "voin 0.0.5\n\n- 같은 이름으로 지정된 화자는 한 칸으로 모아 말한 시간을 합쳐 보여줍니다.\n- 녹음 중이나 저장된 기록에서 본문의 화자 이름을 우클릭하면, 그 이름 아래 묶인 발언을 기존 화자로 옮기거나 새 이름을 추가할 수 있습니다. 다른 위치의 같은 이름은 그대로 유지합니다.\n- 녹음 중 직접 바꾼 화자는 종료 후 다시 받아쓰기와 화자 분리에서도 유지합니다.\n- 회의를 끝내는 버튼을 ‘종료’로 표시합니다. ‘중지’는 잠시 멈춤, ‘다시 녹음’은 같은 회의에 이어 녹음하는 기능입니다.",
-  "pub_date": "2026-11-09T07:15:05.561Z",
+  "version": "0.0.6",
+  "notes": "voin 0.0.6\n\n- 녹음 중 화자 구분 작업에 오류가 나도 받아쓰기를 계속하고 회의를 종료할 수 있도록 고쳤습니다.\n- 기록·설정·검색 색인을 임시 파일에 쓴 뒤 교체하도록 바꿔, 저장 중 파일이 불완전하게 남는 문제를 줄였습니다.\n- 녹음 중 기록을 모아 저장하고, 회의 검색에서 반복되는 폴더 탐색을 줄였습니다.",
+  "pub_date": "2026-11-10T01:10:51.266Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RnRyU1I3eEp4ZHFsNHlVL1BqcVZUMEFaRUovbUxHVnRFV3E0OUkxZzhkT094aU1xQld5TTlFd0JoRkVtdG9INmJWampUT1lvaVE0Smx1QWozWTg4Y1F3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjA4NTA1CWZpbGU6dm9pbi0wLjAuNS0wM2ZmNWQwZjIzNzUuYXBwLnRhci5negl2ZXJzaW9uOjAuMC41Ck8rSEp5SHF1d1lpR2RDdHcxU2RIaksvNHMyekpVTUpJRCs4NnFMbFFmMDNCUHhwL3hMeU93dFl2dDhSQVJ4VmZOeG5qcC9kNlJjWDdLYWc5Z0J6Z0JRPT0K",
-      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.5/voin-0.0.5-03ff5d0f2375.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RmhNNEwvd284SnlESU5qemxJZEtscGNrUjFESVdYUlhIdFUxS3ZicHRnNThYUjRFMHk5TnhEcHAyeGZKaCtkWHphdWU3K3NYa3BtY0src09tYXgxemc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjczMDUxCWZpbGU6dm9pbi0wLjAuNi02YWNkNTc0ZjE5NjYuYXBwLnRhci5negl2ZXJzaW9uOjAuMC42Ci9xQWNzUWVob2lmV29FMnlQTWZrTXlvb1NmMGJLSTNKZ1MwbzhFSVgvbDFhL1hqUUFDcGp0SmJmVUNWRzBSRDRLeEtUaE5rNzZ6THovditranNZM0JnPT0K",
+      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.6/voin-0.0.6-6acd574f1966.app.tar.gz"
     }
   }
 }
