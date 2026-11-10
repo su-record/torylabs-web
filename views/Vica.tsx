@@ -14,8 +14,6 @@ export function vicaMetadata(lang: Lang): Metadata {
   return pageMetadata(lang, "/vica", title, description);
 }
 
-const AGENTS = ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code"];
-
 const H2 = ({ children }: { children: string }) => <h2 data-reveal className="mb-10 text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">{children}</h2>;
 
 // One small line icon per feature, in the order of `features`.
@@ -91,9 +89,12 @@ export default function Vica({ lang }: { lang: Lang }) {
         <section className="border-t border-[var(--line)] py-24">
           <H2>{t.agentsTitle}</H2>
           <p data-reveal className="max-w-2xl leading-relaxed text-[var(--muted)]">{t.agentsLead}</p>
-          <ul data-reveal className="mt-8 flex flex-wrap gap-3">
-            {AGENTS.map((agent) => <li key={agent} className="surface surface-hover flex items-center gap-2.5 rounded-full px-4 py-2 font-mono text-sm"><span className="font-semibold text-[var(--accent)]" aria-hidden="true">›</span>{agent}</li>)}
-          </ul>
+          <div className="mt-8 space-y-6">
+            {t.connections.map((group) => <div key={group.name} data-reveal>
+              <h3 className="mb-3 text-sm font-semibold">{group.name}</h3>
+              <ul className="flex flex-wrap gap-3">{group.services.map((service) => <li key={service} className="surface surface-hover rounded-full px-4 py-2 font-mono text-sm">{service}</li>)}</ul>
+            </div>)}
+          </div>
         </section>
 
         <section id="chat" className="scroll-mt-20 border-t border-[var(--line)] py-24">
@@ -102,7 +103,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             <div data-reveal className="surface relative overflow-hidden rounded-2xl p-7">
               <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--glow)] to-transparent opacity-50" />
-              <p className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#f7f7fa] px-3 py-1 font-mono text-xs text-[var(--muted)]"><span className="pulse-dot" aria-hidden="true" />laya · local</p>
+              <p className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#f7f7fa] px-3 py-1 font-mono text-xs text-[var(--muted)]"><span className="pulse-dot" aria-hidden="true" />vica-laya</p>
               <h3 className="mt-4 text-lg font-semibold">{t.layaTitle}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t.layaLead}</p>
               <ol className="mt-4 space-y-3 text-sm leading-relaxed">

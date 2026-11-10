@@ -10,16 +10,19 @@ const scene = {
   en: {
     ask: "Fix the login bug and run the tests", worked: "Worked for 2m 13s",
     answer: ["Fixed: the session cookie was cleared before the redirect.", "Login tests: 12 passed."],
+    example: "Illustrative workflow, not a live task",
     files: "3 files changed", relay: "Relay", sealed: "End-to-end encrypted", placeholder: "Ask vica to do something",
   },
   ja: {
     ask: "ログインのバグを直してテストして", worked: "2分13秒 作業しました",
     answer: ["修正しました：リダイレクト前にセッションCookieが消えていました。", "ログインのテスト：12件成功。"],
+    example: "操作の流れを示す例です",
     files: "3ファイルを変更", relay: "中継", sealed: "エンドツーエンド暗号化", placeholder: "vicaに任せること",
   },
   ko: {
     ask: "로그인 버그 고치고 테스트 돌려 줘", worked: "2분 13초 동안 작업함",
     answer: ["고쳤습니다. 리디렉션 전에 세션 쿠키가 지워지고 있었습니다.", "로그인 테스트 12개가 통과했습니다."],
+    example: "작업 흐름을 보여 주는 예시입니다",
     files: "파일 3개 수정", relay: "중계", sealed: "종단 간 암호화", placeholder: "vica에게 맡길 일",
   },
 } satisfies Record<Lang, unknown>;
@@ -27,9 +30,9 @@ type T = (typeof scene)[Lang];
 
 // What the agents print while they work; the same in every language, like a real terminal.
 const TERMINAL: [string, string][] = [
-  ["claude-code", "read src/auth/session.ts"],
-  ["claude-code", "edit 3 files  +42 −7"],
-  ["codex", "npm test -- login  ✓ 12 passed"],
+  ["Vica", "read_file src/auth/session.ts"],
+  ["Vica", "apply_patch 3 files  +42 −7"],
+  ["Vica", "diagnostics: login tests  ✓ 12 passed"],
 ];
 // When each step starts, in ms after the scene comes into view.
 const STEPS = [0, 300, 1700, 2300, 2900, 3600, 4300, 5200, 6000];
@@ -55,7 +58,7 @@ function Mac({ t, at, typed }: { t: T; at: number; typed: number }) {
         <div className="rounded-xl border border-[var(--line)] bg-[#f7f7fa] px-4 py-3 font-mono text-[11.5px] leading-6" aria-hidden="true">
           {TERMINAL.map(([who, what], i) => (
             <div key={what} {...step(at, 2 + i)} className="flex flex-wrap gap-x-3 sm:flex-nowrap sm:truncate">
-              <span className={who === "codex" ? "text-[#0369a1]" : "text-[var(--accent)]"}>{who}</span>
+              <span className="text-[var(--accent)]">{who}</span>
               <span className={i === 2 ? "text-[#15803d]" : "text-[var(--muted)]"}>{what}</span>
             </div>
           ))}
@@ -164,6 +167,7 @@ export default function VicaScene({ lang }: { lang: Lang }) {
         <Wire on={at >= 7} idle={done} />
         <Phone t={t} at={at} />
       </div>
+      <p className="mt-6 text-center text-xs text-[var(--muted)]">{t.example}</p>
     </div>
   );
 }
