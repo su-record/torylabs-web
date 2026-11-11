@@ -1,11 +1,11 @@
 {
-  "version": "0.0.6",
-  "notes": "voin 0.0.6\n\n- 녹음 중 화자 구분 작업에 오류가 나도 받아쓰기를 계속하고 회의를 종료할 수 있도록 고쳤습니다.\n- 기록·설정·검색 색인을 임시 파일에 쓴 뒤 교체하도록 바꿔, 저장 중 파일이 불완전하게 남는 문제를 줄였습니다.\n- 녹음 중 기록을 모아 저장하고, 회의 검색에서 반복되는 폴더 탐색을 줄였습니다.",
-  "pub_date": "2026-11-10T01:10:51.266Z",
+  "version": "0.0.7",
+  "notes": "voin 0.0.7\n\n- 기록의 참석자 탭과 녹음 중 화자 칸에서 이름을 입력하거나 백스페이스로 지울 수 없던 문제를 고쳤습니다.\n- 설치용 디스크 이미지(DMG) 안에서 바로 실행한 앱에서 업데이트를 누르면 알 수 없는 오류가 나던 것을, 응용 프로그램 폴더로 옮기라는 안내로 바꿨습니다.",
+  "pub_date": "2026-11-11T04:52:09.037Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RmhNNEwvd284SnlESU5qemxJZEtscGNrUjFESVdYUlhIdFUxS3ZicHRnNThYUjRFMHk5TnhEcHAyeGZKaCtkWHphdWU3K3NYa3BtY0src09tYXgxemc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjczMDUxCWZpbGU6dm9pbi0wLjAuNi02YWNkNTc0ZjE5NjYuYXBwLnRhci5negl2ZXJzaW9uOjAuMC42Ci9xQWNzUWVob2lmV29FMnlQTWZrTXlvb1NmMGJLSTNKZ1MwbzhFSVgvbDFhL1hqUUFDcGp0SmJmVUNWRzBSRDRLeEtUaE5rNzZ6THovditranNZM0JnPT0K",
-      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.6/voin-0.0.6-6acd574f1966.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RnA4U2NpZEc2VFV4S09Gb1ZkMWN0aGx4blZ3SUZiRmFQNnNMZU1FUW5GSjBZYWVaejIrYnQ0NUpyVTN1VXRwdmsvbHVSbCsxb011cnFXNUcycE9KTHdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MzcyNzI4CWZpbGU6dm9pbi0wLjAuNy1iMjg4ZTA3MzBlNDkuYXBwLnRhci5negl2ZXJzaW9uOjAuMC43CkJzdWhoWjYwMXJYaVpQaUV5NWhoaytLZk5SU2ZicitpT05jK3dZR1BTQUJQMUx2d29YTm1kUk1reU5kZ3h1SmFvR2xZWGlHUTRnSVQzaVBJTVJFekN3PT0K",
+      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.7/voin-0.0.7-b288e0730e49.app.tar.gz"
     }
   }
 }
