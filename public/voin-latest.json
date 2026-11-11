@@ -1,11 +1,11 @@
 {
-  "version": "0.0.7",
-  "notes": "voin 0.0.7\n\n- 기록의 참석자 탭과 녹음 중 화자 칸에서 이름을 입력하거나 백스페이스로 지울 수 없던 문제를 고쳤습니다.\n- 설치용 디스크 이미지(DMG) 안에서 바로 실행한 앱에서 업데이트를 누르면 알 수 없는 오류가 나던 것을, 응용 프로그램 폴더로 옮기라는 안내로 바꿨습니다.",
-  "pub_date": "2026-11-11T04:52:09.037Z",
+  "version": "0.0.8",
+  "notes": "voin 0.0.8\n\n- 앱을 켤 때 새 버전이 있으면 바로 설치할지 묻습니다. 취소하거나 실패해도 다음에 켤 때 다시 묻습니다.\n- 업데이트 파일을 받지 못했을 때, 내려받기가 막힌 네트워크일 수 있다는 안내를 보여 줍니다.",
+  "pub_date": "2026-11-11T07:45:58.782Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RnA4U2NpZEc2VFV4S09Gb1ZkMWN0aGx4blZ3SUZiRmFQNnNMZU1FUW5GSjBZYWVaejIrYnQ0NUpyVTN1VXRwdmsvbHVSbCsxb011cnFXNUcycE9KTHdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MzcyNzI4CWZpbGU6dm9pbi0wLjAuNy1iMjg4ZTA3MzBlNDkuYXBwLnRhci5negl2ZXJzaW9uOjAuMC43CkJzdWhoWjYwMXJYaVpQaUV5NWhoaytLZk5SU2ZicitpT05jK3dZR1BTQUJQMUx2d29YTm1kUk1reU5kZ3h1SmFvR2xZWGlHUTRnSVQzaVBJTVJFekN3PT0K",
-      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.7/voin-0.0.7-b288e0730e49.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RnBzclkya1BhK09JK0JubkxlV29hNm9YaS9kQk96NktKUXpjNmNhRURzcnNuTURaNno5NkNVekxHWUZPRFFUazZWN2VFWmxJVS9lOHo0SUZsT3JrK1E0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MzgzMTU4CWZpbGU6dm9pbi0wLjAuOC1iYTE1ZWYwNWNhOTQuYXBwLnRhci5negl2ZXJzaW9uOjAuMC44CnZ2Vm5QTXJIK215ai9zWmM4ODl5a3NCb2xWTmdQTXdvT2w5UjJycWJyTDZhcjhpZlhyZlFMdTUvQlRkTDNlb3ZHelhDZkJwOTlSR1BYbkFoY2Z6NEJ3PT0K",
+      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.8/voin-0.0.8-ba15ef05ca94.app.tar.gz"
     }
   }
 }
