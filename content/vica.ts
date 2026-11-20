@@ -1,6 +1,6 @@
 import type { Lang } from "./i18n";
 
-// Product copy checked against Vica 0.2.2 (Mac) on 2026-11-20; Windows remains 0.1.10 beta.
+// Product copy checked against Vica 0.2.3 (Mac) on 2026-11-21; Windows remains 0.1.10 beta.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
@@ -34,7 +34,7 @@ export const vicaText = {
       {"t": "Permission modes", "d": "Default, automatic approval and full approval control confirmations for writes and commands.", "soon": false},
       {"t": "Terminal", "d": "Use tabs, splits, SSH projects and independent terminal sessions. Closing a window differs from quitting the app.", "soon": false},
       {"t": "Your AI connections", "d": "Choose API keys, supported subscription logins or local models. Vica does not sell model access.", "soon": false},
-      {"t": "Computer use", "d": "Enable permissions to observe and operate apps and browsers. Mark read-only apps and stop at any time.", "soon": false},
+      {"t": "Computer use", "d": "Enable permissions to observe and operate apps and browsers. A task in one app is driven first by the decision model. Mark read-only apps and stop at any time.", "soon": false},
       {"t": "Waiting on you", "d": "Gather questions, permissions, sign-ins, failures and unread results in one place.", "soon": false},
       {"t": "Work history", "d": "Find Vica conversations and terminal sessions by project or group and resume the work.", "soon": false},
       {"t": "Project groups", "d": "Group projects and keep conversations, files and changes in one window.", "soon": false},
@@ -51,8 +51,8 @@ export const vicaText = {
     layaTag: "decision model",
     layaTitle: "Choosing work and models",
     layaLead: "The decision model chooses how to handle a request and which connected model to use. You can also select a model directly or name it with @.",
-    laya: ["Answer a question directly or select a multi-step workflow.", "Choose a connected model for planning, building, reviewing and other work.", "Run under your selected permission mode: default, automatic approval, or full approval."],
-    layaNote: "Choose the decision model in Settings → Hook → Decision model. Without one, basic rules route your requests.",
+    laya: ["Answer a question directly or select a multi-step workflow.", "Choose a connected model for planning, building, reviewing and other work.", "Run under your selected permission mode: default, automatic approval, or full approval.", "With several decision models selected, they all answer each question at once and their answers are averaged.", "Watch the work as it goes: they correct repeated failures, drift from the request and checking after the work is done, and let settled reasoning act at once.", "Drive computer use first: they pick the app and operate it step by step, and the working model answers from the result."],
+    layaNote: "Choose decision models in Settings → Hook → Decision model; each of their jobs can be switched off there. Without one, basic rules route your requests.",
     rolesTitle: "Workflows and models",
     roles: [
       ["Plan, build and debug", "Choose per task"],
@@ -100,7 +100,7 @@ export const vicaText = {
     privacy: "When using a hosted model, requests and relevant code or file contents go to that provider. Local model inference runs on your computer. Tools can contact web services as requested, and remote messages pass through the relay encrypted.",
     policy: "Privacy Policy",
     reqTitle: "Requirements",
-    req: ["Apple Silicon Mac, or Windows 10 1809 or later (x64 beta).", "One AI connection: a provider API key, a supported subscription login, or a local model your computer can run.", "Computer use needs separate permissions. Remote access needs Vica on the computer and a relay to remain available."],
+    req: ["Apple Silicon Mac, or Windows 10 1809 or later (x64 beta).", "One AI connection: a provider API key, a supported subscription login, or a local model your computer can run.", "Computer use needs separate permissions. Remote access needs Vica on the computer and a relay to remain available.", "On a Mac, Vica checks Git, Node and Python when it starts and tries to install missing ones with Homebrew when Homebrew is installed."],
     connections: [
       {"name": "Company APIs", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "Upstage", "OpenRouter", "OpenGateway"]},
       {"name": "Existing CLI and subscription connections", "services": ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code", "Kimi"]},
@@ -134,7 +134,7 @@ export const vicaText = {
       {"t": "権限モード", "d": "基本・自動承認・すべて承認でファイル書き込みとコマンド実行の確認範囲を選びます。", "soon": false},
       {"t": "ターミナル", "d": "タブ・分割・SSHプロジェクトと独立したセッションを使えます。ウィンドウを閉じる動作とアプリ終了は異なります。", "soon": false},
       {"t": "自分のAI接続", "d": "APIキー、対応するサブスクリプションのログイン、ローカルモデルを選べます。モデルの利用権は販売しません。", "soon": false},
-      {"t": "コンピューター操作", "d": "権限を有効にしてアプリやブラウザーを観察・操作します。読み取り専用アプリを指定し、いつでも停止できます。", "soon": false},
+      {"t": "コンピューター操作", "d": "権限を有効にしてアプリやブラウザーを観察・操作します。アプリひとつで済む作業は判断モデルが先に直接進めます。読み取り専用アプリを指定し、いつでも停止できます。", "soon": false},
       {"t": "応答待ち", "d": "質問・権限・ログインと失敗・未読の結果をまとめて確認します。", "soon": false},
       {"t": "作業記録", "d": "Vicaの会話とターミナルセッションをプロジェクトやグループから探して再開します。", "soon": false},
       {"t": "プロジェクトのグループ", "d": "プロジェクトをまとめ、会話・ファイル・変更をひとつの画面で扱います。", "soon": false},
@@ -151,8 +151,8 @@ export const vicaText = {
     layaTag: "判断モデル",
     layaTitle: "作業とモデルを選ぶ判断モデル",
     layaLead: "依頼の処理方法と接続済みモデルから使うものを選びます。モデルを直接選んだり、@で指定したりすることもできます。",
-    laya: ["質問に直接答えるか、複数段階のワークフローを選びます。", "計画・実装・レビューなどの作業に合う接続済みモデルを選びます。", "ユーザーが選んだ権限モード（基本・自動承認・すべて承認）で実行します。"],
-    layaNote: "判断モデルは 設定 → Hook → 判断モデル で選びます。選ばなくても基本ルールでリクエストを振り分けて始められます。",
+    laya: ["質問に直接答えるか、複数段階のワークフローを選びます。", "計画・実装・レビューなどの作業に合う接続済みモデルを選びます。", "ユーザーが選んだ権限モード（基本・自動承認・すべて承認）で実行します。", "複数の判断モデルを選ぶと、同じ質問に同時に答え、確率を平均して決めます。", "作業中も横で見守り、同じ失敗の繰り返し・依頼からの逸脱・完了後の確認の繰り返しを正し、結論が出た推論はすぐ実行に移します。", "コンピューター操作は判断モデルがアプリを選んで直接進め、作業モデルは結果から答えます。"],
+    layaNote: "判断モデルは 設定 → Hook → 判断モデル で選び、判断の仕事ごとにオフにできます。選ばなくても基本ルールでリクエストを振り分けて始められます。",
     rolesTitle: "ワークフローとモデル",
     roles: [
       ["計画・実装・デバッグ", "作業ごとに選択"],
@@ -200,7 +200,7 @@ export const vicaText = {
     privacy: "各社モデルを使うと依頼と必要なコード・ファイル内容が提供元へ送られます。ローカルモデルの推論はパソコン上で行います。ツールは依頼に応じてウェブサービスへ接続し、リモートメッセージは暗号化された状態で中継を通ります。",
     policy: "プライバシーポリシー",
     reqTitle: "動作環境",
-    req: ["Apple Silicon搭載のMac、またはWindows 10 1809以降（x64ベータ）。", "AI接続をひとつ：各社APIキー、対応するサブスクリプションのログイン、実行可能なローカルモデル。", "コンピューター操作には別途権限が必要です。リモート接続中はパソコンのVicaと中継が利用可能である必要があります。"],
+    req: ["Apple Silicon搭載のMac、またはWindows 10 1809以降（x64ベータ）。", "AI接続をひとつ：各社APIキー、対応するサブスクリプションのログイン、実行可能なローカルモデル。", "コンピューター操作には別途権限が必要です。リモート接続中はパソコンのVicaと中継が利用可能である必要があります。", "MacではVicaが起動時にGit・Node・Pythonを確認し、Homebrewがあれば足りないものをインストールしようとします。"],
     connections: [
       {"name": "各社API", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "Upstage", "OpenRouter", "OpenGateway"]},
       {"name": "既存のCLI・サブスクリプション接続", "services": ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code", "Kimi"]},
@@ -234,7 +234,7 @@ export const vicaText = {
       {"t": "권한 선택", "d": "기본·자동 승인·전체 승인 모드에 따라 파일 쓰기와 명령 실행의 확인 범위를 고릅니다.", "soon": false},
       {"t": "터미널", "d": "탭·분할·SSH 프로젝트와 독립 터미널 세션을 사용합니다. 앱 창 닫기와 앱 전체 종료는 동작이 다릅니다.", "soon": false},
       {"t": "내 AI 연결", "d": "API 키, 지원되는 구독 로그인, 로컬 모델을 선택합니다. Vica는 모델 사용권을 판매하지 않습니다.", "soon": false},
-      {"t": "컴퓨터 사용", "d": "권한을 켜고 앱과 브라우저를 관찰·조작합니다. 읽기만 할 앱을 지정하고 언제든 멈출 수 있습니다.", "soon": false},
+      {"t": "컴퓨터 사용", "d": "권한을 켜고 앱과 브라우저를 관찰·조작합니다. 앱 하나에서 끝나는 일은 판단 모델이 먼저 직접 진행합니다. 읽기만 할 앱을 지정하고 언제든 멈출 수 있습니다.", "soon": false},
       {"t": "응답 대기", "d": "질문·권한·로그인과 실패·안 읽은 결과를 모아 봅니다.", "soon": false},
       {"t": "작업 기록", "d": "Vica 대화와 터미널 세션을 프로젝트·그룹별로 찾아 이어 갑니다.", "soon": false},
       {"t": "프로젝트 그룹", "d": "프로젝트를 그룹으로 묶고 대화·파일·변경 사항을 한 창에서 다룹니다.", "soon": false},
@@ -251,8 +251,8 @@ export const vicaText = {
     layaTag: "판단 모델",
     layaTitle: "작업을 고르는 판단 모델",
     layaLead: "요청을 어떤 작업으로 처리할지, 연결된 모델 중 무엇을 쓸지 판단합니다. 모델을 직접 고르거나 @모델로 지정할 수도 있습니다.",
-    laya: ["질문에 바로 답하거나 여러 단계의 작업 방식을 선택합니다.", "계획·구현·리뷰 등 작업에 맞는 모델을 연결된 목록에서 고릅니다.", "기본·자동 승인·전체 승인 중 사용자가 고른 권한 모드로 실행합니다."],
-    layaNote: "판단 모델은 설정 → Hook → 판단 모델에서 고릅니다. 고르지 않아도 기본 규칙으로 요청을 나눠 시작할 수 있습니다.",
+    laya: ["질문에 바로 답하거나 여러 단계의 작업 방식을 선택합니다.", "계획·구현·리뷰 등 작업에 맞는 모델을 연결된 목록에서 고릅니다.", "기본·자동 승인·전체 승인 중 사용자가 고른 권한 모드로 실행합니다.", "판단 모델을 여러 개 고르면 같은 질문에 동시에 답하고, 확률을 평균해 정합니다.", "작업 도중에도 옆에서 보며 같은 실패 반복·요청 이탈·끝난 뒤의 확인 반복을 바로잡고, 결론이 난 추론은 바로 실행으로 넘깁니다.", "컴퓨터 조작은 판단 모델이 앱을 골라 직접 진행하고, 작업 모델은 결과로 답합니다."],
+    layaNote: "판단 모델은 설정 → Hook → 판단 모델에서 고르고, 판단하는 일마다 끌 수 있습니다. 고르지 않아도 기본 규칙으로 요청을 나눠 시작할 수 있습니다.",
     rolesTitle: "일하는 방식과 모델",
     roles: [
       ["계획·구현·디버깅", "작업별 모델 선택"],
@@ -300,7 +300,7 @@ export const vicaText = {
     privacy: "회사 모델을 쓰면 요청과 필요한 코드·파일 내용이 해당 제공사로 전송됩니다. 로컬 모델의 추론은 내 컴퓨터에서 이뤄집니다. 도구가 요청한 웹 서비스로 접속할 수 있으며, 원격 대화는 암호화된 상태로 중계 서버를 거칩니다.",
     policy: "개인정보처리방침",
     reqTitle: "필요 환경",
-    req: ["Apple Silicon Mac 또는 Windows 10 1809 이상(x64 베타).", "AI 연결 하나: 회사 API 키, 지원되는 구독 로그인, 또는 실행 가능한 로컬 모델.", "컴퓨터 사용은 별도 권한이 필요하고, 원격 연결은 컴퓨터의 Vica와 중계 서버가 켜져 있어야 합니다."],
+    req: ["Apple Silicon Mac 또는 Windows 10 1809 이상(x64 베타).", "AI 연결 하나: 회사 API 키, 지원되는 구독 로그인, 또는 실행 가능한 로컬 모델.", "컴퓨터 사용은 별도 권한이 필요하고, 원격 연결은 컴퓨터의 Vica와 중계 서버가 켜져 있어야 합니다.", "Mac에서는 Vica가 시작할 때 Git·Node·Python을 확인하고, Homebrew가 있으면 없는 것을 설치하려고 합니다."],
     connections: [
       {"name": "회사 API", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "Upstage", "OpenRouter", "OpenGateway"]},
       {"name": "기존 CLI·구독 연결", "services": ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code", "Kimi"]},
