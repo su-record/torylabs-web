@@ -19,6 +19,8 @@ const H2 = ({ children }: { children: string }) => <h2 data-reveal className="mb
 // One small line icon per feature, in the order of `features`.
 const ICONS = [
   "M5 12l4 4L19 6",
+  "M4 5h16v11h-9l-5 4v-4H4z",
+  "M4 6a2 2 0 1 0 4 0a2 2 0 1 0-4 0M16 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0M9 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0M8 6.2L16 6.8M7 7.8l3 8.4M17 8.8l-4.8 7.6",
   "M8 7a3 3 0 1 0 0 .01M16 7a3 3 0 1 0 0 .01M3 20c0-3 2.5-5 5-5s5 2 5 5M13 20c0-2.2 1.5-4.2 3-4.8 2.4-.6 5 1.3 5 4.8",
   "M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18",
   "M12 3l8 4v5c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V7z",
@@ -103,7 +105,7 @@ export default function Vica({ lang }: { lang: Lang }) {
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             <div data-reveal className="surface relative overflow-hidden rounded-2xl p-7">
               <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--glow)] to-transparent opacity-50" />
-              <p className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#f7f7fa] px-3 py-1 font-mono text-xs text-[var(--muted)]"><span className="pulse-dot" aria-hidden="true" />vica-laya</p>
+              <p className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[#f7f7fa] px-3 py-1 font-mono text-xs text-[var(--muted)]"><span className="pulse-dot" aria-hidden="true" />{t.layaTag}</p>
               <h3 className="mt-4 text-lg font-semibold">{t.layaTitle}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t.layaLead}</p>
               <ol className="mt-4 space-y-3 text-sm leading-relaxed">

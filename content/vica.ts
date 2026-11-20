@@ -1,10 +1,10 @@
 import type { Lang } from "./i18n";
 
-// Product copy checked against Vica 0.1.9 on 2026-11-10; Windows remains 0.1.7 beta.
+// Product copy checked against Vica 0.2.2 (Mac) on 2026-11-20; Windows remains 0.1.10 beta.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
-export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.1.7/Vica_0.1.7_x64_ko-KR.msi";
+export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.1.10/Vica_0.1.10_x64_ko-KR.msi";
 
 export const vicaText = {
   en: {
@@ -17,16 +17,18 @@ export const vicaText = {
     mac: "Download for Mac (Apple Silicon)",
     windows: "Download for Windows (x64 beta)",
     subscribe: "Subscribe to the relay",
-    windowsNote: "Mac requires Apple Silicon. Windows 0.1.7 is an unsigned x64 beta and may differ from the latest Mac release. Setup downloads WebView2 if needed.",
+    windowsNote: "Mac requires Apple Silicon. Windows 0.1.10 is an unsigned x64 beta and may differ from the latest Mac release. Setup downloads WebView2 if needed.",
     howTitle: "How it works",
     how: [
-      {"t": "Choose a project and connection", "d": "Open a folder and connect an API key, a supported subscription login, or a local model."},
+      {"t": "Choose a connection", "d": "Connect an API key, a supported subscription login, or a local model. Start a chat right away, or open a folder for project work."},
       {"t": "Describe the work", "d": "Send a chat request or choose a brainstorm, cowork, or saved workflow."},
       {"t": "Inspect progress and results", "d": "Review file changes and execution records, answer questions, or stop a run. Connected devices can follow the work too."},
     ],
     featuresTitle: "Features",
     features: [
       {"t": "Work in steps", "d": "Run planning, implementation and checks in sequence and keep progress and results in the conversation.", "soon": false},
+      {"t": "Chat without a project", "d": "Start a chat from the welcome page without opening a folder, and move it into a project folder later.", "soon": false},
+      {"t": "Knowledge and knowledge graph", "d": "Keep the decisions and methods your chats settle, with their sources, and browse a project’s knowledge as a 3D graph.", "soon": false},
       {"t": "Saved workflows", "d": "Create a cowork and save its steps, models and human checkpoints.", "soon": false},
       {"t": "Execution and recovery", "d": "Keep conversations and execution records. Unfinished work is not automatically replayed after the app exits.", "soon": false},
       {"t": "Permission modes", "d": "Default, automatic approval and full approval control confirmations for writes and commands.", "soon": false},
@@ -37,7 +39,7 @@ export const vicaText = {
       {"t": "Work history", "d": "Find Vica conversations and terminal sessions by project or group and resume the work.", "soon": false},
       {"t": "Project groups", "d": "Group projects and keep conversations, files and changes in one window.", "soon": false},
       {"t": "Terminal menu", "d": "Copy and paste, inspect titles and IDs, clear the screen, or hand work to another agent.", "soon": false},
-      {"t": "14 screen themes", "d": "Choose light, dark, retro Windows styles and Mac-inspired themes in Settings.", "soon": false},
+      {"t": "8 screen themes", "d": "Choose light, dark, Windows 95, XP and 7, or Macintosh, Aqua and Glass styles in Settings.", "soon": false},
       {"t": "Preserved terminal screens", "d": "Keep output and screens from running terminal sessions and reconnect. Quitting the app checks for running terminals.", "soon": false},
     ],
     noLogin: "No Vica account is required. Choose your AI connection in Settings.",
@@ -46,10 +48,11 @@ export const vicaText = {
     agentsLead: "Connect in Settings → Agents, then choose a model in chat. API and subscription charges follow the provider’s terms. Local models use your computer’s resources.",
     chatTitle: "Vica runs the tools. Your chosen model does the work.",
     chatLead: "Vica’s own agent reads and edits files and runs commands in ordinary chat. Some subscription connections and provider-specific tools use the company’s CLI.",
+    layaTag: "decision model",
     layaTitle: "Choosing work and models",
     layaLead: "The decision model chooses how to handle a request and which connected model to use. You can also select a model directly or name it with @.",
     laya: ["Answer a question directly or select a multi-step workflow.", "Choose a connected model for planning, building, reviewing and other work.", "Run under your selected permission mode: default, automatic approval, or full approval."],
-    layaNote: "Install the optional vica-laya model from Settings → Agents → Vica built-in. Other decision connections or basic rules also let you get started.",
+    layaNote: "Choose the decision model in Settings → Hook → Decision model. Without one, basic rules route your requests.",
     rolesTitle: "Workflows and models",
     roles: [
       ["Plan, build and debug", "Choose per task"],
@@ -69,7 +72,7 @@ export const vicaText = {
       {"t": "Brainstorms and coworks", "d": "Compare answers from several models or run planning, implementation and review in sequence.", "soon": false},
       {"t": "Queued and follow-up requests", "d": "Queue the next request or send an extra instruction to a running task and check its delivery state.", "soon": false},
       {"t": "Tables, charts and animated explanations", "d": "Show steps, flows and comparisons visually. 3D explanations are used when you request an explanation or visual.", "soon": false},
-      {"t": "LG EXAONE API", "d": "Mac 0.1.9 supports K-EXAONE 2.5 API keys for text chat and tool calls. Image input is not supported.", "soon": false},
+      {"t": "LG EXAONE API", "d": "Register a K-EXAONE 2.5 API key for text chat and tool calls. Image input is not supported.", "soon": false},
     ],
     phoneTitle: "On your phone, it is just a chat",
     phoneLead: "Send work to Vica on your computer. Phones show chat and requests waiting for you; tablets show the app interface. The computer and a relay must be available.",
@@ -99,7 +102,7 @@ export const vicaText = {
     reqTitle: "Requirements",
     req: ["Apple Silicon Mac, or Windows 10 1809 or later (x64 beta).", "One AI connection: a provider API key, a supported subscription login, or a local model your computer can run.", "Computer use needs separate permissions. Remote access needs Vica on the computer and a relay to remain available."],
     connections: [
-      {"name": "Company APIs", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "OpenRouter", "OpenGateway"]},
+      {"name": "Company APIs", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "Upstage", "OpenRouter", "OpenGateway"]},
       {"name": "Existing CLI and subscription connections", "services": ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code", "Kimi"]},
       {"name": "Models on this computer", "services": ["Vica built-in", "Ollama", "LM Studio", "vLLM"]},
     ],
@@ -114,16 +117,18 @@ export const vicaText = {
     mac: "Macをダウンロード（Apple Silicon）",
     windows: "Windowsをダウンロード（x64ベータ）",
     subscribe: "中継を購読する",
-    windowsNote: "Mac版はApple Silicon用です。Windows 0.1.7は署名なしのx64ベータで、最新Mac版とは機能が異なる場合があります。必要ならWebView2をセットアップ中に取得します。",
+    windowsNote: "Mac版はApple Silicon用です。Windows 0.1.10は署名なしのx64ベータで、最新Mac版とは機能が異なる場合があります。必要ならWebView2をセットアップ中に取得します。",
     howTitle: "使い方",
     how: [
-      {"t": "プロジェクトと接続を選ぶ", "d": "フォルダーを開き、APIキー、対応するサブスクリプションのログイン、ローカルモデルから接続を選びます。"},
+      {"t": "接続を選ぶ", "d": "APIキー、対応するサブスクリプションのログイン、ローカルモデルから接続を選びます。すぐに会話するか、プロジェクトの作業はフォルダーを開いて始めます。"},
       {"t": "作業を依頼する", "d": "チャットで依頼するか、ブレインストーミング、コワーク、保存したワークフローを選びます。"},
       {"t": "進行と結果を確認する", "d": "ファイルの変更と実行記録を確認し、質問に答え、実行を停止できます。接続したデバイスからも確認できます。"},
     ],
     featuresTitle: "機能",
     features: [
       {"t": "段階ごとに作業", "d": "計画・実装・確認を順番に実行し、進行と結果を会話に残します。", "soon": false},
+      {"t": "プロジェクトなしで会話", "d": "フォルダーを開かずにウェルカムページからすぐ会話し、あとでプロジェクトのフォルダーへ移して続けます。", "soon": false},
+      {"t": "ナレッジとナレッジグラフ", "d": "会話で決めたことや方法を出典とともに保存し、プロジェクトのナレッジを3Dグラフで見られます。", "soon": false},
       {"t": "保存したワークフロー", "d": "コワークを作成し、順序・モデル・人が確認する段階を保存します。", "soon": false},
       {"t": "実行と復旧", "d": "会話と実行記録を保存します。アプリ終了後に未完了作業を自動で繰り返しません。", "soon": false},
       {"t": "権限モード", "d": "基本・自動承認・すべて承認でファイル書き込みとコマンド実行の確認範囲を選びます。", "soon": false},
@@ -134,7 +139,7 @@ export const vicaText = {
       {"t": "作業記録", "d": "Vicaの会話とターミナルセッションをプロジェクトやグループから探して再開します。", "soon": false},
       {"t": "プロジェクトのグループ", "d": "プロジェクトをまとめ、会話・ファイル・変更をひとつの画面で扱います。", "soon": false},
       {"t": "ターミナルメニュー", "d": "コピーと貼り付け、タイトルとID、画面のクリア、別のエージェントへの引き継ぎを使えます。", "soon": false},
-      {"t": "14種類の画面テーマ", "d": "ライト・ダーク、レトロなWindows風とMac風のテーマを設定から選べます。", "soon": false},
+      {"t": "8種類の画面テーマ", "d": "ライト・ダーク、Windows 95・XP・7、Macintosh・Aqua・Glassの見た目を設定から選べます。", "soon": false},
       {"t": "ターミナル画面の保持", "d": "実行中セッションの出力と画面を保持して再接続できます。アプリ全体の終了時には実行中のターミナルを確認します。", "soon": false},
     ],
     noLogin: "Vicaのアカウント登録は不要です。使うAI接続を設定で選びます。",
@@ -143,10 +148,11 @@ export const vicaText = {
     agentsLead: "設定 → エージェントで接続し、チャットのモデル選択で使うモデルを選びます。APIやサブスクリプションの料金は各社の条件に従います。ローカルモデルはこのパソコンの資源を使います。",
     chatTitle: "Vicaがツールを実行し、選んだモデルが作業します",
     chatLead: "通常のチャットではVica自身のエージェントがファイルの読み書きとコマンド実行を担当します。一部のサブスクリプションや専用ツールでは各社CLIを使います。",
+    layaTag: "判断モデル",
     layaTitle: "作業とモデルを選ぶ判断モデル",
     layaLead: "依頼の処理方法と接続済みモデルから使うものを選びます。モデルを直接選んだり、@で指定したりすることもできます。",
     laya: ["質問に直接答えるか、複数段階のワークフローを選びます。", "計画・実装・レビューなどの作業に合う接続済みモデルを選びます。", "ユーザーが選んだ権限モード（基本・自動承認・すべて承認）で実行します。"],
-    layaNote: "vica-layaは設定 → エージェント → Vica内蔵から必要に応じてインストールします。必須ではなく、別の判断接続や基本ルールでも開始できます。",
+    layaNote: "判断モデルは 設定 → Hook → 判断モデル で選びます。選ばなくても基本ルールでリクエストを振り分けて始められます。",
     rolesTitle: "ワークフローとモデル",
     roles: [
       ["計画・実装・デバッグ", "作業ごとに選択"],
@@ -166,7 +172,7 @@ export const vicaText = {
       {"t": "ブレインストーミングとコワーク", "d": "複数モデルの回答を比較し、計画・実装・レビューを順番に実行できます。", "soon": false},
       {"t": "待機中の依頼と追加指示", "d": "次の依頼を待機列へ入れたり、実行中の作業へ追加指示を送ったりして、配送状態を確認できます。", "soon": false},
       {"t": "表・グラフ・動く説明", "d": "段階・流れ・比較を視覚化します。3D説明は説明や図解を依頼したときに使います。", "soon": false},
-      {"t": "LG EXAONE API", "d": "Mac 0.1.9ではK-EXAONE 2.5のAPIキーを登録し、テキスト会話とツール呼び出しに使えます。画像入力には対応していません。", "soon": false},
+      {"t": "LG EXAONE API", "d": "K-EXAONE 2.5のAPIキーを登録し、テキスト会話とツール呼び出しに使えます。画像入力には対応していません。", "soon": false},
     ],
     phoneTitle: "スマートフォンでは、会話だけ",
     phoneLead: "パソコンのVicaへリモートで作業を依頼できます。スマートフォンは会話と応答待ち、タブレットはアプリ画面を表示します。パソコンと中継サーバーへの接続が必要です。",
@@ -196,7 +202,7 @@ export const vicaText = {
     reqTitle: "動作環境",
     req: ["Apple Silicon搭載のMac、またはWindows 10 1809以降（x64ベータ）。", "AI接続をひとつ：各社APIキー、対応するサブスクリプションのログイン、実行可能なローカルモデル。", "コンピューター操作には別途権限が必要です。リモート接続中はパソコンのVicaと中継が利用可能である必要があります。"],
     connections: [
-      {"name": "各社API", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "OpenRouter", "OpenGateway"]},
+      {"name": "各社API", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "Upstage", "OpenRouter", "OpenGateway"]},
       {"name": "既存のCLI・サブスクリプション接続", "services": ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code", "Kimi"]},
       {"name": "このパソコンのモデル", "services": ["Vica内蔵", "Ollama", "LM Studio", "vLLM"]},
     ],
@@ -211,16 +217,18 @@ export const vicaText = {
     mac: "Mac 다운로드 (Apple Silicon)",
     windows: "Windows 다운로드 (x64 베타)",
     subscribe: "중계 구독하기",
-    windowsNote: "Mac은 Apple Silicon용입니다. Windows 0.1.7은 서명 없는 x64 베타이며 Mac 최신판과 기능이 다를 수 있습니다. WebView2가 없으면 설치 중 내려받습니다.",
+    windowsNote: "Mac은 Apple Silicon용입니다. Windows 0.1.10은 서명 없는 x64 베타이며 Mac 최신판과 기능이 다를 수 있습니다. WebView2가 없으면 설치 중 내려받습니다.",
     howTitle: "이렇게 씁니다",
     how: [
-      {"t": "프로젝트와 AI 연결을 고릅니다", "d": "폴더를 열고 API 키, 지원되는 구독 로그인, 로컬 모델 중 사용할 연결을 설정합니다."},
+      {"t": "AI 연결을 고릅니다", "d": "API 키, 지원되는 구독 로그인, 로컬 모델 중 사용할 연결을 설정합니다. 바로 대화하거나, 프로젝트 작업은 폴더를 열고 시작합니다."},
       {"t": "할 일을 맡깁니다", "d": "채팅으로 요청하거나 브레인스토밍·코워크·저장한 작업 방식을 선택합니다."},
       {"t": "과정과 결과를 확인합니다", "d": "파일 변경과 실행 기록을 보고, 질문에 답하거나 실행을 멈춥니다. 원격 기기에서도 이어서 볼 수 있습니다."},
     ],
     featuresTitle: "기능",
     features: [
       {"t": "일을 단계로 실행", "d": "계획·구현·확인을 나누어 실행하고 진행과 결과를 대화에 남깁니다.", "soon": false},
+      {"t": "프로젝트 없이 대화", "d": "폴더를 열지 않고 환영 페이지에서 바로 대화하고, 나중에 프로젝트 폴더로 옮겨 이어 갑니다.", "soon": false},
+      {"t": "지식 저장소와 지식 그래프", "d": "대화에서 정한 결정과 방법을 출처와 함께 저장하고, 프로젝트의 지식을 3D 그래프로 봅니다.", "soon": false},
       {"t": "일하는 방식", "d": "코워크를 만들고 순서·모델·사람이 확인할 단계를 저장합니다.", "soon": false},
       {"t": "실행과 복구", "d": "대화와 실행 기록을 저장합니다. 앱이 종료되면 미완료 작업을 자동으로 반복하지 않습니다.", "soon": false},
       {"t": "권한 선택", "d": "기본·자동 승인·전체 승인 모드에 따라 파일 쓰기와 명령 실행의 확인 범위를 고릅니다.", "soon": false},
@@ -231,7 +239,7 @@ export const vicaText = {
       {"t": "작업 기록", "d": "Vica 대화와 터미널 세션을 프로젝트·그룹별로 찾아 이어 갑니다.", "soon": false},
       {"t": "프로젝트 그룹", "d": "프로젝트를 그룹으로 묶고 대화·파일·변경 사항을 한 창에서 다룹니다.", "soon": false},
       {"t": "터미널 메뉴", "d": "복사·붙여넣기, 제목과 ID, 화면 지우기, 다른 에이전트에게 이어서 맡기기를 사용합니다.", "soon": false},
-      {"t": "14가지 화면 테마", "d": "라이트·다크, 윈도우 계열 레트로 테마와 맥 계열 테마를 설정에서 고릅니다.", "soon": false},
+      {"t": "8가지 화면 테마", "d": "라이트·다크, Windows 95·XP·7, Macintosh·Aqua·Glass 모양을 설정에서 고릅니다.", "soon": false},
       {"t": "터미널 화면 유지", "d": "실행 중인 터미널의 출력과 화면을 보존해 다시 연결할 수 있습니다. 앱 전체 종료 시에는 실행 중인 터미널을 확인합니다.", "soon": false},
     ],
     noLogin: "Vica 계정 가입은 필요 없습니다. 사용할 AI 연결은 설정에서 고릅니다.",
@@ -240,10 +248,11 @@ export const vicaText = {
     agentsLead: "설정 → 에이전트에서 연결하고, 채팅의 모델 선택기에서 고릅니다. API 요금과 구독은 해당 회사의 정책을 따릅니다. 로컬 모델은 이 컴퓨터의 자원을 사용합니다.",
     chatTitle: "Vica가 도구를 실행하고, 모델이 작업을 풉니다",
     chatLead: "기본 채팅은 Vica 자체 에이전트가 파일 읽기·수정과 명령 실행을 맡습니다. 구독이나 연결 도구의 조건에 따라 회사 CLI를 사용하는 경로도 있습니다.",
+    layaTag: "판단 모델",
     layaTitle: "작업을 고르는 판단 모델",
     layaLead: "요청을 어떤 작업으로 처리할지, 연결된 모델 중 무엇을 쓸지 판단합니다. 모델을 직접 고르거나 @모델로 지정할 수도 있습니다.",
     laya: ["질문에 바로 답하거나 여러 단계의 작업 방식을 선택합니다.", "계획·구현·리뷰 등 작업에 맞는 모델을 연결된 목록에서 고릅니다.", "기본·자동 승인·전체 승인 중 사용자가 고른 권한 모드로 실행합니다."],
-    layaNote: "vica-laya는 설정 → 에이전트 → Vica 내장에서 선택해 설치합니다. 필수 설치가 아니며 다른 판단 연결이나 기본 규칙으로도 시작할 수 있습니다.",
+    layaNote: "판단 모델은 설정 → Hook → 판단 모델에서 고릅니다. 고르지 않아도 기본 규칙으로 요청을 나눠 시작할 수 있습니다.",
     rolesTitle: "일하는 방식과 모델",
     roles: [
       ["계획·구현·디버깅", "작업별 모델 선택"],
@@ -263,7 +272,7 @@ export const vicaText = {
       {"t": "브레인스토밍과 코워크", "d": "여러 모델의 답을 비교하거나, 계획·구현·리뷰를 작업 순서에 따라 실행합니다.", "soon": false},
       {"t": "대기 지시와 추가 지시", "d": "다음 요청을 대기열에 두거나 진행 중인 작업에 추가 지시를 보냅니다. 보낸 지시의 상태를 확인할 수 있습니다.", "soon": false},
       {"t": "표·차트·움직이는 설명", "d": "단계·흐름·비교를 시각적으로 표시합니다. 3D 설명은 설명이나 시각화를 요청했을 때 사용합니다.", "soon": false},
-      {"t": "LG EXAONE API", "d": "Mac 0.1.9에서 K-EXAONE 2.5 키를 등록해 텍스트 대화와 도구 호출에 쓸 수 있습니다. 이미지 입력은 지원하지 않습니다.", "soon": false},
+      {"t": "LG EXAONE API", "d": "K-EXAONE 2.5 키를 등록해 텍스트 대화와 도구 호출에 쓸 수 있습니다. 이미지 입력은 지원하지 않습니다.", "soon": false},
     ],
     phoneTitle: "휴대폰에서는 대화만",
     phoneLead: "컴퓨터의 Vica에 원격으로 일을 맡깁니다. 휴대폰은 대화와 응답 대기를, 태블릿은 앱 화면을 보여 줍니다. 연결할 컴퓨터와 중계 서버가 필요합니다.",
@@ -293,7 +302,7 @@ export const vicaText = {
     reqTitle: "필요 환경",
     req: ["Apple Silicon Mac 또는 Windows 10 1809 이상(x64 베타).", "AI 연결 하나: 회사 API 키, 지원되는 구독 로그인, 또는 실행 가능한 로컬 모델.", "컴퓨터 사용은 별도 권한이 필요하고, 원격 연결은 컴퓨터의 Vica와 중계 서버가 켜져 있어야 합니다."],
     connections: [
-      {"name": "회사 API", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "OpenRouter", "OpenGateway"]},
+      {"name": "회사 API", "services": ["OpenAI", "Anthropic", "Gemini", "Grok", "Meta", "Kimi", "GLM", "DeepSeek", "LG EXAONE", "Upstage", "OpenRouter", "OpenGateway"]},
       {"name": "기존 CLI·구독 연결", "services": ["Claude Code", "Codex", "Antigravity", "Grok", "Muse Code", "Kimi"]},
       {"name": "이 컴퓨터의 모델", "services": ["Vica 내장", "Ollama", "LM Studio", "vLLM"]},
     ],
