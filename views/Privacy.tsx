@@ -4,7 +4,7 @@ import { type Lang } from "@/content/i18n";
 import { LegalPage } from "@/components/Chrome";
 import { company } from "@/content/company";
 
-const UPDATED = { en: "October 30, 2026", ja: "2026年10月30日", ko: "2026년 10월 30일" };
+const UPDATED = { en: "November 24, 2026", ja: "2026年11月24日", ko: "2026년 11월 24일" };
 const title = { en: "Privacy Policy", ja: "プライバシーポリシー", ko: "개인정보처리방침" };
 const mail = <a href={`mailto:${company.email}`}>{company.email}</a>;
 const paddlePolicy = <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer">Paddle Privacy Policy</a>;
@@ -27,7 +27,7 @@ const body: Record<Lang, React.ReactNode> = {
       </ul>
 
       <div hidden>
-      <h2>vica relay subscription</h2>
+      <h2>vica relay subscription (coming soon)</h2>
       <p>The subscription needs no account.</p>
       <ul>
         <li><strong>Payment.</strong> Paddle.com, our Merchant of Record, collects your payment details, email, and billing country under the {paddlePolicy}. We never see your card details.</li>
@@ -73,7 +73,7 @@ const body: Record<Lang, React.ReactNode> = {
       </ul>
 
       <div hidden>
-      <h2>vica 中継サブスクリプション</h2>
+      <h2>vica 中継サブスクリプション（準備中）</h2>
       <p>サブスクリプションにアカウントは不要です。</p>
       <ul>
         <li><strong>支払い。</strong>当社の販売者（Merchant of Record）であるPaddle.comが、{paddlePolicy}に基づいて支払い情報、メールアドレス、請求国を収集します。当社がカード情報を見ることはありません。</li>
@@ -119,7 +119,7 @@ const body: Record<Lang, React.ReactNode> = {
       </ul>
 
       <div hidden>
-      <h2>vica 중계 구독</h2>
+      <h2>vica 중계 구독 (준비 중)</h2>
       <p>구독에는 계정이 필요 없습니다.</p>
       <ul>
         <li><strong>결제.</strong> 저희 판매자(Merchant of Record)인 Paddle.com이 {paddlePolicy}에 따라 결제 정보, 이메일, 청구 국가를 수집합니다. 저희는 카드 정보를 보지 않습니다.</li>

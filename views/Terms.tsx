@@ -5,7 +5,7 @@ import { localized, type Lang } from "@/content/i18n";
 import { LegalPage } from "@/components/Chrome";
 import { company } from "@/content/company";
 
-const UPDATED = { en: "October 30, 2026", ja: "2026年10月30日", ko: "2026년 10월 30일" };
+const UPDATED = { en: "November 24, 2026", ja: "2026年11月24日", ko: "2026년 11월 24일" };
 const title = { en: "Terms of Service", ja: "利用規約", ko: "이용약관" };
 const mail = <a href={`mailto:${company.email}`}>{company.email}</a>;
 
@@ -21,7 +21,8 @@ function body(lang: Lang): React.ReactNode {
       <h2>3. 権限</h2>
       <p>当社のツールは、ユーザーが付与したOAuth権限の範囲内で、ユーザーが開始または承認した操作だけを行います。連携したプラットフォームの設定からいつでも取り消せます。</p>
       <div hidden>
-      <h2>4. 有料サブスクリプション</h2>
+      <h2>4. 有料サブスクリプション（準備中）</h2>
+      <p>vica 中継サブスクリプションは準備中です。提供開始後、以下の条件が適用されます。</p>
       <p>ご注文の手続きは、当社のオンライン販売代理店Paddle.comが行います。Paddle.comがすべての注文の販売者（Merchant of Record）です。Paddleが注文に関するお問い合わせと返品に対応します。</p>
       <ul>
         <li>vica 中継サブスクリプションは月額US$4.99または年額US$39.99（該当する税金は別途）で、解約するまで選んだ期間ごとに更新されます。</li>
@@ -51,7 +52,8 @@ function body(lang: Lang): React.ReactNode {
       <h2>3. 권한</h2>
       <p>저희 도구는 사용자가 준 OAuth 권한 안에서, 사용자가 시작하거나 승인한 작업만 합니다. 연결한 플랫폼의 설정에서 언제든 권한을 거둘 수 있습니다.</p>
       <div hidden>
-      <h2>4. 유료 구독</h2>
+      <h2>4. 유료 구독 (준비 중)</h2>
+      <p>vica 중계 구독은 준비 중입니다. 판매를 시작하면 아래 조건이 적용됩니다.</p>
       <p>주문 절차는 저희 온라인 판매 대행사 Paddle.com이 진행합니다. 모든 주문의 판매자(Merchant of Record)는 Paddle.com입니다. 주문 문의와 반품은 Paddle이 처리합니다.</p>
       <ul>
         <li>vica 중계 구독은 월 US$4.99 또는 연 US$39.99(해당 세금 별도)이고, 해지할 때까지 고른 주기로 갱신됩니다.</li>
@@ -81,7 +83,8 @@ function body(lang: Lang): React.ReactNode {
       <h2>3. Authorization</h2>
       <p>Our tools act only within the OAuth permissions you grant, and only for actions you initiate or approve. You may revoke access at any time from the connected platform&apos;s settings.</p>
       <div hidden>
-      <h2>4. Paid subscriptions</h2>
+      <h2>4. Paid subscriptions (coming soon)</h2>
+      <p>The vica relay subscription is coming soon. These terms apply once it is offered.</p>
       <p>Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.</p>
       <ul>
         <li>The vica relay subscription costs US$4.99 per month or US$39.99 per year plus applicable taxes and renews each period until you cancel.</li>
