@@ -1,11 +1,11 @@
 {
-  "version": "0.0.10",
-  "notes": "voin 0.0.10\n\n- 저장된 녹음의 제목을 다시 바꿀 수 있습니다. 기록을 열고 제목 옆 연필 버튼을 누르세요. 원문과 녹음 파일은 기존 링크에서 계속 열 수 있습니다.\n- 녹음 후 보정과 기록 저장이 끝나면 완료 알림을 표시합니다. macOS에서 voin 알림을 허용하면 다른 앱을 쓰는 중에도 알림을 받을 수 있습니다.",
-  "pub_date": "2026-11-19T03:58:33.186Z",
+  "version": "0.0.11",
+  "notes": "voin 0.0.11\n\n- 녹음 중 실시간 글에서 문장 일부나 여러 문단을 드래그한 뒤 우클릭하면 기존 화자를 지정하거나 새 화자를 추가할 수 있습니다. 저장한 기록에도 지정한 화자가 남습니다.\n- 녹음 기록을 날짜별로 묶고, 상세 화면에서 요약을 바로 복사할 수 있게 했습니다. 설정을 검색한 뒤 세부 화면에서 돌아오면 검색어가 남아 있습니다.",
+  "pub_date": "2026-11-24T00:17:10.686Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0Rm9RL0FIS1FGZ3ZCWnh5T0tnSDhaMEYxNHMzMk1qMlVCNnFGTEEvMGlpeGxwSTB0aHBnTEMvMmg3WFFpL1E4NUxBb0JUU2pBaUdKZ2tqWHRRNHFtOHdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MDYwNzEzCWZpbGU6dm9pbi0wLjAuMTAtMjM0YTYzYmZiMTdmLmFwcC50YXIuZ3oJdmVyc2lvbjowLjAuMTAKTTBONmplYnl3OWhsMCt5Z1YxRUhMZk53OUVoM09hdzNDWDMvL2ZJalVuS2Q2SXhtWHhaa0pKUnBQMTB2Y3I0azlYR09pV1loa2VDV0dZSTZFMk1hQVE9PQo=",
-      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.10/voin-0.0.10-234a63bfb17f.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUkVid2l0N1o0RnZFZFBrSXV5WjZkS0JCbDFCRU0yMitackxLVkxIOVNYUDF2Nzl2Sk45dUcrVjZNL01KN2IxalE2YVVpT3dEbVREc0x5dGRvd0hwZDBzbU1MYlBqM1F3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDc5NDMwCWZpbGU6dm9pbi0wLjAuMTEtZTM4ZDViNTU3ZjJlLmFwcC50YXIuZ3oJdmVyc2lvbjowLjAuMTEKR0NlMzBoMVFXa3p6S1ZVcDVhZWJGYkJHQXEwTzMrNzB0aERNa0dVOC9GbW5BYU1tbGdhUXZpTTRoMWdlNDZSdjFhcGtraERiUXFlZXVvR0FPalp3RGc9PQo=",
+      "url": "https://github.com/su-record/voin-releases/releases/download/v0.0.11/voin-0.0.11-e38d5b557f2e.app.tar.gz"
     }
   }
 }
