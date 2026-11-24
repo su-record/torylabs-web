@@ -1,10 +1,10 @@
 import type { Lang } from "./i18n";
 
-// Product copy checked against Vica 0.2.3 (Mac) on 2026-11-21; Windows remains 0.1.10 beta.
+// Product copy checked against Vica 0.2.3 (Mac) on 2026-11-21; Windows 0.2.4 beta published 2026-11-24.
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
-export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.1.10/Vica_0.1.10_x64_ko-KR.msi";
+export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.2.4/Vica_0.2.4_x64_ko-KR.msi";
 
 export const vicaText = {
   en: {
@@ -17,7 +17,7 @@ export const vicaText = {
     mac: "Download for Mac (Apple Silicon)",
     windows: "Download for Windows (x64 beta)",
     subscribe: "Subscribe to the relay",
-    windowsNote: "Mac requires Apple Silicon. Windows 0.1.10 is an unsigned x64 beta and may differ from the latest Mac release. Setup downloads WebView2 if needed.",
+    windowsNote: "Mac requires Apple Silicon. Windows 0.2.4 is an unsigned x64 beta and may differ from the latest Mac release. Setup downloads WebView2 if needed.",
     howTitle: "How it works",
     how: [
       {"t": "Choose a connection", "d": "Connect an API key, a supported subscription login, or a local model. Start a chat right away, or open a folder for project work."},
@@ -117,7 +117,7 @@ export const vicaText = {
     mac: "Macをダウンロード（Apple Silicon）",
     windows: "Windowsをダウンロード（x64ベータ）",
     subscribe: "中継を購読する",
-    windowsNote: "Mac版はApple Silicon用です。Windows 0.1.10は署名なしのx64ベータで、最新Mac版とは機能が異なる場合があります。必要ならWebView2をセットアップ中に取得します。",
+    windowsNote: "Mac版はApple Silicon用です。Windows 0.2.4は署名なしのx64ベータで、最新Mac版とは機能が異なる場合があります。必要ならWebView2をセットアップ中に取得します。",
     howTitle: "使い方",
     how: [
       {"t": "接続を選ぶ", "d": "APIキー、対応するサブスクリプションのログイン、ローカルモデルから接続を選びます。すぐに会話するか、プロジェクトの作業はフォルダーを開いて始めます。"},
@@ -217,7 +217,7 @@ export const vicaText = {
     mac: "Mac 다운로드 (Apple Silicon)",
     windows: "Windows 다운로드 (x64 베타)",
     subscribe: "중계 구독하기",
-    windowsNote: "Mac은 Apple Silicon용입니다. Windows 0.1.10은 서명 없는 x64 베타이며 Mac 최신판과 기능이 다를 수 있습니다. WebView2가 없으면 설치 중 내려받습니다.",
+    windowsNote: "Mac은 Apple Silicon용입니다. Windows 0.2.4는 서명 없는 x64 베타이며 Mac 최신판과 기능이 다를 수 있습니다. WebView2가 없으면 설치 중 내려받습니다.",
     howTitle: "이렇게 씁니다",
     how: [
       {"t": "AI 연결을 고릅니다", "d": "API 키, 지원되는 구독 로그인, 로컬 모델 중 사용할 연결을 설정합니다. 바로 대화하거나, 프로젝트 작업은 폴더를 열고 시작합니다."},
