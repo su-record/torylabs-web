@@ -33,6 +33,9 @@ const ICONS = [
   "M4 5h16v14H4zM14 11h5v6h-5z",
   "M4 4h16v16H4zM9 4v16M13 9h4M13 13h4",
   "M5 4h14v12H5zM9 20h6M12 16v4M9 9l2 2 4-4",
+  "M6 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4M6 17a2 2 0 1 0 0 4 2 2 0 0 0 0-4M18 17a2 2 0 1 0 0 4 2 2 0 0 0 0-4M6 7v10M18 17V9a3 3 0 0 0-3-3h-4M13 4l-2 2 2 2",
+  "M12 3v8M7.5 6.5a7 7 0 1 0 9 0",
+  "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9",
 ];
 const Soon = ({ label }: { label: string }) => <span className="ml-2 inline-flex rounded-full border border-[rgba(124,108,240,.25)] bg-[rgba(124,108,240,.08)] px-2 py-0.5 align-middle text-[11px] font-medium text-[#6d5ce8]">{label}</span>;
 
