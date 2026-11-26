@@ -4,7 +4,7 @@ import type { Lang } from "./i18n";
 export const SUBSCRIBE = "https://vica.torylabs.dev/subscribe";
 export const ISSUES = "https://github.com/su-record/vica-releases/issues/new";
 export const DOWNLOAD = "https://github.com/su-record/vica-releases/releases/latest";
-export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.2.5/Vica_0.2.5_x64_ko-KR.msi";
+export const WINDOWS_DOWNLOAD = "https://github.com/su-record/vica-releases/releases/download/v0.2.6/Vica_0.2.6_x64_ko-KR.msi";
 
 export const vicaText = {
   en: {
@@ -17,7 +17,7 @@ export const vicaText = {
     mac: "Download for Mac (Apple Silicon)",
     windows: "Download for Windows (x64 beta)",
     subscribe: "Subscribe to the relay",
-    windowsNote: "Mac requires Apple Silicon. Windows 0.2.5 is an unsigned x64 beta, and some features differ from the Mac app. Setup downloads WebView2 if needed.",
+    windowsNote: "Mac requires Apple Silicon. Windows 0.2.6 is an unsigned x64 beta, and some features differ from the Mac app. Setup downloads WebView2 if needed.",
     howTitle: "How it works",
     how: [
       {"t": "Choose a connection", "d": "Connect an API key, a supported subscription login, or a local model. Start a chat right away, or open a folder for project work."},
@@ -120,7 +120,7 @@ export const vicaText = {
     mac: "Macをダウンロード（Apple Silicon）",
     windows: "Windowsをダウンロード（x64ベータ）",
     subscribe: "中継を購読する",
-    windowsNote: "Mac版はApple Silicon用です。Windows 0.2.5は署名なしのx64ベータで、一部の機能がMac版と異なります。必要ならWebView2をセットアップ中に取得します。",
+    windowsNote: "Mac版はApple Silicon用です。Windows 0.2.6は署名なしのx64ベータで、一部の機能がMac版と異なります。必要ならWebView2をセットアップ中に取得します。",
     howTitle: "使い方",
     how: [
       {"t": "接続を選ぶ", "d": "APIキー、対応するサブスクリプションのログイン、ローカルモデルから接続を選びます。すぐに会話するか、プロジェクトの作業はフォルダーを開いて始めます。"},
@@ -223,7 +223,7 @@ export const vicaText = {
     mac: "Mac 다운로드 (Apple Silicon)",
     windows: "Windows 다운로드 (x64 베타)",
     subscribe: "중계 구독하기",
-    windowsNote: "Mac은 Apple Silicon용입니다. Windows 0.2.5는 서명 없는 x64 베타이며 일부 기능이 Mac 앱과 다릅니다. WebView2가 없으면 설치 중 내려받습니다.",
+    windowsNote: "Mac은 Apple Silicon용입니다. Windows 0.2.6은 서명 없는 x64 베타이며 일부 기능이 Mac 앱과 다릅니다. WebView2가 없으면 설치 중 내려받습니다.",
     howTitle: "이렇게 씁니다",
     how: [
       {"t": "AI 연결을 고릅니다", "d": "API 키, 지원되는 구독 로그인, 로컬 모델 중 사용할 연결을 설정합니다. 바로 대화하거나, 프로젝트 작업은 폴더를 열고 시작합니다."},
