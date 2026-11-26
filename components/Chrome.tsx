@@ -73,6 +73,7 @@ export function Footer({ lang }: { lang: Lang }) {
         <nav className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
           <Link href={localized(lang, "/vica")}>vica</Link>
           <Link href={localized(lang, "/voin")}>voin</Link>
+          <Link href={localized(lang, "/ondo")}>ondo</Link>
           <Link href={localized(lang, "/relay")}>{guide[lang]}</Link>
         </nav>
         <p className="mt-6 flex flex-wrap gap-x-2">

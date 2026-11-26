@@ -10,7 +10,7 @@ from urllib.robotparser import RobotFileParser
 OUT = Path(__file__).resolve().parents[1] / 'out'
 ORIGIN = 'https://torylabs.dev'
 LANGUAGES = ('en', 'ja', 'ko')
-PUBLIC = ('/', '/vica', '/voin', '/relay', '/privacy', '/terms')
+PUBLIC = ('/', '/vica', '/voin', '/ondo', '/relay', '/privacy', '/terms')
 UNLISTED = ('/pricing', '/refund')
 LOCALES = {'en': 'en_US', 'ja': 'ja_JP', 'ko': 'ko_KR'}
 
@@ -107,7 +107,7 @@ def check_schema(doc, route, path, lang):
     assert 'address' not in organization and 'taxID' not in organization
     page = nodes[ORIGIN + route + '#webpage']
     assert page['inLanguage'] == lang and page['url'] == ORIGIN + route
-    if path in ('/', '/vica', '/voin', '/relay'):
+    if path in ('/', '/vica', '/voin', '/ondo', '/relay'):
         faq = nodes[ORIGIN + route + '#faq']
         assert faq['@type'] == 'FAQPage' and len(faq['mainEntity']) >= 4
         body = normalize(' '.join(doc.text))
@@ -115,13 +115,17 @@ def check_schema(doc, route, path, lang):
             assert normalize(q['name']) in body, (route, q['name'])
             assert normalize(q['acceptedAnswer']['text']) in body, (route, q['name'])
         assert 'faq' in doc.ids
-    if path in ('/vica', '/voin'):
+    if path in ('/vica', '/voin', '/ondo'):
         app = nodes[ORIGIN + path + '#software']
         assert app['@type'] == 'SoftwareApplication'
         assert app['operatingSystem'] == (['macOS', 'Windows'] if path == '/vica' else 'macOS')
         assert app['offers']['price'] == '0'
-        assert {'en': 'Free app', 'ko': '앱 무료', 'ja': 'アプリ無料'}[lang] in normalize(' '.join(doc.text))
-        assert app['downloadUrl'] in doc.hrefs, route
+        free = {'en': 'Free · Open source (MIT)', 'ko': '무료 · 오픈소스(MIT)', 'ja': '無料 · オープンソース(MIT)'} if path == '/ondo' \
+            else {'en': 'Free app', 'ko': '앱 무료', 'ja': 'アプリ無料'}
+        assert free[lang] in normalize(' '.join(doc.text))
+        # ondo has no download link until its first release.
+        if path != '/ondo' or 'downloadUrl' in app:
+            assert app['downloadUrl'] in doc.hrefs, route
         assert not {'aggregateRating', 'review'} & app.keys()
         assert page['mainEntity']['@id'] == app['@id']
 
@@ -136,7 +140,7 @@ def check_crawl():
     entries = sitemap.findall('s:url', ns)
     expected = {ORIGIN + path_for(l, p) for p in PUBLIC for l in LANGUAGES}
     urls = [e.findtext('s:loc', namespaces=ns) for e in entries]
-    assert len(urls) == len(set(urls)) == 18 and set(urls) == expected, urls
+    assert len(urls) == len(set(urls)) == 21 and set(urls) == expected, urls
     for e in entries:
         url = e.findtext('s:loc', namespaces=ns)
         assert e.find('s:lastmod', ns) is None, 'Do not fabricate freshness from build time'
@@ -170,7 +174,7 @@ def main():
             assert target.is_file(), href
             if parsed.fragment:
                 assert parsed.fragment in Document(target.read_text()).ids, href
-    print('SEO PASS: 24 HTML documents; 18 sitemap URLs; languages, metadata, schemas, robots, links and PNG.')
+    print('SEO PASS: 27 HTML documents; 21 sitemap URLs; languages, metadata, schemas, robots, links and PNG.')
 
 
 if __name__ == '__main__':

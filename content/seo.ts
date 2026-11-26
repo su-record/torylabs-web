@@ -3,7 +3,7 @@ import { company } from "./company";
 import { alternates, langs, localized, type Lang } from "./i18n";
 
 // Subscription pages remain accessible, but are not promoted until launch.
-export const publicPaths = ["/", "/vica", "/voin", "/relay", "/privacy", "/terms"] as const;
+export const publicPaths = ["/", "/vica", "/voin", "/ondo", "/relay", "/privacy", "/terms"] as const;
 const unlistedPaths = new Set(["/pricing", "/refund"]);
 export const locales: Record<Lang, string> = { en: "en_US", ja: "ja_JP", ko: "ko_KR" };
 

@@ -57,7 +57,7 @@ def check_browser(browser, base):
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
             for lang, prefix in [('en', ''), ('ko', '/ko'), ('ja', '/ja')]:
-                for route in ('', '/vica', '/voin', '/relay'):
+                for route in ('', '/vica', '/voin', '/ondo', '/relay'):
                     path = prefix + route or '/'
                     inspect_page(page, base, path, lang)
                     if route == '/vica':
@@ -66,7 +66,7 @@ def check_browser(browser, base):
                         assert windows.first.is_visible() and windows.first.is_enabled(), path
                         assert windows.first.get_attribute('aria-disabled') is None, path
                         assert 'x64' in windows.first.inner_text(), path
-                    if route in ('', '/vica', '/voin'):
+                    if route in ('', '/vica', '/voin', '/ondo'):
                         assert page.locator('#faq dt').count() >= 4
                         # Whole question and answer are visible to visitors, not schema-only.
                         first = page.locator('#faq dd').first
@@ -116,7 +116,8 @@ def screenshots(browser, base):
     context = browser._browser.new_context(viewport={'width': 1280, 'height': 900}, reduced_motion='reduce')
     page = context.new_page()
     for path, name, width in [('/ko', 'home-desktop', 1280), ('/ko/voin', 'voin-mobile', 390), ('/ja/relay', 'relay-mobile', 320),
-        ('/ko/vica', 'vica-desktop', 1280), ('/ko/vica', 'vica-mobile', 320), ('/ja/vica', 'vica-ja-mobile', 320)]:
+        ('/ko/vica', 'vica-desktop', 1280), ('/ko/vica', 'vica-mobile', 320), ('/ja/vica', 'vica-ja-mobile', 320),
+        ('/ko/ondo', 'ondo-desktop', 1280), ('/ko/ondo', 'ondo-mobile', 320), ('/ja/ondo', 'ondo-ja-mobile', 320)]:
         page.set_viewport_size({'width': width, 'height': 900})
         page.goto(base + path, wait_until='networkidle')
         page.screenshot(path=str(ARTIFACTS / f'{name}.png'), full_page=True)

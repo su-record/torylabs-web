@@ -46,16 +46,17 @@ export function PageSchema({ lang, path, title, description, questions = [], ent
 }
 
 export function softwareEntity({ name, lang, description, features, download, version, requirements }: {
-  name: "vica" | "voin"; lang: Lang; description: string; features: string[];
+  name: "vica" | "voin" | "ondo"; lang: Lang; description: string; features: string[];
   download: string; version?: string; requirements: string;
 }) {
   return {
     "@type": "SoftwareApplication", "@id": `${company.domain}/${name}#software`,
     name, url: absoluteUrl(localized(lang, `/${name}`)), description,
-    applicationCategory: name === "vica" ? "DeveloperApplication" : "ProductivityApplication",
+    applicationCategory: { vica: "DeveloperApplication", voin: "ProductivityApplication", ondo: "UtilitiesApplication" }[name],
     operatingSystem: name === "vica" ? ["macOS", "Windows"] : "macOS", softwareRequirements: requirements,
     ...(version ? { softwareVersion: version } : {}),
-    downloadUrl: download, featureList: features,
+    // No download link until a product has a release.
+    ...(download ? { downloadUrl: download } : {}), featureList: features,
     publisher: { "@id": `${company.domain}/#organization` },
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD", url: absoluteUrl(localized(lang, `/${name}`)) },
   };

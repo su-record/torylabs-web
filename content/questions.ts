@@ -1,6 +1,7 @@
 import { company } from "./company";
 import type { Lang } from "./i18n";
 import { voinText } from "./voin";
+import { ondoText } from "./ondo";
 import type { Question } from "@/components/StructuredData";
 
 export const faqTitles: Record<Lang, string> = { en: "Questions", ja: "よくある質問", ko: "자주 묻는 질문" };
@@ -35,4 +36,16 @@ export function voinAnswers(lang: Lang): Question[] {
   const t = voinText[lang];
   const answers = [`${t.requirements}. ${t.windows}: ${t.soon}.`, t.privacy[0], t.privacy[1], t.features[2].d];
   return voinQuestions[lang].map((question, i) => [question, answers[i]]);
+}
+
+const ondoQuestions: Record<Lang, string[]> = {
+  en: ["Which Macs does ondo support?", "How is ondo different from Amphetamine?", "Why does ondo need administrator rights?", "Can an AI agent turn ondo on and off?"],
+  ko: ["ondo는 어떤 Mac에서 쓸 수 있나요?", "Amphetamine 같은 앱과 무엇이 다른가요?", "왜 관리자 권한이 필요한가요?", "AI 에이전트가 ondo를 켜고 끌 수 있나요?"],
+  ja: ["ondoはどのMacで使えますか？", "Amphetamineなどのアプリと何が違いますか？", "なぜ管理者権限が必要なのですか？", "AIエージェントがondoをオン・オフできますか？"],
+};
+
+export function ondoAnswers(lang: Lang): Question[] {
+  const t = ondoText[lang];
+  const answers = [t.macs, t.difference, t.permissions[0], t.aiText];
+  return ondoQuestions[lang].map((question, i) => [question, answers[i]]);
 }

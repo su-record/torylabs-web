@@ -38,7 +38,7 @@ do not redirect an incoming link.
   `content/i18n.ts` supplies reciprocal hreflang links and the English `x-default`.
   `public/_headers` makes Cloudflare serve the extensionless social image as
   `image/png` so it can be displayed as a preview.
-- `app/sitemap.ts` includes the 18 public URLs. Pricing and refund pages remain
+- `app/sitemap.ts` includes the 21 public URLs. Pricing and refund pages remain
   accessible with `noindex, follow` while subscription promotion is on hold.
   No build timestamp is used as a fabricated content update date.
 - `app/robots.ts` permits crawling, including pages whose `noindex` must be read.
