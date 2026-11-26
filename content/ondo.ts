@@ -2,6 +2,14 @@ import type { Lang } from "./i18n";
 
 // Commands shown on the page; the same in every language.
 export const ondoCommands = ["ondo on --for 1h30m", "ondo on --until 07:30", "ondo status --json", "ondo off", "claude mcp add ondo -- ondo mcp"];
+export const brewCommand = "brew install --cask su-record/tap/ondo";
+/** Examples per control path; commands are the same in every language. */
+export const controlExamples = {
+  cli: ["ondo on --for 1h30m", "ondo status --json", "ondo wake --at 07:00"],
+  mcp: ["claude mcp add ondo -- ondo mcp"],
+  links: ["ondo://on?for=2h", "ondo://off", "ondo://wake?in=30m"],
+};
+export const mcpTools = ["ondo_status", "ondo_on", "ondo_off", "ondo_temperature", "ondo_display_off", "ondo_schedule_wake"];
 
 export const ondoText = {
   ko: {
@@ -10,8 +18,11 @@ export const ondoText = {
     eyebrow: "STAY AWAKE, STAY COOL", lead: "덮어도 깨어 있고,\n뜨거우면 쉬게 합니다.",
     intro: "맥북을 덮은 채 빌드와 다운로드를 이어가세요. ondo가 온도와 전원을 지켜보다가 위험하면 깨어있기를 풀고 맥을 재웁니다.",
     download: "macOS 다운로드", preparing: "출시 준비 중", github: "GitHub", githubPending: "GitHub 공개 준비 중",
-    price: "무료 · 오픈소스(MIT)", requirements: "Apple Silicon · macOS 13 이상", visual: "메뉴 화면 시안 · 출시 전",
-    menu: { toggle: "닫아도 깨어있기", until: "1시간 30분 뒤 꺼짐 · 03:30", limit: "과열 기준 85°C", power: "배터리 82% · 충전 중", display: "화면만 끄기", settings: "설정…", quit: "종료" },
+    price: "무료 · 오픈소스(MIT)", requirements: "Apple Silicon · macOS 13 이상", visual: "ondo 메뉴",
+    menu: { title: "닫아도 깨어있기", status: "켜짐 · 1시간 30분 남음 · 03:30에 꺼짐", battery: "배터리", limits: "기준 85°C · 배터리 45°C", power: "충전기 연결 · 82%" },
+    brewNote: "출시 후 사용할 수 있습니다",
+    chart: { title: "뜨거워지면 스스로 멈춥니다.", text: "기준 온도를 60초 넘게 넘으면 알리고 CPU를 많이 쓰는 프로그램을 보여 줍니다. 그래도 식지 않으면 깨어있기를 풀고 맥을 재웁니다.",
+      limit: "기준 85°C", warn: "경고", stop: "해제 · 잠자기", ticks: ["0초", "60초", "120초"], alt: "온도가 85°C를 넘은 뒤 60초에 경고하고 120초에 깨어있기를 풀어 온도가 내려가는 그래프" },
     featuresTitle: "덮어 둬도 안심하도록.",
     features: [
       { t: "닫아도 깨어있기", d: "메뉴바에서 눌러 켭니다. 맥북을 덮어도 잠들지 않아 빌드, 다운로드, 원격 접속이 이어집니다. 아이콘으로 지금 상태를 알 수 있습니다." },
@@ -27,15 +38,26 @@ export const ondoText = {
       { t: "해제", d: "60초 더 넘으면 깨어있기를 풉니다. 뚜껑이 닫혀 있으면 바로 재우고, 열려 있으면 알림만 보냅니다." },
       { t: "항상 원래대로", d: "앱을 끄거나, 앱이 멈추거나, 재부팅해도 잠자기 설정은 항상 원래대로 돌아옵니다." },
     ],
+    colorTitle: "온도가 메뉴바에서 색으로 보입니다.",
+    colorText: "메뉴바의 덮인 노트북 위 온도계가 CPU 온도를 보여 줍니다. 40°C까지는 파랑이고, 뜨거워질수록 초록·노랑·주황을 거쳐 과열 기준(기본 85°C)에서 빨강이 됩니다. 수은 높이도 함께 올라가서 색을 구분하기 어려워도 읽을 수 있습니다. 메뉴의 온도 막대도 같은 색으로 바뀌고, 깨어있기가 켜지면 노트북이 진해집니다.",
+    colorAlt: "30°C의 파랑부터 90°C의 빨강까지 온도계 색과 수은 높이가 바뀌는 모습",
+    controlTitle: "터미널, AI, 다른 앱에서도 켜고 끕니다.",
+    controlIntro: "메뉴 말고도 세 가지 길로 ondo를 다룰 수 있습니다. 어느 길로 요청해도 과열·전원 보호는 그대로 적용되고, 보호 기준은 앱 설정에서만 바뀝니다.",
+    controls: [
+      { t: "터미널 명령", d: "Homebrew로 설치하면 ondo 명령이 함께 들어옵니다. 스크립트에서 쓰기 좋게 --json 출력과 종료 코드(0 성공, 2 앱 연결 실패, 3 보호 규칙이 거절)를 돌려줍니다." },
+      { t: "AI 에이전트 (MCP)", d: "MCP 서버가 들어 있어 Claude Code·Claude 데스크톱·Codex 같은 AI 앱이 ondo를 도구로 씁니다. 「빌드 끝날 때까지 깨워 둬」라고 하면 에이전트가 켜고, 끝나면 끕니다." },
+      { t: "다른 앱 (링크)", d: "ondo:// 링크로 단축어·Raycast·Alfred에서 버튼 하나로 켜고 끕니다." },
+    ],
+    toolsLabel: "AI가 쓰는 도구",
     aiTitle: "AI 에이전트에게 맡기세요.",
     aiText: "ondo 명령, MCP, ondo:// 링크로 터미널과 다른 앱, Claude Code·Codex 같은 AI 에이전트가 깨어있기를 켜고 끕니다. 보호 기준은 앱에서만 바꿀 수 있어서 에이전트가 과열 보호를 끌 수 없습니다.",
     permissionsTitle: "권한은 필요한 만큼만.",
     permissions: [
       "뚜껑을 닫아도 깨어 있게 하려면 관리자 권한이 필요한 시스템 설정(pmset disablesleep)을 바꿔야 합니다. 시스템 설정에서 한 번 허용하면 작은 도우미 프로그램이 이 설정 하나만 켜고 끕니다. 매번 비밀번호를 묻지 않고, sudoers 파일도 고치지 않습니다.",
       "온도와 배터리 정보는 Mac 안에서만 읽습니다. ondo는 계정이 없고, 사용 기록이나 센서 값을 어디에도 보내지 않습니다.",
-      "소스 코드는 MIT 라이선스로 GitHub에 공개할 예정입니다.",
+      "소스 코드는 MIT 라이선스로 GitHub에 공개되어 있습니다.",
     ],
-    macs: "Apple Silicon Mac, macOS 13 이상에서 씁니다. Intel Mac 지원 여부는 출시 때 알려 드립니다.",
+    macs: "Apple Silicon Mac, macOS 13 이상에서 씁니다. Intel Mac용 코드도 들어 있지만 아직 실제 Intel Mac에서 시험하지 않았습니다.",
     difference: "ondo는 깨어 있는 동안 CPU 온도와 전원을 지켜봅니다. 과열되거나, 충전기가 빠지거나, 배터리가 부족하면 스스로 깨어있기를 풀고 맥을 재웁니다.",
     installTitle: "메뉴바에 ondo를 두세요.",
     install: [
@@ -55,8 +77,11 @@ export const ondoText = {
     eyebrow: "STAY AWAKE, STAY COOL", lead: "Lid closed, still awake.\nToo hot, time to rest.",
     intro: "Keep builds and downloads running with your MacBook closed. ondo watches temperature and power, and when things get risky it stops keeping the Mac awake and puts it to sleep.",
     download: "Download for macOS", preparing: "Release in preparation", github: "GitHub", githubPending: "Public GitHub repository in preparation",
-    price: "Free · Open source (MIT)", requirements: "Apple Silicon · macOS 13 or later", visual: "Menu design · before release",
-    menu: { toggle: "Stay awake with lid closed", until: "Off in 1 h 30 min · 03:30", limit: "Overheat limit 85°C", power: "Battery 82% · Charging", display: "Turn off display", settings: "Settings…", quit: "Quit" },
+    price: "Free · Open source (MIT)", requirements: "Apple Silicon · macOS 13 or later", visual: "The ondo menu",
+    menu: { title: "Stay Awake, Lid Closed", status: "On · 1 h 30 min left · off at 03:30", battery: "Battery", limits: "Limit 85°C · battery 45°C", power: "Charger · 82%" },
+    brewNote: "available at release",
+    chart: { title: "It stops itself when it runs hot.", text: "After 60 seconds above the limit, ondo alerts you and shows which programs use the most CPU. If the Mac still doesn’t cool down, ondo stops keeping it awake and puts it to sleep.",
+      limit: "Limit 85°C", warn: "Warn", stop: "Stop · sleep", ticks: ["0 s", "60 s", "120 s"], alt: "A temperature line passes 85°C; ondo warns after 60 seconds and stops at 120 seconds, and the temperature falls" },
     featuresTitle: "Close the lid without worrying.",
     features: [
       { t: "Awake with the lid closed", d: "Turn it on from the menu bar. Your MacBook stays awake when you close it, so builds, downloads and remote sessions keep going. The icon shows the current state." },
@@ -72,15 +97,26 @@ export const ondoText = {
       { t: "Release", d: "After another 60 seconds above the limit, ondo stops keeping the Mac awake. With the lid closed it sleeps right away; with the lid open you get an alert." },
       { t: "Always restore", d: "Quit, crash or restart: the sleep setting always returns to normal." },
     ],
+    colorTitle: "Temperature shows as color in the menu bar.",
+    colorText: "The thermometer on the closed laptop in your menu bar shows CPU temperature. It is blue up to 40°C and moves through green, yellow and orange to red at the overheat limit (85°C by default). The mercury rises with it, so you can read it even if the colors are hard to tell apart. The temperature bar in the menu uses the same colors, and the laptop turns solid while ondo keeps the Mac awake.",
+    colorAlt: "Thermometers from blue at 30°C to red at 90°C, the mercury rising with the temperature",
+    controlTitle: "Turn it on from a terminal, an AI or another app.",
+    controlIntro: "Beyond the menu, ondo takes requests three ways. Overheat and power protection apply to every one of them, and protection limits change only in the app’s settings.",
+    controls: [
+      { t: "Terminal command", d: "Homebrew installs the ondo command with the app. For scripts it prints --json and returns exit codes: 0 ok, 2 app not reachable, 3 refused by protection." },
+      { t: "AI agents (MCP)", d: "A built-in MCP server lets AI apps such as Claude Code, Claude desktop and Codex use ondo as a tool. Ask “keep the Mac awake until the build finishes” and the agent turns it on, then off." },
+      { t: "Other apps (links)", d: "ondo:// links turn it on and off from Shortcuts, Raycast or Alfred with one click." },
+    ],
+    toolsLabel: "Tools an AI can use",
     aiTitle: "Let your AI agent handle it.",
     aiText: "With the ondo command, MCP or ondo:// links, terminals, other apps and AI agents such as Claude Code and Codex can turn staying awake on and off. Protection limits can only be changed in the app, so an agent cannot switch off overheat protection.",
     permissionsTitle: "Only the permission it needs.",
     permissions: [
       "Keeping a closed MacBook awake means changing a system setting that requires administrator rights (pmset disablesleep). After you allow it once in System Settings, a small helper turns that one setting on and off and does nothing else. ondo doesn’t ask for your password each time or edit the sudoers file.",
       "Temperature and battery readings stay on your Mac. ondo has no account and sends no usage data or sensor readings anywhere.",
-      "The source code will be published on GitHub under the MIT license.",
+      "The source code is on GitHub under the MIT license.",
     ],
-    macs: "ondo runs on Apple Silicon Macs with macOS 13 or later. Intel Mac support will be confirmed at release.",
+    macs: "ondo runs on Apple silicon Macs with macOS 13 or later. The app also contains Intel code, which has not yet been tested on an Intel Mac.",
     difference: "ondo watches CPU temperature and power while it keeps your Mac awake. If the Mac overheats, the charger is unplugged or the battery runs low, ondo stops keeping it awake and puts it to sleep.",
     installTitle: "Put ondo in your menu bar.",
     install: [
@@ -100,8 +136,11 @@ export const ondoText = {
     eyebrow: "STAY AWAKE, STAY COOL", lead: "閉じても\u200b起きている。\n熱いときは\u200b休ませる。",
     intro: "MacBookを閉じたまま、ビルドやダウンロードを続けられます。ondoが温度と電源を見守り、危ないときはスリープ防止を解除してMacを眠らせます。",
     download: "macOS版をダウンロード", preparing: "リリース準備中", github: "GitHub", githubPending: "GitHubでの公開を準備中",
-    price: "無料 · オープンソース(MIT)", requirements: "Apple Silicon · macOS 13以降", visual: "メニュー画面の試案 · リリース前",
-    menu: { toggle: "閉じてもスリープしない", until: "1時間30分後にオフ · 03:30", limit: "過熱の基準 85°C", power: "バッテリー 82% · 充電中", display: "ディスプレイだけオフ", settings: "設定…", quit: "終了" },
+    price: "無料 · オープンソース(MIT)", requirements: "Apple Silicon · macOS 13以降", visual: "ondoのメニュー",
+    menu: { title: "閉じてもスリープしない", status: "オン · 残り1時間30分 · 03:30にオフ", battery: "バッテリー", limits: "基準 85°C · バッテリー 45°C", power: "電源アダプタ · 82%" },
+    brewNote: "リリース後に使えます",
+    chart: { title: "熱くなったら、自分で止まる。", text: "基準温度を60秒超えると通知し、CPUを多く使っているプログラムを表示します。それでも下がらなければスリープ防止を解除し、Macをスリープさせます。",
+      limit: "基準 85°C", warn: "警告", stop: "解除 · スリープ", ticks: ["0秒", "60秒", "120秒"], alt: "温度が85°Cを超えたあと、60秒で警告、120秒でスリープ防止を解除し、温度が下がるグラフ" },
     featuresTitle: "閉じたままでも、安心して。",
     features: [
       { t: "閉じてもスリープしない", d: "メニューバーからオンにします。MacBookを閉じてもスリープせず、ビルド・ダウンロード・リモート接続が続きます。アイコンで今の状態がわかります。" },
@@ -117,15 +156,26 @@ export const ondoText = {
       { t: "解除", d: "さらに60秒超え続けるとスリープ防止を解除します。閉じていればすぐにスリープし、開いていれば通知だけを送ります。" },
       { t: "必ず元に戻す", d: "アプリを終了しても、停止しても、再起動しても、スリープの設定は必ず元に戻ります。" },
     ],
+    colorTitle: "温度がメニューバーの色でわかる。",
+    colorText: "メニューバーの閉じたノートパソコンの上の温度計が、CPU温度を表示します。40°Cまでは青、熱くなるにつれて緑・黄・オレンジを経て、過熱の基準(標準85°C)で赤になります。水銀の高さも一緒に上がるので、色を見分けにくくても読み取れます。メニューの温度バーも同じ色で変わり、スリープ防止がオンのときはノートパソコンが濃く表示されます。",
+    colorAlt: "30°Cの青から90°Cの赤まで、温度計の色と水銀の高さが変わる様子",
+    controlTitle: "ターミナル、AI、ほかのアプリからも。",
+    controlIntro: "メニュー以外にも3つの方法でondoを操作できます。どの方法で頼んでも過熱・電源の保護はそのまま働き、保護の基準はアプリの設定でしか変えられません。",
+    controls: [
+      { t: "ターミナルコマンド", d: "Homebrewでインストールするとondoコマンドも入ります。スクリプト向けに--json出力と終了コード(0 成功、2 アプリに接続できない、3 保護ルールが拒否)を返します。" },
+      { t: "AIエージェント (MCP)", d: "MCPサーバーを内蔵しているので、Claude Code・Claudeデスクトップ・CodexなどのAIアプリがondoをツールとして使えます。「ビルドが終わるまで起こしておいて」と頼めば、エージェントがオンにして、終わればオフにします。" },
+      { t: "ほかのアプリ (リンク)", d: "ondo://リンクで、ショートカット・Raycast・Alfredからワンクリックでオン・オフできます。" },
+    ],
+    toolsLabel: "AIが使うツール",
     aiTitle: "AIエージェントに任せる。",
     aiText: "ondoコマンド、MCP、ondo://リンクで、ターミナルや他のアプリ、Claude CodeやCodexなどのAIエージェントがスリープ防止をオン・オフできます。保護の基準はアプリでしか変えられないため、エージェントが過熱保護を切ることはできません。",
     permissionsTitle: "権限は必要な分だけ。",
     permissions: [
       "閉じたままスリープさせないには、管理者権限が必要なシステム設定(pmset disablesleep)を変える必要があります。システム設定で一度許可すると、小さなヘルパーがこの設定ひとつだけを切り替えます。毎回パスワードを求めることも、sudoersファイルを書き換えることもありません。",
       "温度とバッテリーの情報はMacの中だけで読み取ります。ondoにはアカウントがなく、利用状況やセンサーの値をどこにも送りません。",
-      "ソースコードはMITライセンスでGitHubに公開する予定です。",
+      "ソースコードはMITライセンスでGitHubに公開しています。",
     ],
-    macs: "Apple Silicon搭載Mac、macOS 13以降で使えます。Intel Macへの対応はリリース時にお知らせします。",
+    macs: "Apple Silicon搭載Mac、macOS 13以降で使えます。Intel Mac用のコードも含まれていますが、実機ではまだ試していません。",
     difference: "ondoはスリープを防いでいる間、CPU温度と電源を見守ります。過熱したり、電源アダプタが外れたり、バッテリーが少なくなったりすると、自らスリープ防止を解除してMacを眠らせます。",
     installTitle: "メニューバーに、ondoを。",
     install: [
